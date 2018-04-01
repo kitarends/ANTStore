@@ -19,20 +19,20 @@ Route::get( '/', function () {
 
 Auth::routes();
 
-Route::get( '/logout', function () {
-	if ( @Auth::check() ) {
-		Auth::logout();
-	}
 
-	return redirect( '/' );
+Route::middleware( [ 'auth' ] )->group( function () {
+	Route::get( '/logout', function () {
+		Auth::logout();
+
+		return redirect( '/' );
+	} );
+	Route::get( '/profile/info', 'ProfileController@info' );
+	Route::post( '/profile/save_info', 'ProfileController@save_info' );
+	Route::get( '/orders/{id}/dispose', 'OrderController@dispose' );
 } );
 
-Route::get( '/home', 'HomeController@index' )->name( 'home' );
 
-Route::resource( '/products', 'ProductController' );
-Route::get( '/products/{id}/delete', 'ProductController@destroy' );
-Route::get( '/manage/products', 'ProductController@manage' );
-Route::get( '/manage/categories', 'CategoryController@manage' );
+Route::redirect( '/home', '/' )->name( 'home' );
 
 
 Route::get( '/cart', 'CartController@index' );
@@ -44,19 +44,29 @@ Route::post( '/save_checkout', 'CartController@save_checkout' );
 Route::get( '/manage/orders', 'OrderController@manage' );
 Route::get( '/orders', 'OrderController@all' );
 Route::get( '/orders/{id}', 'OrderController@show' );
-Route::get( '/orders/{id}/dispose', 'OrderController@dispose' );
 
 
-Route::get( '/profile/info', 'ProfileController@info' );
-Route::post( '/profile/save_info', 'ProfileController@save_info' );
+Route::resource( '/categories', "CategoryController" )->only( [ 'show' ] );
+Route::resource( '/products', 'ProductController' )->only( [ 'show' ] );
 
+Route::middleware( [ 'auth', 'admin' ] )->group( function () {
+	Route::resource( '/products', 'ProductController' )->except( [ 'show' ] );
+	Route::get( '/products/{id}/delete', 'ProductController@destroy' );
+	Route::get( '/manage/products', 'ProductController@manage' )->middleware( 'admin' );
+	Route::get( '/manage/categories', 'CategoryController@manage' );
 
-Route::resource( '/categories', "CategoryController" );
-Route::get( '/categories/{id}/delete', "CategoryController@delete" );
+	Route::get( '/profile/info', 'ProfileController@info' );
+	Route::post( '/profile/save_info', 'ProfileController@save_info' );
 
-Route::get( '/manage/users', 'UserController@index' );
-Route::get( '/manage/users/{id}/delete', 'UserController@delete' );
-Route::get( '/manage/users/{id}/make_admin', 'UserController@make_admin' );
-Route::get( '/manage/users/{id}/unmake_admin', 'UserController@unmake_admin' );
+	Route::resource( '/categories', "CategoryController" )->except( [ 'show' ] );
+	Route::get( '/categories/{id}/delete', "CategoryController@delete" );
 
+	Route::get( '/manage/users', 'UserController@index' );
+	Route::get( '/manage/users/{id}/delete', 'UserController@delete' );
+	Route::get( '/manage/users/{id}/make_admin', 'UserController@make_admin' );
+	Route::get( '/manage/users/{id}/unmake_admin', 'UserController@unmake_admin' );
 
+	Route::get( '/orders/{id}/confirm', 'OrderController@confirm' );
+	Route::get( '/orders/{id}/ship', 'OrderController@ship' );
+	Route::get( '/orders/{id}/done', 'OrderController@done' );
+} );

@@ -15,6 +15,7 @@ class OrderController extends Controller {
 
 	public function manage() {
 		$orders = Order::all();
+
 		return view( 'order.manage.all', [ 'items' => $orders ] );
 	}
 
@@ -30,16 +31,36 @@ class OrderController extends Controller {
 	}
 
 	public function dispose( $id ) {
-		$order         = Order::findOrFail( $id );
-		$order->status = 'disposed';
-		$order->save();
+		$order = Order::findOrFail( $id );
+		if ( \Auth::id() == $order->user_id || \Auth::user()->is_admin ) {
+			$order->status = 'disposed';
+			$order->save();
 
-		return redirect( '/orders/' . $id );
+			return redirect( '/orders/' . $id );
+		}
+
+		return redirect( '/' . $id );
 	}
 
 	public function confirm( $id ) {
 		$order         = Order::findOrFail( $id );
 		$order->status = 'confirmed';
+		$order->save();
+
+		return redirect( '/orders/' . $id );
+	}
+
+	public function ship( $id ) {
+		$order         = Order::findOrFail( $id );
+		$order->status = 'shipped';
+		$order->save();
+
+		return redirect( '/orders/' . $id );
+	}
+
+	public function done( $id ) {
+		$order         = Order::findOrFail( $id );
+		$order->status = 'done';
 		$order->save();
 
 		return redirect( '/orders/' . $id );

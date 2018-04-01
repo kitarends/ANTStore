@@ -7,7 +7,7 @@
             <div class="section" href="/orders">Orders</a>
             </div>
         </div>
-        <div class="ui huge header">All orders you ever made</div>
+        <div class="ui huge header">Manage all orders</div>
         <table class="ui celled table">
             <thead>
             <tr>

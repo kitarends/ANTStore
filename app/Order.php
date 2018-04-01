@@ -29,7 +29,7 @@ class Order extends Model {
 	public static $ORDER_STATUS = [
 		'wait_confirm' => 'Wait for comfirm',
 		'confirmed'    => 'Confirmed',
-		'shipping'     => 'Shipping',
+		'shipped'     => 'Shipped',
 		'done'         => 'Done',
 		'disposed'     => 'Disposed'
 	];
