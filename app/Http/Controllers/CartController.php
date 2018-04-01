@@ -92,9 +92,10 @@ class CartController extends Controller {
 			$order_item->order_id = $order->id;
 			$order_item->save();
 		}
+
 		\Session::flash( 'message', 'Checked out, thank you!' );
 
-		return redirect( '/' );
+		return redirect( '/' )->cookie( cookie( 'cart', null ) );
 	}
 
 	protected function get_cart( Request $request ): \Illuminate\Support\Collection {
@@ -105,7 +106,7 @@ class CartController extends Controller {
 		$items       = [];
 		$item_number = 0;
 		$total       = 0;
-		if ( $request->cookies->has( 'cart' ) ) {
+		if ( $request->cookies->has( 'cart' ) && $request->cookies->get( 'cart' ) !=null) {
 			$cart = unserialize( $request->cookie( 'cart' ) );
 			foreach ( $cart as $product_id => $quantity ) {
 				if ( Product::whereId( $product_id )->count() > 0 ) {
