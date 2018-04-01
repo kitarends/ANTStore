@@ -24,6 +24,7 @@
                         @include('ui.form.input',['name'=>'name','label'=>'Reciver name *','type'=>'text'])
                         @include('ui.form.input',['name'=>'phone','label'=>'Phone number *','type'=>'tel'])
                         @include('ui.form.input',['name'=>'address','label'=>'Address *','type'=>'text'])
+                        @include('ui.form.ckeditor',['name'=>'note','label'=>'Additional information ','type'=>'text'])
                         <button class="ui teal button" type="submit">Order</button>
                     </form>
                 </div>

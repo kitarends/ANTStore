@@ -25,5 +25,12 @@
         </div>
     </div>
     <div class="ui divider"></div>
-
+    @if(Session::has('message'))
+        <div class="ui message">
+            <div class="header">
+                {{Session::get('message')}}
+            </div>
+        </div>
+        <div class="ui divider"></div>
+    @endif
 </div>

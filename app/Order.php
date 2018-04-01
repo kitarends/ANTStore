@@ -27,16 +27,15 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Order extends Model {
 	public static $ORDER_STATUS = [
-		'in_cart'      => 'Trong giỏ',
-		'wait_confirm' => 'Chờ xác nhận',
-		'confirmed'    => 'Đã xác nhận',
-		'shipping'     => 'Đang vận chuyển',
-		'done'         => 'Đã hoàn thành',
-		'disposed'     => 'Đã hủy bỏ'
+		'wait_confirm' => 'Wait for comfirm',
+		'confirmed'    => 'Confirmed',
+		'shipping'     => 'Shipping',
+		'done'         => 'Done',
+		'disposed'     => 'Disposed'
 	];
 
 	protected $attributes = [
-		'status'  => 'in_cart',
+		'status'  => 'wait_confirm',
 		'phone'   => "00",
 		'address' => "none",
 		'note'    => 'none',
@@ -47,6 +46,9 @@ class Order extends Model {
 
 	public function items() {
 		return $this->hasMany( 'App\\OrderItem' );
+	}
+	public function user() {
+		return $this->belongsTo( 'App\\User' );
 	}
 
 	public function getTotal() {

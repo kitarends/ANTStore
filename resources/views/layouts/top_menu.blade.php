@@ -6,7 +6,7 @@
             <div class="menu">
                 <div class="header">Account</div>
                 @if(Auth::check())
-                    <a class="item" href="/profile/orders">View orders</a>
+                    <a class="item" href="/orders">View orders</a>
                     <a class="item" href="/profile/info">Edit my information</a>
                     <a class="item" href="/logout">Logout</a>
                     @if(Auth::user()->is_admin)
@@ -15,6 +15,7 @@
                         <a class="item" href="/manage/products">Products</a>
                         <a class="item" href="/manage/categories">Categories</a>
                         <a class="item" href="/manage/users">Users</a>
+                        <a class="item" href="/manage/orders">Orders</a>
                         <a class="item" href="/ads">Advertises</a>
                         <a class="item" href="/blogs">Blogs</a>
 

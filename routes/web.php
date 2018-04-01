@@ -41,8 +41,10 @@ Route::get( '/cart/remove/{product_id}', 'CartController@remove_from_cart' );
 Route::get( '/checkout', 'CartController@checkout' );
 Route::post( '/save_checkout', 'CartController@save_checkout' );
 
+Route::get( '/manage/orders', 'OrderController@manage' );
 Route::get( '/orders', 'OrderController@all' );
 Route::get( '/orders/{id}', 'OrderController@show' );
+Route::get( '/orders/{id}/dispose', 'OrderController@dispose' );
 
 
 Route::get( '/profile/info', 'ProfileController@info' );

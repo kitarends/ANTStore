@@ -1,6 +1,7 @@
 <!-- Scripts -->
 <script src="/js/jquery.min.js"></script>
 <script src="/js/semantic.min.js" defer></script>
+<script src="/ckeditor/ckeditor.js"></script>
 <script>
     $(document)
         .ready(function () {
@@ -61,4 +62,12 @@
             location.href = '/categories/' + id + '/delete';
         }
     }
+    function ask_to_dispose_order(id) {
+        if (confirm("Are you sure to delete this category?")) {
+            location.href = '/orders/' + id + '/dispose';
+        }
+    }
+
+
+
 </script>
