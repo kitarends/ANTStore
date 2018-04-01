@@ -19,7 +19,46 @@
             $('.ui.rating')
                 .rating()
             ;
+            $('.special.card .image').dimmer({
+                on: 'hover'
+            });
+            $('.star.rating')
+                .rating()
+            ;
+            $('.card .dimmer')
+                .dimmer({
+                    on: 'hover'
+                })
+            ;
+
+            $('.add_to_cart_button').click(function (e) {
+                e.preventDefault();
+                location.href = '/cart/add/' + $(this).attr('product_id') + '/1';
+            });
+
+            $('select.dropdown')
+                .dropdown()
+            ;
         })
     ;
 
+    function ask_to_delete_product(id) {
+        if (confirm("Are you sure to delete this product?")) {
+            $.get('/products/' + id + '/delete', function (data) {
+                location.reload();
+            })
+        }
+    }
+
+    function ask_to_delete_item_from_cart(id) {
+        if (confirm("Are you sure to delete this item?")) {
+            location.href = '/cart/remove/' + id;
+        }
+    }
+
+    function ask_to_delete_category(id) {
+        if (confirm("Are you sure to delete this category?")) {
+            location.href = '/categories/' + id + '/delete';
+        }
+    }
 </script>

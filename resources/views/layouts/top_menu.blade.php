@@ -1,20 +1,39 @@
 <div class="ui menu" style="background: #f7f7f7">
     <div class="ui container">
         <div class="ui dropdown item">
-            My Account
+            {{Auth::check()?Auth::user()->name:'My Account'}}
             <i class="dropdown icon"></i>
             <div class="menu">
-                <div class="item">Lost password</div>
-                <div class="item">View orders</div>
-                <div class="item">Edit my information</div>
+                <div class="header">Account</div>
+                @if(Auth::check())
+                    <a class="item" href="/profile/orders">View orders</a>
+                    <a class="item" href="/profile/info">Edit my information</a>
+                    <a class="item" href="/logout">Logout</a>
+                    @if(Auth::user()->is_admin)
+                        <div class="divider"></div>
+                        <div class="header">Admin</div>
+                        <a class="item" href="/manage/products">Products</a>
+                        <a class="item" href="/manage/categories">Categories</a>
+                        <a class="item" href="/users">Users</a>
+                        <a class="item" href="/ads">Advertises</a>
+                        <a class="item" href="/blogs">Blogs</a>
+
+                    @endif
+                @else
+                    <a class="item" href="/login">Login</a>
+                    <a class="item" href="/register">Register</a>
+                    <a class="item" href="/password/reset">Lost password</a>
+                @endif
+
             </div>
         </div>
         <div class="right menu">
-            <a class=" item"><i class="cart icon"></i> Cart
-                <div class=" ui teal label">24$</div>
-                <div class=" ui red label">22 items</div>
+            <a class="item" href="/cart"><i class="cart icon"></i> Cart
+                {{--<div class=" ui red label">{{cookie('item_number')}} items</div>--}}
             </a>
-            <a class=" item">Check out<i class="right caret icon"></i></a>
+            <a class=" item" href="/checkout"><i class="payment icon"></i>Check out
+                {{--<div class=" ui teal label">{{cookie('total')}}$</div>--}}
+            </a>
 
             <div class=" item">
                 <div class="ui action left icon input">
