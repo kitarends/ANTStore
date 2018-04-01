@@ -14,7 +14,7 @@
                         <div class="header">Admin</div>
                         <a class="item" href="/manage/products">Products</a>
                         <a class="item" href="/manage/categories">Categories</a>
-                        <a class="item" href="/users">Users</a>
+                        <a class="item" href="/manage/users">Users</a>
                         <a class="item" href="/ads">Advertises</a>
                         <a class="item" href="/blogs">Blogs</a>
 

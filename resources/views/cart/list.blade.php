@@ -36,7 +36,7 @@
                         <div class="column">
                             <div class="ui dividing header">Cart total</div>
                             <h1><strong>{{$total}}$</strong></h1>
-                            <button class="ui teal button">Proceed to checkout</button>
+                            <a class="ui teal button" href="/checkout">Proceed to checkout</a>
                         </div>
                     </div>
                 </th>

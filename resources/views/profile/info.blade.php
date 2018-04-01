@@ -14,19 +14,9 @@
                 @include('layouts.errors_block')
                 <form class="ui form" method="post" action="/profile/save_info">
                     {{csrf_field()}}
-
-                    <div class="field">
-                        <label>Name</label>
-                        <input name="name" type="text" value="{{old('name')}}">
-                    </div>
-                    <div class="field">
-                        <label>Phone number</label>
-                        <input name="phone" value="{{old('phone')}}" type="tel">
-                    </div>
-                    <div class="field">
-                        <label>Address</label>
-                        <input name="address" value="{{old('address')}}" type="text">
-                    </div>
+                    @include('ui.form.input',['name'=>'name','label'=>'Name *','type'=>'text'])
+                    @include('ui.form.input',['name'=>'phone','label'=>'Phone number *','type'=>'tel'])
+                    @include('ui.form.input',['name'=>'address','label'=>'Address *','type'=>'text'])
                     <button class="ui primary button" type="submit">Save</button>
                 </form>
             </div>

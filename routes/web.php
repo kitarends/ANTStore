@@ -34,11 +34,6 @@ Route::get( '/products/{id}/delete', 'ProductController@destroy' );
 Route::get( '/manage/products', 'ProductController@manage' );
 Route::get( '/manage/categories', 'CategoryController@manage' );
 
-Route::get( '/admin/users', 'UserController@index' );
-Route::get( '/admin/users/delete/{id}', 'UserController@delete' );
-Route::get( '/admin/users/make_admin/{id}', 'UserController@make_admin' );
-Route::get( '/admin/users/unmake_admin/{id}', 'UserController@unmake_admin' );
-
 
 Route::get( '/cart', 'CartController@index' );
 Route::get( '/cart/add/{product_id}/{number}', 'CartController@add_to_cart' );
@@ -56,4 +51,10 @@ Route::post( '/profile/save_info', 'ProfileController@save_info' );
 
 Route::resource( '/categories', "CategoryController" );
 Route::get( '/categories/{id}/delete', "CategoryController@delete" );
+
+Route::get( '/manage/users', 'UserController@index' );
+Route::get( '/manage/users/{id}/delete', 'UserController@delete' );
+Route::get( '/manage/users/{id}/make_admin', 'UserController@make_admin' );
+Route::get( '/manage/users/{id}/unmake_admin', 'UserController@unmake_admin' );
+
 

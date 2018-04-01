@@ -59,14 +59,15 @@ class CartController extends Controller {
 	}
 
 	public function checkout() {
-		$order = $this->getIncartOrder();
 
-		\Session::flash( '_old_input.name', \Auth::user()->name );
-		\Session::flash( '_old_input.phone', \Auth::user()->phone );
-		\Session::flash( '_old_input.email', \Auth::user()->email );
-		\Session::flash( '_old_input.address', \Auth::user()->address );
+		if ( \Auth::check() ) {
+			\Session::flash( '_old_input.name', \Auth::user()->name );
+			\Session::flash( '_old_input.phone', \Auth::user()->phone );
+			\Session::flash( '_old_input.email', \Auth::user()->email );
+			\Session::flash( '_old_input.address', \Auth::user()->address );
+		}
 
-		return view( 'cart.checkout', [ 'total' => $order->getTotal() ] );
+		return view( 'cart.checkout', [  'title'=>'Checkout'] );
 	}
 
 	public function save_checkout( Request $request ) {
@@ -90,7 +91,7 @@ class CartController extends Controller {
 	}
 
 	protected function get_cart( Request $request ): \Illuminate\Support\Collection {
-		return collect( unserialize( $request->cookies->get( 'cart', '') ) );
+		return collect( unserialize( $request->cookies->get( 'cart', '' ) ) );
 	}
 
 }
