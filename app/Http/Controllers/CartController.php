@@ -90,7 +90,7 @@ class CartController extends Controller {
 	}
 
 	protected function get_cart( Request $request ): \Illuminate\Support\Collection {
-		return collect( unserialize( $request->cookies->get( 'cart', [] ) ) );
+		return collect( unserialize( $request->cookies->get( 'cart', '') ) );
 	}
 
 }
