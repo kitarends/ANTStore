@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{isset($title)?$title.' - ':''}}NATStore - New vision</title>
+    <title>{{isset($title)?$title.' - ':''}}NATStore - World of shoes</title>
 
 @include('layouts.js_include')
 
