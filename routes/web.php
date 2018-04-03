@@ -31,7 +31,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/orders/{id}/dispose', 'OrderController@dispose');
     Route::get('/orders', 'OrderController@all');
     Route::get('/orders/{id}', 'OrderController@show');
-
 });
 
 Route::redirect('/home', '/')->name('home');

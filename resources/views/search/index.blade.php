@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('content')
     <div class="ui container">
-        <div class="ui huge header">Results
+        <div class="ui huge header">{{$title}}
             <div class="ui sub header">{{$products->count()}} results</div>
         </div>
         <br>
