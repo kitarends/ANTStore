@@ -10,7 +10,7 @@
             <div class="active section">Blogs</div>
         </div>
         <div class="ui huge header">Blogs</div>
-        <a class="ui primary button" href="/blogs/create"><i class="plus icon"></i>Create new post</a>
+        <a class="ui primary button" href="/blogs/create" style="margin-bottom: 10px"><i class="plus icon"></i>Create new post</a>
         <table class="ui celled table">
             <thead>
             <tr>

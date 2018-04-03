@@ -7,9 +7,9 @@
                          product_id="{{$item->id}}"
                     ><i class="cart plus icon"></i> Add to cart
                     </div>
-                    <div class="ui inverted red button">
-                        <i class="heart icon"></i> Add to wish list
-                    </div>
+                    {{--<div class="ui inverted red button">--}}
+                        {{--<i class="heart icon"></i> Add to wish list--}}
+                    {{--</div>--}}
                 </div>
             </div>
         </div>

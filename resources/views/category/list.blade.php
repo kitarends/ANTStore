@@ -10,7 +10,7 @@
             <div class="active section">Categories</div>
         </div>
         <div class="ui huge header">Categories</div>
-        <a class="ui primary button" href="/categories/create"><i class="plus icon"></i>Create new category</a>
+        <a class="ui primary button" href="/categories/create" style="margin-bottom: 10px"><i class="plus icon"></i>Create new category</a>
         <table class="ui celled table">
             <thead>
             <tr>

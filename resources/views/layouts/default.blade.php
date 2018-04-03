@@ -14,8 +14,11 @@
 @include('layouts.js_include')
 
 <!-- Styles -->
+
     <link href="/css/semantic.min.css" rel="stylesheet">
     <link href="/css/app.css?t={{rand()}}" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+
 </head>
 <body>
 @include('layouts.top_menu')

@@ -2,6 +2,8 @@
 <script src="/js/jquery.min.js"></script>
 <script src="/js/semantic.min.js" defer></script>
 <script src="/ckeditor/ckeditor.js"></script>
+<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
 <script>
     $(document)
         .ready(function () {
@@ -43,6 +45,7 @@
             $('select.dropdown')
                 .dropdown()
             ;
+            $('table').DataTable();
         })
     ;
 
