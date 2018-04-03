@@ -29,8 +29,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile/info', 'ProfileController@info');
     Route::post('/profile/save_info', 'ProfileController@save_info');
     Route::get('/orders/{id}/dispose', 'OrderController@dispose');
-});
+    Route::get('/orders', 'OrderController@all');
+    Route::get('/orders/{id}', 'OrderController@show');
 
+});
 
 Route::redirect('/home', '/')->name('home');
 
@@ -41,13 +43,10 @@ Route::get('/cart/remove/{product_id}', 'CartController@remove_from_cart');
 Route::get('/checkout', 'CartController@checkout');
 Route::post('/save_checkout', 'CartController@save_checkout');
 
-Route::get('/manage/orders', 'OrderController@manage');
-Route::get('/orders', 'OrderController@all');
-Route::get('/orders/{id}', 'OrderController@show');
-
-
 
 Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/manage/orders', 'OrderController@manage');
+
     Route::get('/manage', 'AdminController@dashboard');
 
     Route::resource('/products', 'ProductController')->except(['show']);

@@ -14,7 +14,9 @@
     </td>
     <td><h5>{{$item->updated_at}}</h5></td>
     <td>
-        <a href="javascript:void(0);" onclick="ask_to_dispose_order({{$item->id}})" class="ui icon yellow button"><i
-                    class="delete icon"></i> Dispose</a>
+        @if($item->status!='done')
+            <a href="javascript:void(0);" onclick="ask_to_dispose_order({{$item->id}})" class="ui icon yellow button"><i
+                        class="delete icon"></i> Dispose</a>
+        @endif
     </td>
 </tr>
