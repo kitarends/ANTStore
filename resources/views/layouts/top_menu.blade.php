@@ -4,22 +4,10 @@
             {{Auth::check()?Auth::user()->name:'My Account'}}
             <i class="dropdown icon"></i>
             <div class="menu">
-                <div class="header">Account</div>
                 @if(Auth::check())
                     <a class="item" href="/orders">View orders</a>
                     <a class="item" href="/profile/info">Edit my information</a>
                     <a class="item" href="/logout">Logout</a>
-                    @if(Auth::user()->is_admin)
-                        <div class="divider"></div>
-                        <div class="header">Admin</div>
-                        <a class="item" href="/manage/products">Products</a>
-                        <a class="item" href="/manage/categories">Categories</a>
-                        <a class="item" href="/manage/users">Users</a>
-                        <a class="item" href="/manage/orders">Orders</a>
-                        <a class="item" href="/ads">Advertises</a>
-                        <a class="item" href="/blogs">Blogs</a>
-
-                    @endif
                 @else
                     <a class="item" href="/login">Login</a>
                     <a class="item" href="/register">Register</a>
@@ -28,6 +16,23 @@
 
             </div>
         </div>
+        @if(Auth::check()&&Auth::user()->is_admin)
+            <div class="ui dropdown item">
+                <div class="header">Admin</div>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <a class="item" href="/manage">Dashboard</a>
+                    <a class="item" href="/manage/products">Products</a>
+                    <a class="item" href="/manage/categories">Categories</a>
+                    <a class="item" href="/manage/users">Users</a>
+                    <a class="item" href="/manage/orders">Orders</a>
+                    <a class="item" href="/manage/ads">Advertises</a>
+                    <a class="item" href="/manage/blogs">Blogs</a>
+                </div>
+            </div>
+        @endif
+
+
         <div class="right menu">
             <a class="item" href="/cart"><i class="cart icon"></i> Cart
                 {{--<div class=" ui red label">{{cookie('item_number')}} items</div>--}}

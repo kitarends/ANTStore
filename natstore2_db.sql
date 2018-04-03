@@ -16,6 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `blogs`
+--
+
+DROP TABLE IF EXISTS `blogs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `blogs` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `html_content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `blogs`
+--
+
+LOCK TABLES `blogs` WRITE;
+/*!40000 ALTER TABLE `blogs` DISABLE KEYS */;
+INSERT INTO `blogs` VALUES (2,'About us','/about','<p>Test</p>','2018-04-03 07:13:17','2018-04-03 07:13:17'),(3,'DMCA','/dmca','<p>The&nbsp;<strong>Digital Millennium Copyright Act</strong>&nbsp;(<strong>DMCA</strong>) is a&nbsp;<a href=\"https://en.wikipedia.org/wiki/United_States\">United States</a>&nbsp;<a href=\"https://en.wikipedia.org/wiki/Copyright\">copyright</a>&nbsp;<a href=\"https://en.wikipedia.org/wiki/Law\">law</a>&nbsp;that implements two 1996 treaties of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/World_Intellectual_Property_Organization\">World Intellectual Property Organization</a>&nbsp;(WIPO). It criminalizes production and dissemination of technology, devices, or services intended to circumvent measures that control access to copyrighted works (commonly known as&nbsp;<a href=\"https://en.wikipedia.org/wiki/Digital_rights_management\">digital rights management</a>&nbsp;or DRM). It also criminalizes the act of circumventing an access control, whether or not there is actual infringement of copyright itself. In addition, the DMCA heightens the penalties for copyright infringement on the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Internet\">Internet</a>.<a href=\"https://en.wikipedia.org/wiki/Digital_Millennium_Copyright_Act#cite_note-1\">[1]</a><a href=\"https://en.wikipedia.org/wiki/Digital_Millennium_Copyright_Act#cite_note-2\">[2]</a>Passed on October 12, 1998, by a unanimous vote in the&nbsp;<a href=\"https://en.wikipedia.org/wiki/United_States_Senate\">United States Senate</a>&nbsp;and signed into law by President&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bill_Clinton\">Bill Clinton</a>on October 28, 1998, the DMCA amended&nbsp;<a href=\"https://en.wikipedia.org/wiki/Title_17_of_the_United_States_Code\">Title 17</a>&nbsp;of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/United_States_Code\">United States Code</a>&nbsp;to extend the reach of copyright, while limiting the liability of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Online_service_provider\">providers of online services</a>&nbsp;for&nbsp;<a href=\"https://en.wikipedia.org/wiki/Copyright_infringement\">copyright infringement</a>&nbsp;by their users.</p>','2018-04-03 07:15:50','2018-04-03 07:15:50'),(4,'terms_of_service','/terms_of_service','<pre>\r\nterms_of_service</pre>','2018-04-03 07:17:14','2018-04-03 07:17:14'),(5,'New arrivals 30/12','/','<p>Test</p>\r\n\r\n<p><img alt=\"Beaded Ring Drop Earrings\" src=\"https://s7d2.scene7.com/is/image/LO/473531_9000_B1?$436x502$\" /></p>','2018-04-03 07:24:50','2018-04-03 07:26:02');
+/*!40000 ALTER TABLE `blogs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `categories`
 --
 
@@ -29,7 +57,7 @@ CREATE TABLE `categories` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,7 +114,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +123,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (9,'2014_10_12_000000_create_users_table',1),(10,'2014_10_12_100000_create_password_resets_table',1),(11,'2018_03_08_144918_create_categories_table',1),(12,'2018_03_08_144926_create_products_table',1),(13,'2018_03_08_144948_create_comments_table',1),(17,'2018_03_08_150633_create_orders_table',2),(18,'2018_03_08_155043_create_wishes_table',2),(19,'2018_03_20_133622_create_order_items_table',2);
+INSERT INTO `migrations` VALUES (9,'2014_10_12_000000_create_users_table',1),(10,'2014_10_12_100000_create_password_resets_table',1),(11,'2018_03_08_144918_create_categories_table',1),(12,'2018_03_08_144926_create_products_table',1),(13,'2018_03_08_144948_create_comments_table',1),(17,'2018_03_08_150633_create_orders_table',2),(18,'2018_03_08_155043_create_wishes_table',2),(19,'2018_03_20_133622_create_order_items_table',2),(20,'2018_04_03_125141_create_blogs_table',3);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,7 +147,7 @@ CREATE TABLE `order_items` (
   KEY `order_items_product_id_foreign` (`product_id`),
   CONSTRAINT `order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE,
   CONSTRAINT `order_items_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,7 +156,7 @@ CREATE TABLE `order_items` (
 
 LOCK TABLES `order_items` WRITE;
 /*!40000 ALTER TABLE `order_items` DISABLE KEYS */;
-INSERT INTO `order_items` VALUES (1,1,7,10.60,2,'2018-04-01 04:31:45','2018-04-01 04:31:45');
+INSERT INTO `order_items` VALUES (1,1,7,10.60,2,'2018-04-01 04:31:45','2018-04-01 04:31:45'),(2,2,7,10.60,2,'2018-04-01 04:35:31','2018-04-01 04:35:31'),(3,3,7,10.60,1,'2018-04-01 04:37:03','2018-04-01 04:37:03');
 /*!40000 ALTER TABLE `order_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,7 +181,7 @@ CREATE TABLE `orders` (
   PRIMARY KEY (`id`),
   KEY `orders_user_id_index` (`user_id`),
   CONSTRAINT `orders_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,7 +190,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,NULL,'Hùng Anh Trịnh','nope','0982288173','Hà Đông','','disposed','2018-04-01 04:31:45','2018-04-01 04:32:25');
+INSERT INTO `orders` VALUES (1,NULL,'Hùng Anh Trịnh','nope','0982288173','Hà Đông','','disposed','2018-04-01 04:31:45','2018-04-01 04:32:25'),(2,1,'Hùng Anh Trịnh','nope','0982288173','Hà Đông','','shipped','2018-04-01 04:35:31','2018-04-01 06:47:52'),(3,1,'Hùng Anh Trịnh','nope','0982288173','Hà Đông','','confirmed','2018-04-01 04:37:03','2018-04-01 06:49:00');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -213,7 +241,7 @@ CREATE TABLE `products` (
   PRIMARY KEY (`id`),
   KEY `products_category_id_index` (`category_id`),
   CONSTRAINT `products_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -255,7 +283,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Hùng Anh Trịnh','0982288173','Hà Đông',1,'hataketsu@gmail.com','$2y$10$zkFyAPPS5.h0Wm6RHMpCc.XRYJBHbNIoiOPRtssCWpivStklB6NTO','15PBLuFshtNqAwRZ7nI4B04ZBQZ5aTBQtgGXx6oWIG2pSIUj0NK9WcuH0WlF','2018-03-31 19:31:04','2018-04-01 03:17:04');
+INSERT INTO `users` VALUES (1,'Hùng Anh Trịnh','0982288173','Hà Đông',1,'hataketsu@gmail.com','$2y$10$zkFyAPPS5.h0Wm6RHMpCc.XRYJBHbNIoiOPRtssCWpivStklB6NTO','kMIeNj0fDJ7wHRoquHDql4AQrkMzTzGu0hua0gqZa9RC9OoHyt2qvV9wzaMj','2018-03-31 19:31:04','2018-04-01 03:17:04');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -298,4 +326,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-01 18:33:17
+-- Dump completed on 2018-04-03 21:42:53

@@ -62,9 +62,16 @@
             location.href = '/categories/' + id + '/delete';
         }
     }
+
     function ask_to_dispose_order(id) {
-        if (confirm("Are you sure to delete this category?")) {
+        if (confirm("Are you sure to dispose this order?")) {
             location.href = '/orders/' + id + '/dispose';
+        }
+    }
+
+    function ask_to_delete(confirm_text,link) {
+        if (confirm(confirm_text)) {
+            location.href = link;
         }
     }
 
