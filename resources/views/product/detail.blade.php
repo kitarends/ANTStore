@@ -99,7 +99,7 @@
         </div>
         <h1>Related products</h1>
 
-        <div class="ui four column grid">
+        <div class="ui four column grid" >
             @foreach($related as $product)
                 <div class="column">
                     @include('product.card',['item'=>$product])

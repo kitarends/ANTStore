@@ -42,10 +42,13 @@
                 location.href = '/cart/add/' + $(this).attr('product_id') + '/1';
             });
 
+
+            $('table').DataTable();
+            $('.dataTables_filter > label' ).attr('class','ui input');
+            $('select[name="DataTables_Table_0_length"]').attr('class','ui dropdown');
             $('select.dropdown')
                 .dropdown()
             ;
-            $('table').DataTable();
         })
     ;
 
