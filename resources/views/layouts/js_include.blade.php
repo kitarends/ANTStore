@@ -24,6 +24,9 @@
                 on: 'hover'
             });
             $('.star.rating')
+                .rating('disable')
+            ;
+            $('.voting')
                 .rating()
             ;
             $('.card .dimmer')
@@ -69,6 +72,21 @@
         }
     }
 
+    function ask_to_confirm_order(id) {
+        if (confirm("Are you sure to confirm this order?")) {
+            location.href = '/orders/' + id + '/confirm';
+        }
+    }
+    function ask_to_ship_order(id) {
+        if (confirm("Are you sure to ship this order?")) {
+            location.href = '/orders/' + id + '/ship';
+        }
+    }
+    function ask_to_done_order(id) {
+        if (confirm("Are you done this order?")) {
+            location.href = '/orders/' + id + '/done';
+        }
+    }
     function ask_to_delete(confirm_text,link) {
         if (confirm(confirm_text)) {
             location.href = link;

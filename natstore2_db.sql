@@ -29,8 +29,9 @@ CREATE TABLE `blogs` (
   `html_content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `thumb` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +40,7 @@ CREATE TABLE `blogs` (
 
 LOCK TABLES `blogs` WRITE;
 /*!40000 ALTER TABLE `blogs` DISABLE KEYS */;
-INSERT INTO `blogs` VALUES (2,'About us','/about','<p>Test</p>','2018-04-03 07:13:17','2018-04-03 07:13:17'),(3,'DMCA','/dmca','<p>The&nbsp;<strong>Digital Millennium Copyright Act</strong>&nbsp;(<strong>DMCA</strong>) is a&nbsp;<a href=\"https://en.wikipedia.org/wiki/United_States\">United States</a>&nbsp;<a href=\"https://en.wikipedia.org/wiki/Copyright\">copyright</a>&nbsp;<a href=\"https://en.wikipedia.org/wiki/Law\">law</a>&nbsp;that implements two 1996 treaties of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/World_Intellectual_Property_Organization\">World Intellectual Property Organization</a>&nbsp;(WIPO). It criminalizes production and dissemination of technology, devices, or services intended to circumvent measures that control access to copyrighted works (commonly known as&nbsp;<a href=\"https://en.wikipedia.org/wiki/Digital_rights_management\">digital rights management</a>&nbsp;or DRM). It also criminalizes the act of circumventing an access control, whether or not there is actual infringement of copyright itself. In addition, the DMCA heightens the penalties for copyright infringement on the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Internet\">Internet</a>.<a href=\"https://en.wikipedia.org/wiki/Digital_Millennium_Copyright_Act#cite_note-1\">[1]</a><a href=\"https://en.wikipedia.org/wiki/Digital_Millennium_Copyright_Act#cite_note-2\">[2]</a>Passed on October 12, 1998, by a unanimous vote in the&nbsp;<a href=\"https://en.wikipedia.org/wiki/United_States_Senate\">United States Senate</a>&nbsp;and signed into law by President&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bill_Clinton\">Bill Clinton</a>on October 28, 1998, the DMCA amended&nbsp;<a href=\"https://en.wikipedia.org/wiki/Title_17_of_the_United_States_Code\">Title 17</a>&nbsp;of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/United_States_Code\">United States Code</a>&nbsp;to extend the reach of copyright, while limiting the liability of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Online_service_provider\">providers of online services</a>&nbsp;for&nbsp;<a href=\"https://en.wikipedia.org/wiki/Copyright_infringement\">copyright infringement</a>&nbsp;by their users.</p>','2018-04-03 07:15:50','2018-04-03 07:15:50'),(4,'terms_of_service','/terms_of_service','<pre>\r\nterms_of_service</pre>','2018-04-03 07:17:14','2018-04-03 07:17:14'),(5,'New arrivals 30/12','/','<p>Test</p>\r\n\r\n<p><img alt=\"Beaded Ring Drop Earrings\" src=\"https://s7d2.scene7.com/is/image/LO/473531_9000_B1?$436x502$\" /></p>','2018-04-03 07:24:50','2018-04-03 07:26:02');
+INSERT INTO `blogs` VALUES (2,'About us','/about','<p>Test</p>','2018-04-03 07:13:17','2018-04-03 07:13:17',''),(3,'DMCA','/dmca','<p>The&nbsp;<strong>Digital Millennium Copyright Act</strong>&nbsp;(<strong>DMCA</strong>) is a&nbsp;<a href=\"https://en.wikipedia.org/wiki/United_States\">United States</a>&nbsp;<a href=\"https://en.wikipedia.org/wiki/Copyright\">copyright</a>&nbsp;<a href=\"https://en.wikipedia.org/wiki/Law\">law</a>&nbsp;that implements two 1996 treaties of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/World_Intellectual_Property_Organization\">World Intellectual Property Organization</a>&nbsp;(WIPO). It criminalizes production and dissemination of technology, devices, or services intended to circumvent measures that control access to copyrighted works (commonly known as&nbsp;<a href=\"https://en.wikipedia.org/wiki/Digital_rights_management\">digital rights management</a>&nbsp;or DRM). It also criminalizes the act of circumventing an access control, whether or not there is actual infringement of copyright itself. In addition, the DMCA heightens the penalties for copyright infringement on the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Internet\">Internet</a>.<a href=\"https://en.wikipedia.org/wiki/Digital_Millennium_Copyright_Act#cite_note-1\">[1]</a><a href=\"https://en.wikipedia.org/wiki/Digital_Millennium_Copyright_Act#cite_note-2\">[2]</a>Passed on October 12, 1998, by a unanimous vote in the&nbsp;<a href=\"https://en.wikipedia.org/wiki/United_States_Senate\">United States Senate</a>&nbsp;and signed into law by President&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bill_Clinton\">Bill Clinton</a>on October 28, 1998, the DMCA amended&nbsp;<a href=\"https://en.wikipedia.org/wiki/Title_17_of_the_United_States_Code\">Title 17</a>&nbsp;of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/United_States_Code\">United States Code</a>&nbsp;to extend the reach of copyright, while limiting the liability of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Online_service_provider\">providers of online services</a>&nbsp;for&nbsp;<a href=\"https://en.wikipedia.org/wiki/Copyright_infringement\">copyright infringement</a>&nbsp;by their users.</p>','2018-04-03 07:15:50','2018-04-03 09:04:44','<p>The&nbsp;<strong>Digital Millennium Copyright Act</strong>&nbsp;(<strong>DMCA</strong>) is a&nbsp;<a href=\"https://en.wikipedia.org/wiki/United_States\">United States</a>&nbsp;<a href=\"https://en.wikipedia.org/wiki/Copyright\">copyright</a>&nbsp;<a href=\"https://en.wikipedia.org/wiki/Law\">law</a>&nbsp;that implements two 1996 treaties of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/World_Intellectual_Property_Organization\">World Intellectual Property Organization</a>&nbsp;(WIPO).</p>'),(4,'terms_of_service','/terms_of_service','<p>Not added yet</p>','2018-04-03 07:17:14','2018-04-03 09:10:11','<p>No preview</p>'),(5,'New arrivals 30/12','/','<p>Test</p>\r\n\r\n<p><img alt=\"Beaded Ring Drop Earrings\" src=\"https://s7d2.scene7.com/is/image/LO/473531_9000_B1?$436x502$\" /></p>','2018-04-03 07:24:50','2018-04-03 07:26:02',''),(6,'Contact us','/contact','<p>092222222</p>','2018-04-03 08:38:47','2018-04-03 08:38:47','');
 /*!40000 ALTER TABLE `blogs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +115,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,7 +124,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (9,'2014_10_12_000000_create_users_table',1),(10,'2014_10_12_100000_create_password_resets_table',1),(11,'2018_03_08_144918_create_categories_table',1),(12,'2018_03_08_144926_create_products_table',1),(13,'2018_03_08_144948_create_comments_table',1),(17,'2018_03_08_150633_create_orders_table',2),(18,'2018_03_08_155043_create_wishes_table',2),(19,'2018_03_20_133622_create_order_items_table',2),(20,'2018_04_03_125141_create_blogs_table',3);
+INSERT INTO `migrations` VALUES (9,'2014_10_12_000000_create_users_table',1),(10,'2014_10_12_100000_create_password_resets_table',1),(11,'2018_03_08_144918_create_categories_table',1),(12,'2018_03_08_144926_create_products_table',1),(13,'2018_03_08_144948_create_comments_table',1),(17,'2018_03_08_150633_create_orders_table',2),(18,'2018_03_08_155043_create_wishes_table',2),(19,'2018_03_20_133622_create_order_items_table',2),(20,'2018_04_03_125141_create_blogs_table',3),(21,'2018_04_03_155914_add_thumb_to_blog',4);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -190,7 +191,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,NULL,'Hùng Anh Trịnh','nope','0982288173','Hà Đông','','disposed','2018-04-01 04:31:45','2018-04-01 04:32:25'),(2,1,'Hùng Anh Trịnh','nope','0982288173','Hà Đông','','shipped','2018-04-01 04:35:31','2018-04-01 06:47:52'),(3,1,'Hùng Anh Trịnh','nope','0982288173','Hà Đông','','confirmed','2018-04-01 04:37:03','2018-04-01 06:49:00');
+INSERT INTO `orders` VALUES (1,NULL,'Hùng Anh Trịnh','nope','0982288173','Hà Đông','','disposed','2018-04-01 04:31:45','2018-04-01 04:32:25'),(2,1,'Hùng Anh Trịnh','nope','0982288173','Hà Đông','','done','2018-04-01 04:35:31','2018-04-03 08:18:03'),(3,1,'Hùng Anh Trịnh','nope','0982288173','Hà Đông','','done','2018-04-01 04:37:03','2018-04-03 08:15:42');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -326,4 +327,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-03 21:42:53
+-- Dump completed on 2018-04-03 23:11:22

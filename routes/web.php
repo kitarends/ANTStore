@@ -51,6 +51,8 @@ Route::get( '/orders/{id}', 'OrderController@show' );
 Route::resource( '/products', 'ProductController' )->only( [ 'show' ] );
 
 Route::middleware( [ 'auth', 'admin' ] )->group( function () {
+    Route::get('/manage','AdminController@dashboard');
+
 	Route::resource( '/products', 'ProductController' )->except( [ 'show' ] );
 	Route::get( '/products/{id}/delete', 'ProductController@destroy' );
 	Route::get( '/manage/products', 'ProductController@manage' )->middleware( 'admin' );
@@ -80,6 +82,7 @@ Route::resource( '/categories', "CategoryController" )->only( [ 'show' ] );
 Route::resource( '/blogs', "BlogController" )->only( [ 'show' ] );
 
 Route::get('/about','BlogController@about');
+Route::get('/contact','BlogController@contact');
 Route::get('/dmca','BlogController@dmca');
 Route::get('/terms_of_service','BlogController@terms_of_service');
 

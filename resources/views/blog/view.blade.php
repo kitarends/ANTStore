@@ -16,16 +16,7 @@
                 </div>
             </div>
             <div class="ui four wide column">
-                <div class="ui dividing header">
-                    Lasted posts
-                </div>
-                @foreach($list as $post)
-                    <p><strong><a href="/blogs/{{$post->id}}">{{$post->title}}</a></strong>
-                    <br>
-                        <small>{{$post->updated_at}}</small>
-                    </p>
-
-                @endforeach
+                @include('blog.lastest')
             </div>
 
         </div>

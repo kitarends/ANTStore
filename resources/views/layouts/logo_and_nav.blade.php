@@ -17,10 +17,10 @@
                         @endforeach
                     </div>
                 </div>
-                <a class="item" href="/sales">Sales</a>
+                {{--<a class="item" href="/sales">Sales</a>--}}
                 <a class="item" href="/blogs">Blogs</a>
-                <a class="item" href="/blogs">Contact</a>
-                <a class="item" href="/blogs">About us</a>
+                <a class="item" href="/contact">Contact</a>
+                <a class="item" href="/about">About us</a>
             </div>
         </div>
     </div>

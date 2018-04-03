@@ -64,7 +64,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        return view('products.list_products', [
+        return view('product.list', [
             'products' => $category->products()->paginate(10),
             'title' => $category->name
         ]);

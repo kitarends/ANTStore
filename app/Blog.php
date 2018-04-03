@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Blog extends Model
 {
-    protected $fillable = [ 'title','url', 'html_content' ];
+    protected $fillable = [ 'title','url', 'html_content' ,'thumb'];
 
-    protected $attributes=['url'=>'/'];
+    protected $attributes=['url'=>'/','thumb'=>'No preview'];
 
     public function fill_olds( ) {
         FlashToOld::flash_to_olds( $this, $this->fillable );

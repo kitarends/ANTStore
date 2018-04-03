@@ -22,64 +22,87 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $views
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereCategoryId( $value )
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereCreatedAt( $value )
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereFullHtmlDetail( $value )
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereId( $value )
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereImageUrls( $value )
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereInstock( $value )
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereName( $value )
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Product wherePrice( $value )
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereSaleOff( $value )
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereShortDetail( $value )
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereSold( $value )
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereUpdatedAt( $value )
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereViews( $value )
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereFullHtmlDetail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereImageUrls($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereInstock($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereSaleOff($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereShortDetail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereSold($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereViews($value)
  */
-class Product extends Model {
-	protected $fillable = [
-		'name',
-		'short_detail',
-		'full_html_detail',
-		'price',
-		'sale_off',
-		'category_id'
-	];
-	protected $attributes = [
-		'image_urls' => 'no-thumbnail.png',
-		'sold'       => 0,
-		'views'       => 0,
-	];
+class Product extends Model
+{
+    protected $fillable = [
+        'name',
+        'short_detail',
+        'full_html_detail',
+        'price',
+        'sale_off',
+        'category_id'
+    ];
+    protected $attributes = [
+        'image_urls' => 'no-thumbnail.png',
+        'sold' => 0,
+        'views' => 0,
+    ];
 
-	public function all_images() {
-		return array_filter( explode( ";", $this->image_urls ) );
-	}
+    public static function get_sold()
+    {
+        $total_sold = 0;
+        $total_revenue = 0;
+        foreach (Order::whereStatus('done')->get() as $order) {
+            foreach ($order->items as $item) {
+                $total_sold += $item->quantity;
+                $total_revenue += $item->quantity * $item->final_price;
+            }
+        }
 
-	public function category() {
-		return $this->belongsTo( Category::class );
-	}
+        return ['total_sold' => $total_sold, 'total_revenue' => $total_revenue];
+    }
 
-	public function orders() {
-		return $this->belongsToMany( 'App\\Order' );
-	}
+    public function all_images()
+    {
+        return array_filter(explode(";", $this->image_urls));
+    }
 
-	public function comments() {
-		return $this->hasMany( 'App\\Comment' );
-	}
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
-	public function getCost() {
-		return round( $this->price * ( 100 - $this->sale_off ) / 100, 1 );
-	}
+    public function orders()
+    {
+        return $this->belongsToMany('App\\Order');
+    }
 
-	public function getScore() {
-		return round( $this->comments->avg( 'score' ), 1 );
-	}
+    public function comments()
+    {
+        return $this->hasMany('App\\Comment');
+    }
 
-	public static function searchByName( $name ) {
-		return Product::query()->where( 'name', 'LIKE', '%' . $name . '%' );
-	}
+    public function getCost()
+    {
+        return round($this->price * (100 - $this->sale_off) / 100, 1);
+    }
 
-	public function fill_olds() {
-		FlashToOld::flash_to_olds( $this, $this->fillable );
-	}
+    public function getScore()
+    {
+        return round($this->comments->avg('score'), 1);
+    }
+
+    public static function searchByName($name)
+    {
+        return Product::query()->where('name', 'LIKE', '%' . $name . '%');
+    }
+
+    public function fill_olds()
+    {
+        FlashToOld::flash_to_olds($this, $this->fillable);
+    }
 }

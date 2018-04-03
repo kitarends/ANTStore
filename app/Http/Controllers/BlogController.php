@@ -12,6 +12,11 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function index()
+    {
+        return view('blog.index', ['title' => 'All blogs','blogs'=>\App\Blog::query()->paginate(3)]);
+    }
+
     public function manage()
     {
         return view('blog.list', ['items' => Blog::all(), 'title' => 'Manage blog']);
@@ -41,7 +46,8 @@ class BlogController extends Controller
         $request->validate(
             [
                 'title' => 'required|unique:blogs',
-                'html_content' => 'required'
+                'html_content' => 'required',
+                'thumb' => 'required'
 
             ]
         );
@@ -61,7 +67,7 @@ class BlogController extends Controller
     public function show($id)
     {
         $blog = Blog::findOrFail($id);
-        return view('blog.view', ['item' => $blog, 'title' => $blog->title, 'list' => Blog::all()]);
+        return view('blog.view', ['item' => $blog, 'title' => $blog->title]);
     }
 
     /**
@@ -89,7 +95,9 @@ class BlogController extends Controller
         $request->validate(
             [
                 'title' => 'required',
-                'html_content' => 'required'
+                'html_content' => 'required',
+                'thumb' => 'required'
+
 
             ]
         );
@@ -139,5 +147,9 @@ class BlogController extends Controller
     public function terms_of_service()
     {
         return $this->custom_page('/terms_of_service');
+    }
+    public function contact()
+    {
+        return $this->custom_page('/contact');
     }
 }

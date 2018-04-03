@@ -25,7 +25,8 @@
                         {{isset($item)?method_field('put'):method_field('post')}}
                         @include('ui.form.input',['name'=>'url','label'=>'Post\'s URL *','type'=>'text'])
                         @include('ui.form.input',['name'=>'title','label'=>'Title *','type'=>'text'])
-                        @include('ui.form.ckeditor',['name'=>'html_content','label'=>'Content'])
+                        @include('ui.form.ckeditor',['name'=>'thumb','label'=>'Brief content'])
+                        @include('ui.form.ckeditor',['name'=>'html_content','label'=>'Full content'])
                         <button class="ui primary button" type="submit">Save</button>
                     </form>
                 </div>
