@@ -242,7 +242,7 @@ CREATE TABLE `products` (
   PRIMARY KEY (`id`),
   KEY `products_category_id_index` (`category_id`),
   CONSTRAINT `products_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -251,7 +251,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (7,'Vans','4a2957dca867a56b8803d9c1ee65b1cf_1522574576.jpg;','qw','awd',12.00,12.00,1,0,0,'2018-04-01 00:44:40','2018-04-01 02:22:56');
+INSERT INTO `products` VALUES (7,'Vans','4a2957dca867a56b8803d9c1ee65b1cf_1522574576.jpg;','qw','awd',12.00,12.00,1,0,0,'2018-04-01 00:44:40','2018-04-01 02:22:56'),(8,'Dr. Martens 1460 8-Eye Boot','878f9ff3eed71d939d80f3536cb704d9_1522775905.jpg;','Fit: This style tends to run large. For an accurate fit we recommend purchasing a 1/2 size smaller than you typically purchase. For example, if you normally purchase a size 8 1/2, we recommend purchasing a size 8. Upper: Smooth Leather','<h2>Dr. Martens 1460 8-Eye Boot&nbsp;Product Description</h2>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>When you think of Dr. Martens, you think of the 1460 8-Eye Boot. This style icon includes all of the authentic Doc Martens touches that have made it a true original. Signature Airwairs leather upper is stiff out of the box and softens over time to conform to the shape of your foot. It can be worn polished or natural, depending on your style. Classic 8 -eyelet lace-up front gives you perfect fit every time. Goodyear-welted construction means that these boots are made to last by sewing and heat sealing the sole to the upper for exceptional durability. The slip-resistant sole and air-cushioned heel enhance traction and comfort. Explore our selection of colors and styles to find the perfect pair to match your look.</p>\r\n\r\n<ul>\r\n	<li>Iconic Dr. Marten style</li>\r\n	<li>Airwairs leather upper</li>\r\n	<li>Individualized fit</li>\r\n	<li>8-eyelet lace-up front</li>\r\n	<li>Goodyear-welted construction</li>\r\n	<li>Slip-resistant sole</li>\r\n	<li>Air-cushioned heel</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>DR. MARTENS SIZE CHART (ORDERS PLACED IN UK SIZES):</strong></p>\r\n\r\n<p><img src=\"https://cdn-ap-ec.yottaa.net/550c587c2106b06b5100362d/www.shoes.com/v~22.166/images/desc/drmar/DrMartensAdultsizechart.jpg?yocs=c_f_&amp;yoloc=ap\" style=\"margin:0px\" />&nbsp;<br />\r\n<br />\r\n<strong><a href=\"https://www.shoes.com/dr-martens-originals/category_53194\">SHOP MORE DR. MARTENS ORIGINALS HERE</a></strong></p>',135.00,90.00,2,0,0,'2018-04-03 10:18:25','2018-04-03 10:31:20');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -284,7 +284,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Hùng Anh Trịnh','0982288173','Hà Đông',1,'hataketsu@gmail.com','$2y$10$zkFyAPPS5.h0Wm6RHMpCc.XRYJBHbNIoiOPRtssCWpivStklB6NTO','kMIeNj0fDJ7wHRoquHDql4AQrkMzTzGu0hua0gqZa9RC9OoHyt2qvV9wzaMj','2018-03-31 19:31:04','2018-04-01 03:17:04');
+INSERT INTO `users` VALUES (1,'Hùng Anh Trịnh','0982288173','Hà Đông',1,'hataketsu@gmail.com','$2y$10$zkFyAPPS5.h0Wm6RHMpCc.XRYJBHbNIoiOPRtssCWpivStklB6NTO','YWBfEUsYjtutKcAUKVJktWNH6UrYTbbOFSbhzSGsBeuu02UNB7Iinz9WtfUF','2018-03-31 19:31:04','2018-04-01 03:17:04');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -327,4 +327,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-03 23:11:22
+-- Dump completed on 2018-04-04  0:50:25

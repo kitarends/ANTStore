@@ -1,5 +1,5 @@
 <a class="ui card" href="/products/{{$item->id}}">
-    <div class="image dimmable">
+    <div class="image dimmable" style="padding: 20px; background: white">
         <div class="ui blurring inverted dimmer transition hidden">
             <div class="content">
                 <div class="center">
@@ -18,10 +18,17 @@
     <div class="content" style="text-align: center">
         <h2 class="header">{{$item->name}}</h2>
         <div class="meta">
-            <h2>
-                <del>{{$item->price}}$</del>
-                <span style="color: red">{{$item->sale_off}}$</span></h2>
+            @if($item->price>$item->sale_off)
+                <h2>
+                    <del>{{$item->price}}$</del>
+                    <span style="color: red">{{$item->sale_off}}$</span>
+                </h2>
+            @else
+                <h2>
+                    {{$item->price}}$
+                </h2>
+            @endif
         </div>
-        <div class="ui star rating" data-rating="3" data-max-rating="5"></div>
+        <div class="ui star rating" data-rating="{{round($item->comments->avg('score'), 1)}}" data-max-rating="5" style="margin-top: 4px"></div>
     </div>
 </a>

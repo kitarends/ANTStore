@@ -5,9 +5,9 @@
         <div class="ui breadcrumb">
             <a class="section" href="/">Home</a>
             <i class="right angle icon divider"></i>
-            <a class="section" href="/">Admin</a>
+            <a class="section" href="/manage">Admin</a>
             <i class="right angle icon divider"></i>
-            <a class="active section">Categories</a>
+            <div class="active section">Categories</div>
         </div>
         <div class="ui huge header">Categories</div>
         <a class="ui primary button" href="/categories/create"><i class="plus icon"></i>Create new category</a>

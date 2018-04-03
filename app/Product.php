@@ -88,7 +88,7 @@ class Product extends Model
 
     public function getCost()
     {
-        return round($this->price * (100 - $this->sale_off) / 100, 1);
+        return min($this->price, $this->sale_off);
     }
 
     public function getScore()

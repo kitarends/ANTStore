@@ -5,7 +5,7 @@
         <div class="ui breadcrumb">
             <a class="section" href="/">Home</a>
             <i class="right angle icon divider"></i>
-            <a class="section" href="/">Admin</a>
+            <a class="section" href="/manage">Admin</a>
             <i class="right angle icon divider"></i>
             <div class="active section">Blogs</div>
         </div>

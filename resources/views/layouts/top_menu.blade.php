@@ -42,11 +42,11 @@
             </a>
 
             <div class=" item">
-                <div class="ui action left icon input">
+                <form class="ui action left icon input" method="get" action="/search">
                     <i class="search icon"></i>
-                    <input type="text" placeholder="Search for products">
-                    <button class="ui button">Search</button>
-                </div>
+                    <input type="text" placeholder="Search for products" value="{{old('query')}}" name="query">
+                    <button class="ui button" type="submit">Search</button>
+                </form>
             </div>
 
         </div>

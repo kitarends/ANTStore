@@ -20,15 +20,17 @@
                 <h1>{{$item->name}}</h1>
                 <div class="ui star rating" data-rating="{{$item->getScore()}}" data-max-rating="5"></div>
                 <p>({{$item->comments()->count()}} customs reviews)</p>
-                <h2>
-                    <del>90$</del>
-                    <span style="color: red">60$</span></h2>
-                <p>Etiam lobortis dolor eros. Sed sodales imperdiet dapibus. Maecenas faucibus urna sed turpis lacinia
-                    consectetur. Mauris at bibendum nibh. Maecenas non lorem nec neque imperdiet mattis ac eu purus.
-                    Quisque id tellus ut.
-
-                    Ante faucibus interdum eget eu erat. Proin nisl purus, feugiat sit amet luctus in, malesuada sodales
-                    risus.</p>
+                @if($item->price>$item->sale_off)
+                    <h2>
+                        <del>{{$item->price}}$</del>
+                        <span style="color: red">{{$item->sale_off}}$</span>
+                    </h2>
+                @else
+                    <h2>
+                        {{$item->price}}$
+                    </h2>
+                @endif
+                <p>{{$item->short_detail}}</p>
                 <div class="ui divider"></div>
                 <div class="ui two column grid">
                     <div class="column">
@@ -50,7 +52,7 @@
                         </div>
                     </div>
                     <div class="column">
-                        <button class="ui primary button"  onclick="add_to_cart({{$item->id}})">Add to
+                        <button class="ui primary button" onclick="add_to_cart({{$item->id}})">Add to
                             cart
                         </button>
                     </div>
@@ -67,10 +69,7 @@
 
         <div class="ui  segment">
             <h3 class="ui dividing header">Detail</h3>
-            <p>Etiam lobortis dolor eros. Sed sodales imperdiet dapibus. Maecenas faucibus urna sed turpis lacinia
-                consectetur. Mauris at bibendum nibh. Maecenas non lorem nec neque imperdiet mattis ac eu purus. Quisque
-                id tellus ut. Ante faucibus interdum eget eu erat. Proin nisl purus, feugiat sit amet luctus in,
-                malesuada sodales risus.</p>
+            {!! $item->full_html_detail !!}
         </div>
         <div class="ui  segment">
             <h3 class="ui dividing header">Reviews (4)</h3>
