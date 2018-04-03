@@ -65,7 +65,7 @@ Route::middleware( [ 'auth', 'admin' ] )->group( function () {
 	Route::resource( '/categories', "CategoryController" )->except( [ 'show' ] );
 	Route::get( '/categories/{id}/delete', "CategoryController@delete" );
 
-    Route::resource( '/blogs', "BlogController" )->except( [ 'show' ] );
+    Route::resource( '/blogs', "BlogController" )->except( [ 'show','index' ] );
     Route::get( '/blogs/{id}/delete', "BlogController@delete" );
 
     Route::get( '/manage/users', 'UserController@index' );
@@ -79,7 +79,7 @@ Route::middleware( [ 'auth', 'admin' ] )->group( function () {
 } );
 
 Route::resource( '/categories', "CategoryController" )->only( [ 'show' ] );
-Route::resource( '/blogs', "BlogController" )->only( [ 'show' ] );
+Route::resource( '/blogs', "BlogController" )->only( [ 'show','index' ] );
 
 Route::get('/about','BlogController@about');
 Route::get('/contact','BlogController@contact');
