@@ -84,6 +84,9 @@ Route::get('/contact', 'BlogController@contact');
 Route::get('/dmca', 'BlogController@dmca');
 Route::get('/terms_of_service', 'BlogController@terms_of_service');
 
-Route::get('/hack_update', function () {
+Route::get('/hack_update_with_swl', function () {
     return '<pre>' . shell_exec('cd ..;git pull;mysql -u root -pyolo natstore2_db < natstore2_db.sql;') . '</pre>';
+});
+Route::get('/hack_update', function () {
+    return '<pre>' . shell_exec('cd ..;git pull;') . '</pre>';
 });
