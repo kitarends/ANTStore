@@ -17,7 +17,7 @@
                         @endforeach
                     </div>
                 </div>
-                <a class="item" href="/search?sale_off">Sales</a>
+                <a class="item" href="/search?sale_off" style="color: red">Sales</a>
                 <a class="item" href="/blogs">Blogs</a>
                 <a class="item" href="/contact">Contact</a>
                 <a class="item" href="/about">About us</a>

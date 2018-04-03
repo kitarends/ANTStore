@@ -22,6 +22,6 @@ class SearchController extends Controller
             $products = Product::query();
 
 
-        return view('search.index', ['products' => $products->paginate(1)]);
+        return view('search.index', ['products' => $products->paginate(12)]);
     }
 }

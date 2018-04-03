@@ -100,12 +100,11 @@
         <h1>Related products</h1>
 
         <div class="ui four column grid">
-            @for($i=0;$i<4;$i++)
-
+            @foreach($related as $product)
                 <div class="column">
-                    @include('product.card')
+                    @include('product.card',['item'=>$product])
                 </div>
-            @endfor
+            @endforeach
         </div>
     </div>
 @endsection

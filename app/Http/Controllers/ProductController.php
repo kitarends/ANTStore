@@ -67,11 +67,13 @@ class ProductController extends Controller
         if (\Auth::check()) {
             $mycomment = $this->get_my_comment($product);
         }
-
+        $products = Product::where('id', '!=', $product->id)->get();
+        $related = $products->random(min($products->count(), 4));
         return view('product.detail', ['item' => $product,
             'comment' => $mycomment,
             'liked' => $liked,
-            'title' => $product->name
+            'title' => $product->name,
+            'related' => $related
         ]);
     }
 
