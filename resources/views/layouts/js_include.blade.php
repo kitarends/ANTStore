@@ -1,8 +1,10 @@
 <!-- Scripts -->
 <script src="/js/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="/js/semantic.min.js" defer></script>
 <script src="/ckeditor/ckeditor.js"></script>
 <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
 
 <script>
     $(document)
@@ -28,8 +30,12 @@
             $('.star.rating')
                 .rating('disable')
             ;
-            $('.voting')
-                .rating()
+            $('.input_rating')
+                .rating({
+                    onRate: function (rating) {
+                        $('#input_rating').val(rating)
+                    }
+                });
             ;
             $('.card .dimmer')
                 .dimmer({
@@ -44,13 +50,30 @@
 
 
             $('table').DataTable();
-            $('.dataTables_filter > label' ).attr('class','ui input');
-            $('select[name="DataTables_Table_0_length"]').attr('class','ui dropdown');
+            $('.dataTables_filter > label').attr('class', 'ui input');
+            $('select[name="DataTables_Table_0_length"]').attr('class', 'ui dropdown');
             $('select.dropdown')
                 .dropdown()
             ;
-        })
-    ;
+
+            var $slider = $( "#slider-range" );
+            $slider.slider({
+                range: true,
+                min: 0,
+                max: 500,
+                values: [ {{old('lower_price',60)}}, {{old('higher_price',300)}}],
+                slide: function( event, ui ) {
+                    $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                    $( "#lower_price" ).val( ui.values[ 0 ] );
+                    $( "#higher_price" ).val( ui.values[ 1 ] );
+
+                }
+            });
+            $( "#amount" ).val( "$" + $slider.slider( "values", 0 ) +
+                " - $" + $slider.slider( "values", 1 ) );
+            $( "#lower_price" ).val( $slider.slider( "values", 0 ) );
+            $( "#higher_price" ).val( $slider.slider( "values", 1 ) );
+        });
 
     function ask_to_delete_product(id) {
         if (confirm("Are you sure to delete this product?")) {
@@ -93,12 +116,11 @@
             location.href = '/orders/' + id + '/done';
         }
     }
-    function ask_to_delete(confirm_text,link) {
+    function ask_to_delete(confirm_text, link) {
         if (confirm(confirm_text)) {
             location.href = link;
         }
     }
-
 
 
 </script>

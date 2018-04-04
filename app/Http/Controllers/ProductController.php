@@ -62,15 +62,18 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $mycomment = null;
         $liked = null;
+        $is_bought = false;
         if (\Auth::check()) {
-            $mycomment = $this->get_my_comment($product);
+            $mycomment = $this->get_my_comment($product->id);
+            $mycomment->fill_olds();
+            $is_bought = $this->is_bought_this_product($product->id);
+
         }
         $products = Product::where('id', '!=', $product->id)->get();
         $related = $products->random(min($products->count(), 4));
         return view('product.detail', ['item' => $product,
-            'comment' => $mycomment,
+            'is_bought' => $is_bought,
             'liked' => $liked,
             'title' => $product->name,
             'related' => $related
@@ -150,35 +153,25 @@ class ProductController extends Controller
 
     public function save_comment(Request $request, $product_id)
     {
-
         $request->validate([
             'content' => 'required|string',
             'score' => 'required|numeric'
         ]);
-        $comment = $this->get_my_comment(Product::findOrFail($product_id));
-        if ($comment == null) {
-            $comment = new Comment();
-        }
-
-        $comment->fill($request->all());
+        $comment = $this->get_my_comment($product_id);
         $comment->user_id = \Auth::id();
         $comment->product_id = $product_id;
+        $comment->fill($request->all());
         $comment->save();
 
         return redirect('/products/' . $product_id);
     }
 
-    protected function get_my_comment($product)
+    protected function get_my_comment($product_id)
     {
-        $mycomment = null;
-        foreach ($product->comments as $comment) {
-            if ($comment->user->id == \Auth::id()) {
-                $mycomment = $comment;
-                break;
-            }
-        }
-
-        return $mycomment;
+        $query = Comment::whereUserId(\Auth::id())->whereProductId($product_id);
+        if ($query->count() > 0)
+            return $query->get()[0];
+        return new Comment();
     }
 
     public function like_product(Request $request, $product_id)
@@ -194,4 +187,19 @@ class ProductController extends Controller
 
         return redirect('/products/' . $product_id);
     }
+
+    private function is_bought_this_product($product_id)
+    {
+//        dd(\Auth::user()->orders);
+        foreach (\Auth::user()->orders()->whereStatus('done')->get() as $order) {
+
+            foreach ($order->items as $item) {
+                if ($item->product_id == $product_id)
+                    return true;
+            }
+        }
+        return false;
+    }
+
+
 }

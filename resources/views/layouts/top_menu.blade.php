@@ -5,7 +5,7 @@
             <i class="dropdown icon"></i>
             <div class="menu">
                 @if(Auth::check())
-                    <a class="item" href="/orders">View orders</a>
+                    <a class="item" href="/orders">View my orders</a>
                     <a class="item" href="/profile/info">Edit my information</a>
                     <a class="item" href="/logout">Logout</a>
                 @else
@@ -25,7 +25,8 @@
                     <a class="item" href="/manage/products">Products</a>
                     <a class="item" href="/manage/categories">Categories</a>
                     <a class="item" href="/manage/users">Users</a>
-                    <a class="item" href="/manage/orders">Orders</a>
+                    <a class="item" href="/manage/orders">Orders <span class="ui red label"
+                                                                       style="margin-left: 20px">{{\App\Order::whereStatus('waiting')->count()}}</span></a>
                     <a class="item" href="/manage/ads">Advertises</a>
                     <a class="item" href="/manage/blogs">Blogs</a>
                 </div>
@@ -34,12 +35,8 @@
 
 
         <div class="right menu">
-            <a class="item" href="/cart"><i class="cart icon"></i> Cart
-                {{--<div class=" ui red label">{{cookie('item_number')}} items</div>--}}
-            </a>
-            <a class=" item" href="/checkout"><i class="payment icon"></i>Check out
-                {{--<div class=" ui teal label">{{cookie('total')}}$</div>--}}
-            </a>
+            <a class="item" href="/cart"><i class="cart icon"></i> Cart</a>
+            <a class=" item" href="/checkout"><i class="payment icon"></i>Check out</a>
 
             <div class=" item">
                 <form class="ui action left icon input" method="get" action="/search">

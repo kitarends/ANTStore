@@ -58,7 +58,7 @@ CREATE TABLE `categories` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,1,'Kids','2018-03-31 21:39:10','2018-03-31 21:39:10'),(2,2,'Men','2018-03-31 21:44:25','2018-03-31 21:44:25');
+INSERT INTO `categories` VALUES (1,1,'Kids','2018-03-31 21:39:10','2018-03-31 21:39:10'),(2,2,'Men','2018-03-31 21:44:25','2018-03-31 21:44:25'),(3,3,'Womens','2018-04-04 08:34:08','2018-04-04 08:34:08'),(4,4,'Sandals','2018-04-04 08:40:18','2018-04-04 08:40:18');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,7 +91,7 @@ CREATE TABLE `comments` (
   KEY `comments_product_id_index` (`product_id`),
   CONSTRAINT `comments_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
   CONSTRAINT `comments_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,6 +100,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` VALUES (2,'nice',3,2,8,'2018-04-04 06:38:32','2018-04-04 06:38:39');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,7 +149,7 @@ CREATE TABLE `order_items` (
   KEY `order_items_product_id_foreign` (`product_id`),
   CONSTRAINT `order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE,
   CONSTRAINT `order_items_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -157,7 +158,7 @@ CREATE TABLE `order_items` (
 
 LOCK TABLES `order_items` WRITE;
 /*!40000 ALTER TABLE `order_items` DISABLE KEYS */;
-INSERT INTO `order_items` VALUES (1,1,7,10.60,2,'2018-04-01 04:31:45','2018-04-01 04:31:45'),(2,2,7,10.60,2,'2018-04-01 04:35:31','2018-04-01 04:35:31'),(3,3,7,10.60,1,'2018-04-01 04:37:03','2018-04-01 04:37:03');
+INSERT INTO `order_items` VALUES (4,4,8,90.00,1,'2018-04-04 06:51:18','2018-04-04 06:51:18');
 /*!40000 ALTER TABLE `order_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -182,7 +183,7 @@ CREATE TABLE `orders` (
   PRIMARY KEY (`id`),
   KEY `orders_user_id_index` (`user_id`),
   CONSTRAINT `orders_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -191,7 +192,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,NULL,'Hùng Anh Trịnh','nope','0982288173','Hà Đông','','disposed','2018-04-01 04:31:45','2018-04-01 04:32:25'),(2,1,'Hùng Anh Trịnh','nope','0982288173','Hà Đông','','done','2018-04-01 04:35:31','2018-04-03 08:18:03'),(3,1,'Hùng Anh Trịnh','nope','0982288173','Hà Đông','','done','2018-04-01 04:37:03','2018-04-03 08:15:42');
+INSERT INTO `orders` VALUES (1,NULL,'Hùng Anh Trịnh','nope','0982288173','Hà Đông','','disposed','2018-04-01 04:31:45','2018-04-01 04:32:25'),(4,2,'Adminxx','nope','0','not set yet','','done','2018-04-04 06:51:18','2018-04-04 06:56:23'),(5,2,'Adminxx','nope','0','not set yet','','done','2018-04-04 06:56:44','2018-04-04 06:56:53');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -242,7 +243,7 @@ CREATE TABLE `products` (
   PRIMARY KEY (`id`),
   KEY `products_category_id_index` (`category_id`),
   CONSTRAINT `products_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -251,7 +252,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (7,'Vans','4a2957dca867a56b8803d9c1ee65b1cf_1522574576.jpg;','qw','awd',12.00,12.00,1,0,0,'2018-04-01 00:44:40','2018-04-01 02:22:56'),(8,'Dr. Martens 1460 8-Eye Boot','878f9ff3eed71d939d80f3536cb704d9_1522775905.jpg;','Fit: This style tends to run large. For an accurate fit we recommend purchasing a 1/2 size smaller than you typically purchase. For example, if you normally purchase a size 8 1/2, we recommend purchasing a size 8. Upper: Smooth Leather','<h2>Dr. Martens 1460 8-Eye Boot&nbsp;Product Description</h2>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>When you think of Dr. Martens, you think of the 1460 8-Eye Boot. This style icon includes all of the authentic Doc Martens touches that have made it a true original. Signature Airwairs leather upper is stiff out of the box and softens over time to conform to the shape of your foot. It can be worn polished or natural, depending on your style. Classic 8 -eyelet lace-up front gives you perfect fit every time. Goodyear-welted construction means that these boots are made to last by sewing and heat sealing the sole to the upper for exceptional durability. The slip-resistant sole and air-cushioned heel enhance traction and comfort. Explore our selection of colors and styles to find the perfect pair to match your look.</p>\r\n\r\n<ul>\r\n	<li>Iconic Dr. Marten style</li>\r\n	<li>Airwairs leather upper</li>\r\n	<li>Individualized fit</li>\r\n	<li>8-eyelet lace-up front</li>\r\n	<li>Goodyear-welted construction</li>\r\n	<li>Slip-resistant sole</li>\r\n	<li>Air-cushioned heel</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>DR. MARTENS SIZE CHART (ORDERS PLACED IN UK SIZES):</strong></p>\r\n\r\n<p><img src=\"https://cdn-ap-ec.yottaa.net/550c587c2106b06b5100362d/www.shoes.com/v~22.166/images/desc/drmar/DrMartensAdultsizechart.jpg?yocs=c_f_&amp;yoloc=ap\" style=\"margin:0px\" />&nbsp;<br />\r\n<br />\r\n<strong><a href=\"https://www.shoes.com/dr-martens-originals/category_53194\">SHOP MORE DR. MARTENS ORIGINALS HERE</a></strong></p>',135.00,90.00,2,0,0,'2018-04-03 10:18:25','2018-04-03 10:31:20');
+INSERT INTO `products` VALUES (8,'Dr. Martens 1460 8-Eye Boot','878f9ff3eed71d939d80f3536cb704d9_1522775905.jpg;','Fit: This style tends to run large. For an accurate fit we recommend purchasing a 1/2 size smaller than you typically purchase. For example, if you normally purchase a size 8 1/2, we recommend purchasing a size 8. Upper: Smooth Leather','<h2>Dr. Martens 1460 8-Eye Boot&nbsp;Product Description</h2>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>When you think of Dr. Martens, you think of the 1460 8-Eye Boot. This style icon includes all of the authentic Doc Martens touches that have made it a true original. Signature Airwairs leather upper is stiff out of the box and softens over time to conform to the shape of your foot. It can be worn polished or natural, depending on your style. Classic 8 -eyelet lace-up front gives you perfect fit every time. Goodyear-welted construction means that these boots are made to last by sewing and heat sealing the sole to the upper for exceptional durability. The slip-resistant sole and air-cushioned heel enhance traction and comfort. Explore our selection of colors and styles to find the perfect pair to match your look.</p>\r\n\r\n<ul>\r\n	<li>Iconic Dr. Marten style</li>\r\n	<li>Airwairs leather upper</li>\r\n	<li>Individualized fit</li>\r\n	<li>8-eyelet lace-up front</li>\r\n	<li>Goodyear-welted construction</li>\r\n	<li>Slip-resistant sole</li>\r\n	<li>Air-cushioned heel</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>DR. MARTENS SIZE CHART (ORDERS PLACED IN UK SIZES):</strong></p>\r\n\r\n<p><img src=\"https://cdn-ap-ec.yottaa.net/550c587c2106b06b5100362d/www.shoes.com/v~22.166/images/desc/drmar/DrMartensAdultsizechart.jpg?yocs=c_f_&amp;yoloc=ap\" style=\"margin:0px\" />&nbsp;<br />\r\n<br />\r\n<strong><a href=\"https://www.shoes.com/dr-martens-originals/category_53194\">SHOP MORE DR. MARTENS ORIGINALS HERE</a></strong></p>',135.00,90.00,2,0,0,'2018-04-03 10:18:25','2018-04-03 10:31:20'),(9,'Skechers Hampshire Manchester Duck Boot','23db8abe4b7e592f449e887dffb8c16b_1522856136.jpg;','WIDTH: M (Regular)   COLOR: Charcoal','<h2>Skechers Hampshire Manchester Duck Boot&nbsp;Product Description</h2>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Look your finest even in foul weather wearing the warm and comfortable SKECHERS Hampshire - Manchester Duck Boot. Waterproof rubber shell with quilt stitched parka fabric and synthetic upper in a lace up mid calf height cold weather casual boot with insulated design and Warm Tech Memory Foam insole.</p>\r\n\r\n<ul>\r\n	<li>Smooth shiny leather-textured synthetic overlays</li>\r\n	<li>Sculpted classic &#39;duck boot&#39; raised detail on toe</li>\r\n	<li>Sculpted accents on sides and heel</li>\r\n	<li>Reinforced stitched seams</li>\r\n	<li>Parka style zigzag textured stitching detail on fabric shaft</li>\r\n	<li>Synthetic overlays at ankle and heel for added durability</li>\r\n	<li>Mukluk style slide lock lacing for easy access</li>\r\n	<li>Smooth parka-style fabric lays outside collar for added protection</li>\r\n	<li>Smooth synthetic top collar trim</li>\r\n	<li>Soft faux fur trim at collar and tongue</li>\r\n	<li>Soft faux fur shaft lining</li>\r\n	<li>Faux shearling and fabric boot socklining</li>\r\n	<li>Warm Tech Memory Foam cushioned comfort insole</li>\r\n	<li>Insole designed to block cold ground temperatures</li>\r\n	<li>Insole helps to retain body heat</li>\r\n	<li>Contrast colored rubber outsole</li>\r\n	<li>Classic style high traction flexible outsole design</li>\r\n</ul>',75.00,34.00,3,0,0,'2018-04-04 08:35:36','2018-04-04 08:35:36'),(10,'Skechers Windom Dry Spell Duck Boot','d50e1ffa1006d5df8306eec6ef4ba610_1522856342.jpg;','WIDTH: M (Regular)   COLOR: Charcoal','<h2>Skechers Windom Dry Spell Duck Boot&nbsp;Product Description</h2>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Whatever the weather has in store for you, the SKECHERS Windom Quilted Mid Duck Boot has you covered. Thanks to its gusseted tongue, soft shearling-style faux fur lining, and insulated shaft, this waterproof boot keeps your feet warm and toasty. A flexible rubber outsole offers superior traction, while the Warm Tech Memory Foam insole provides cushioning.</p>\r\n\r\n<ul>\r\n	<li>Water-resistant parka nylon and waterproof rubber shell upper</li>\r\n	<li>Lace-up with durable metal eyelets</li>\r\n	<li>Fabric insulated shaft</li>\r\n	<li>Gusseted tongue</li>\r\n	<li>Seam-sealed construction</li>\r\n	<li>Parka nylon shaft with stitching detail</li>\r\n	<li>Soft shearling-style faux fur lining</li>\r\n	<li>Warm Tech Memory Foam cushioned comfort insole</li>\r\n	<li>Flexible rubber traction outsole</li>\r\n	<li>6-inch shaft height</li>\r\n	<li>12-inch adjustable shaft circumference</li>\r\n	<li>1-inch heel</li>\r\n</ul>\r\n\r\n<p>Note: Charcoal/Black color has a 200G Thinsulate and a waterproof outsole and shaft</p>',34.95,28.00,3,0,0,'2018-04-04 08:39:02','2018-04-04 08:39:26'),(11,'Skechers Hampshire Duck Boot','1106aa72093a371630563dfaa6800452_1522856508.jpg;','WIDTH: M (Regular) COLOR: Navy/Tan','<h2>Skechers Hampshire Duck Boot&nbsp;Product Description</h2>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>A reliable yet stylish choice for drizzly days, the SKECHERS Hampshire Duck Boot features a waterproof upper and Warm Tech Memory Foam insole that blocks cold, retains heat, and provides cushioning for comfort that can&#39;t be beat. Flexible rubber outsole offers superior traction in slippery situations. Featuring a water-resistant collar, an insulated shaft, and a gusseted tongue, this SKECHERS duck boot will keep your foot dry and warm in inclement weather conditions.</p>\r\n\r\n<ul>\r\n	<li>Waterproof, seam-sealed rubber shell upper</li>\r\n	<li>Two eye lace-up</li>\r\n	<li>Water-resistant quilt-style parka nylon collar</li>\r\n	<li>Gusseted tongue</li>\r\n	<li>Padded collar and tongue</li>\r\n	<li>Plaid flannel insulated shaft</li>\r\n	<li>Smooth suede-textured synthetic overlays</li>\r\n	<li>Sculpted accents on sides and heel</li>\r\n	<li>Reinforced stitched seams</li>\r\n	<li>Heel synthetic overlay with top pull on tab</li>\r\n	<li>Stitching detail</li>\r\n	<li>Soft fabric lining</li>\r\n	<li>Warm Tech Memory Foam cushioned comfort insole</li>\r\n	<li>Flexible rubber traction outsole</li>\r\n	<li>5-inch shaft height</li>\r\n	<li>10.5-inch adjustable shaft circumference</li>\r\n	<li>1-inch heel</li>\r\n</ul>',45.50,45.50,3,0,0,'2018-04-04 08:41:48','2018-04-04 08:41:48');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -275,7 +276,7 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -284,7 +285,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Hùng Anh Trịnh','0982288173','Hà Đông',1,'hataketsu@gmail.com','$2y$10$zkFyAPPS5.h0Wm6RHMpCc.XRYJBHbNIoiOPRtssCWpivStklB6NTO','YWBfEUsYjtutKcAUKVJktWNH6UrYTbbOFSbhzSGsBeuu02UNB7Iinz9WtfUF','2018-03-31 19:31:04','2018-04-01 03:17:04');
+INSERT INTO `users` VALUES (2,'Adminxx','0','not set yet',1,'admin@gmail.com','$2y$10$CErKa1sZiQNCECFOnksyRuySw.nlwL8Hq3rN0BuaT5WgHp47v2V6W','jPgbJiuzhylYeMlsbCEV6YvYAwr03Uk3V9sucCewo4D31JCKyMG5cwvUfFly','2018-04-04 05:25:30','2018-04-04 05:25:39');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -327,4 +328,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-04  0:50:25
+-- Dump completed on 2018-04-04 22:42:37

@@ -20,8 +20,8 @@ class CreateProductsTable extends Migration {
 			$table->float( 'price' );
 			$table->float( 'sale_off' );
 
-			$table->integer( "category_id" )->unsigned()->index()->nullable();
-			$table->foreign( 'category_id' )->references( 'id' )->on( 'categories' )->onDelete( 'set null' );
+			$table->integer( "category_id" )->unsigned()->index();
+			$table->foreign( 'category_id' )->references( 'id' )->on( 'categories' )->onDelete( 'no action' );
 
 			$table->integer( 'sold' );
 			$table->integer( 'views' );

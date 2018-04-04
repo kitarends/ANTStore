@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Http\Controllers\FlashToOld;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -38,4 +39,9 @@ class Comment extends Model {
 	public function user(){
 		return $this->belongsTo('App\\User');
 	}
+    public function fill_olds()
+    {
+        FlashToOld::flash_to_olds($this, $this->fillable);
+    }
+
 }

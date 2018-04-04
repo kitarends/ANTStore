@@ -16,15 +16,8 @@
                    class="ui green labeled icon button"><i
                             class="arrow up icon"></i> to admin</a>
             @endif
-            <a onclick="confirm_delete_user({{$item->id}})" href="javascript:void(0);"
+            <a onclick="ask_to_delete('Are you sure to delete this user?','/manage/users/{{$item->id}}/delete')" href="javascript:void(0);"
                class="ui red labeled icon button"><i
                         class="delete icon"></i> delete</a>
         </h5></td>
 </tr>
-
-<script>
-    function confirm_delete_user(id) {
-        if (confirm("Are you sure to delete this user?"))
-            location.href = '/manage/users/delete/' + id;
-    }
-</script>

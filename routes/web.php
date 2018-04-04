@@ -31,6 +31,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/orders/{id}/dispose', 'OrderController@dispose');
     Route::get('/orders', 'OrderController@all');
     Route::get('/orders/{id}', 'OrderController@show');
+    Route::post('/products/{product}/save_review', 'ProductController@save_comment');
+
 });
 
 Route::redirect('/home', '/')->name('home');
@@ -77,7 +79,9 @@ Route::resource('/products', 'ProductController')->only(['show']);
 Route::resource('/categories', "CategoryController")->only(['show']);
 Route::resource('/blogs', "BlogController")->only(['show', 'index']);
 
-Route::get('/search', 'SearchController@index');
+Route::get('/sale_off', 'SearchController@sale_off');
+Route::get('/all', 'SearchController@all');
+Route::get('/category/{category}', 'SearchController@category');
 
 Route::get('/about', 'BlogController@about');
 Route::get('/contact', 'BlogController@contact');

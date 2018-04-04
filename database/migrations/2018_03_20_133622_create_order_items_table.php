@@ -17,7 +17,7 @@ class CreateOrderItemsTable extends Migration {
 			$table->foreign( 'order_id' )->references( 'id' )->on( 'orders' )->onDelete( 'cascade' );
 
 			$table->integer( 'product_id' )->unsigned();
-			$table->foreign( 'product_id' )->references( 'id' )->on( 'products' )->onDelete( 'cascade' );
+			$table->foreign( 'product_id' )->references( 'id' )->on( 'products' )->onDelete( 'no action' );
 
 			$table->float( 'final_price' );
 			$table->integer( 'quantity' );

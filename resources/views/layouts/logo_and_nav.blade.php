@@ -11,13 +11,13 @@
                     Shop
                     <i class="dropdown icon"></i>
                     <div class="menu">
-                        <a class="item" href="/search">All</a>
+                        <a class="item" href="/all">All</a>
                         @foreach(\App\Category::all() as $category)
-                            <a href="/search?category={{$category->id}}" class="item">{{$category->name}}</a>
+                            <a href="/category/{{$category->id}}" class="item">{{$category->name}}</a>
                         @endforeach
                     </div>
                 </div>
-                <a class="item" href="/search?sale_off" style="color: red">Sales</a>
+                <a class="item" href="/sale_off" style="color: red">Sales</a>
                 <a class="item" href="/blogs">Blogs</a>
                 <a class="item" href="/contact">Contact</a>
                 <a class="item" href="/about">About us</a>
