@@ -80,6 +80,7 @@ Route::resource('/categories', "CategoryController")->only(['show']);
 Route::resource('/blogs', "BlogController")->only(['show', 'index']);
 
 Route::get('/sale_off', 'SearchController@sale_off');
+Route::get('/search', 'SearchController@search');
 Route::get('/all', 'SearchController@all');
 Route::get('/category/{category}', 'SearchController@category');
 
