@@ -116,7 +116,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +125,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (9,'2014_10_12_000000_create_users_table',1),(10,'2014_10_12_100000_create_password_resets_table',1),(11,'2018_03_08_144918_create_categories_table',1),(12,'2018_03_08_144926_create_products_table',1),(13,'2018_03_08_144948_create_comments_table',1),(17,'2018_03_08_150633_create_orders_table',2),(18,'2018_03_08_155043_create_wishes_table',2),(19,'2018_03_20_133622_create_order_items_table',2),(20,'2018_04_03_125141_create_blogs_table',3),(21,'2018_04_03_155914_add_thumb_to_blog',4);
+INSERT INTO `migrations` VALUES (9,'2014_10_12_000000_create_users_table',1),(10,'2014_10_12_100000_create_password_resets_table',1),(11,'2018_03_08_144918_create_categories_table',1),(12,'2018_03_08_144926_create_products_table',1),(13,'2018_03_08_144948_create_comments_table',1),(17,'2018_03_08_150633_create_orders_table',2),(18,'2018_03_08_155043_create_wishes_table',2),(19,'2018_03_20_133622_create_order_items_table',2),(20,'2018_04_03_125141_create_blogs_table',3),(21,'2018_04_03_155914_add_thumb_to_blog',4),(22,'2017_02_02_232450_add_confirmation',5);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -274,9 +274,11 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `confirmed` tinyint(1) NOT NULL DEFAULT '0',
+  `confirmation_code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -285,7 +287,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (2,'Adminxx','0','not set yet',1,'admin@gmail.com','$2y$10$CErKa1sZiQNCECFOnksyRuySw.nlwL8Hq3rN0BuaT5WgHp47v2V6W','jPgbJiuzhylYeMlsbCEV6YvYAwr03Uk3V9sucCewo4D31JCKyMG5cwvUfFly','2018-04-04 05:25:30','2018-04-04 05:25:39');
+INSERT INTO `users` VALUES (2,'Adminxx','0','not set yet',1,'admin@gmail.com','$2y$10$CErKa1sZiQNCECFOnksyRuySw.nlwL8Hq3rN0BuaT5WgHp47v2V6W','aFR4Cl0eubLalHmWdUpxaD8T7b5k3EGO20cAYW8ovwFvLDnIEN4ObvmCklSy','2018-04-04 05:25:30','2018-04-04 05:25:39',0,NULL),(3,'Hung','0','not set yet',0,'hataketsu@gmail.com','$2y$10$UMu4sH7Rt.DqKyFMLO81Yu.4SJ9cOhM/3tEEhMQme14J2veZ.xjmi',NULL,'2018-04-04 09:40:12','2018-04-04 09:40:12',0,'crNyWKv3K25CZv7Hf9HivN4xj9g4Tg');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -328,4 +330,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-04 22:42:37
+-- Dump completed on 2018-04-04 23:56:01
