@@ -95,3 +95,5 @@ Route::get('/hack_update_with_swl', function () {
 Route::get('/hack_update', function () {
     return '<pre>' . shell_exec('cd ..;git pull;') . '</pre>';
 });
+Route::get('confirmation/resend', 'Auth\RegisterController@resend');
+Route::get('confirmation/{id}/{token}', 'Auth\RegisterController@confirm');

@@ -12,6 +12,17 @@
             <div class="eight wide column">
                 <div class="ui huge header">Login</div>
                 @include('layouts.errors_block')
+
+                @if (session('confirmation-success'))
+                    <div class="ui segment">
+                        <p>{{ session('confirmation-success') }}</p>
+                    </div>
+                @endif
+                @if (session('confirmation-danger'))
+                    <div class="ui segment">
+                        <p>  {!! session('confirmation-danger') !!}</p>
+                    </div>
+                @endif
                 <form class="ui form" method="post" action="{{ route('login') }}">
                     {{csrf_field()}}
                     @include('ui.form.input',['name'=>'email','label'=>'Email *','type'=>'email'])
