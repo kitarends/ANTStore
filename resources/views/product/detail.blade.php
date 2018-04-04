@@ -58,7 +58,8 @@
                     </div>
                 </div>
                 <div class="ui divider"></div>
-                <strong>Category: <a href="/search?category={{$item->category->id}}">{{$item->category->name}}</a></strong>
+                <strong>Category: <a
+                            href="/search?category={{$item->category->id}}">{{$item->category->name}}</a></strong>
             </div>
         </div>
         <script>
@@ -77,10 +78,16 @@
                 @foreach($item->comments as $comment)
                     @include('product.review.row',['item'=>$comment])
                 @endforeach
-                @if(Auth::check()&&$is_bought)
-                    @include('product.review.input')
-                @endif
             </div>
+            @if(Auth::check())
+                @if($is_bought)
+                    @include('product.review.input')
+                @else
+                    <h2>You need to buy this product to be able to review</h2>
+                @endif
+            @else
+                <h2>You need to <a href="/login">login</a> to review</h2>
+            @endif
         </div>
         <h1>Related products</h1>
 
