@@ -5,6 +5,7 @@
             <div class="four wide column">
                 <div class="ui huge header">Filter</div>
                 <form class="ui form" action="{{Request::fullUrl()}}">
+                    @include('ui.form.text',['name'=>'query','label'=>'Search for'])
                     <div class="field">
                         <label for="amount">Price range: </label>
                         <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
