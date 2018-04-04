@@ -5,7 +5,6 @@
 <script src="/ckeditor/ckeditor.js"></script>
 <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-
 <script>
     $(document)
         .ready(function () {
@@ -73,6 +72,14 @@
                 " - $" + $slider.slider( "values", 1 ) );
             $( "#lower_price" ).val( $slider.slider( "values", 0 ) );
             $( "#higher_price" ).val( $slider.slider( "values", 1 ) );
+            $('.slider').glide({
+                autoplay: false,
+                arrowsWrapperClass: 'slider-arrows',
+                arrowRightText: '',
+                arrowLeftText: '',
+                startAt: 1,
+                perView: 3
+            });
         });
 
     function ask_to_delete_product(id) {
