@@ -1,4 +1,4 @@
-<div class="ui menu" style="background: #f7f7f7">
+<div class="ui stackable  menu" style="background: #f7f7f7">
     <div class="ui container">
         <div class="ui dropdown item">
             {{Auth::check()?Auth::user()->name:'My Account'}}
@@ -38,8 +38,8 @@
             <a class="item" href="/cart"><i class="cart icon"></i> Cart</a>
             <a class=" item" href="/checkout"><i class="payment icon"></i>Check out</a>
 
-            <div class=" item">
-                <form class="ui action left icon input" method="get" action="/search">
+            <div class=" item" >
+                <form class="ui action left icon input" method="get" action="/search" style="max-width: 70%">
                     <i class="search icon"></i>
                     <input type="text" placeholder="Search for products" value="{{old('query')}}" name="query">
                     <button class="ui button" type="submit">Search</button>
