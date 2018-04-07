@@ -4,6 +4,9 @@
 <script src="/js/semantic.min.js" defer></script>
 <script src="/ckeditor/ckeditor.js"></script>
 <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<script type="text/javascript" src="/bower_components/slick-carousel/slick/slick.js"></script>
 
 <script>
     $(document)
@@ -55,30 +58,28 @@
                 .dropdown()
             ;
 
-            var $slider = $( "#slider-range" );
+            var $slider = $("#slider-range");
             $slider.slider({
                 range: true,
                 min: 0,
                 max: 500,
                 values: [ {{old('lower_price',60)}}, {{old('higher_price',300)}}],
-                slide: function( event, ui ) {
-                    $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-                    $( "#lower_price" ).val( ui.values[ 0 ] );
-                    $( "#higher_price" ).val( ui.values[ 1 ] );
+                slide: function (event, ui) {
+                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                    $("#lower_price").val(ui.values[0]);
+                    $("#higher_price").val(ui.values[1]);
 
                 }
             });
-            $( "#amount" ).val( "$" + $slider.slider( "values", 0 ) +
-                " - $" + $slider.slider( "values", 1 ) );
-            $( "#lower_price" ).val( $slider.slider( "values", 0 ) );
-            $( "#higher_price" ).val( $slider.slider( "values", 1 ) );
-            $('.slider').glide({
-                autoplay: false,
-                arrowsWrapperClass: 'slider-arrows',
-                arrowRightText: '',
-                arrowLeftText: '',
-                startAt: 1,
-                perView: 3
+            $("#amount").val("$" + $slider.slider("values", 0) +
+                " - $" + $slider.slider("values", 1));
+            $("#lower_price").val($slider.slider("values", 0));
+            $("#higher_price").val($slider.slider("values", 1));
+
+            $("#caro").slick({
+                infinite: true,
+                slidesToShow: 2,
+                slidesToScroll: 2
             });
         });
 

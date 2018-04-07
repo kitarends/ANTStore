@@ -1,22 +1,15 @@
 <div class="ui container">
-    <div class="ui two column grid" id="main_banner">
-        <div class="column">
-            <img src="/images/banners/1.jpg">
-        </div>
-        <div class="column">
-            <img src="/images/banners/2.jpg">
-        </div>
-        <div class="column">
-            <img src="/images/banners/3.jpg">
-        </div>
-        <div class="column">
-            <img src="/images/banners/4.jpg">
-        </div>
+    <div id="caro">
+        @foreach(\App\Ads::all() as $ads)
+            <a href="{{$ads->url}}"  style="padding: 4px">
+                <img src="/images/{{$ads->image}}" style="width: 100%">
+            </a>
+            @endforeach
     </div>
 
     <div class="ui divider"></div>
-
 </div>
+
 
 <style>
     #main_banner > div > img {

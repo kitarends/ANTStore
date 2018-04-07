@@ -54,6 +54,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/products/{id}/delete', 'ProductController@destroy');
     Route::get('/manage/products', 'ProductController@manage')->middleware('admin');
     Route::get('/manage/categories', 'CategoryController@manage');
+    Route::get('/manage/ads', 'AdsController@manage');
     Route::get('/manage/blogs', 'BlogController@manage');
 
     Route::get('/profile/info', 'ProfileController@info');
@@ -61,6 +62,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::resource('/categories', "CategoryController")->except(['show']);
     Route::get('/categories/{id}/delete', "CategoryController@delete");
+
+    Route::resource('/ads', "AdsController")->except(['show']);
+    Route::get('/ads/{id}/delete', "AdsController@delete");
 
     Route::resource('/blogs', "BlogController")->except(['show', 'index']);
     Route::get('/blogs/{id}/delete', "BlogController@delete");
