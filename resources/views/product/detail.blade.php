@@ -10,7 +10,7 @@
             <div class="active section">{{$item->name}}</div>
         </div>
 
-        <div class="ui two column grid">
+        <div class="ui two column stackable grid">
             <div class="column">
                 <div class="image">
                     <img src="/images/{{explode(';',$item->image_urls)[0]}}" style="width: 100%">
@@ -91,7 +91,7 @@
         </div>
         <h1>Related products</h1>
 
-        <div class="ui four column grid">
+        <div class="ui four column stackable grid">
             @foreach($related as $product)
                 <div class="column">
                     @include('product.card',['item'=>$product])
