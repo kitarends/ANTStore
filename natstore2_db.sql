@@ -314,7 +314,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (2,'Adminxx','0','not set yet',1,'admin@gmail.com','$2y$10$CErKa1sZiQNCECFOnksyRuySw.nlwL8Hq3rN0BuaT5WgHp47v2V6W','aFR4Cl0eubLalHmWdUpxaD8T7b5k3EGO20cAYW8ovwFvLDnIEN4ObvmCklSy','2018-04-04 05:25:30','2018-04-04 05:25:39',1,NULL),(3,'Hung','0','not set yet',0,'hataketsu@gmail.com','$2y$10$UMu4sH7Rt.DqKyFMLO81Yu.4SJ9cOhM/3tEEhMQme14J2veZ.xjmi','PmIWCduaRBPPweQzC4nsAvPTfYnR9jEzbPveh4FE7b7YskxH1RLBRvLbq1fM','2018-04-04 09:40:12','2018-04-07 03:58:47',1,NULL);
+INSERT INTO `users` VALUES (2,'Adminxx','0','not set yet',1,'admin@gmail.com','$2y$10$CErKa1sZiQNCECFOnksyRuySw.nlwL8Hq3rN0BuaT5WgHp47v2V6W','qB7ZicQa8AHaX3GbymcgcUg5lupOCgEKQUnGeynomav60FcEXcnKHrX1R4CF','2018-04-04 05:25:30','2018-04-04 05:25:39',1,NULL),(3,'Hung','0','not set yet',0,'hataketsu@gmail.com','$2y$10$7AIEaTipHVaE/8/A4laW9uK0GdNny7VrfePnT.x7Y5TGckH/z50.m','ud5vnyWoOGriITYYH0xqggRL6uyhtfT0IeLPzGPZjVZIozAcY9Mx9iPBDEec','2018-04-04 09:40:12','2018-04-07 07:47:57',1,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -357,4 +357,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-07 18:34:37
+-- Dump completed on 2018-04-07 21:58:40

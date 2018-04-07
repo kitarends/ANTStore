@@ -8,7 +8,7 @@
             <span class="active section">Login</span>
         </div>
 
-        <div class="ui grid" style="margin-top: 20px">
+        <div class="ui stackable grid" style="margin-top: 20px">
             <div class="eight wide column">
                 <div class="ui huge header">Login</div>
                 @include('layouts.errors_block')

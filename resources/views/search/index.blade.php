@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('content')
     <div class="ui container">
-        <div class="ui grid">
+        <div class="ui stackable grid">
             <div class="four wide column">
                 <div class="ui huge header">Filter</div>
                 <form class="ui form" action="{{Request::fullUrl()}}">
@@ -35,7 +35,7 @@
                     <div class="ui sub header">{{$products->count()}} results</div>
                 </div>
                 <br>
-                <div class="ui three column grid">
+                <div class="ui three column stackable grid">
                     @foreach($products as $product)
                         <div class="column">
                             @include('product.card',['item'=>$product])
