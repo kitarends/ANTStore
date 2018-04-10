@@ -24,6 +24,12 @@
     <link rel="stylesheet" type="text/css" href="/bower_components/slick-carousel/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="/bower_components/slick-carousel/slick/slick-theme.css"/>
 
+    <style>
+        .slick-prev:before,
+        .slick-next:before {
+            color: darkgray;
+        }
+    </style>
 </head>
 <body>
 @include('layouts.top_menu')

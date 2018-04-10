@@ -9,10 +9,3 @@
 
     <div class="ui divider"></div>
 </div>
-
-
-<style>
-    #main_banner > div > img {
-        width: 100%;
-    }
-</style>
