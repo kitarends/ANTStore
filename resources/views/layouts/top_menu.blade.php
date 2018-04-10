@@ -28,6 +28,7 @@
                     <a class="item" href="/manage/orders">Orders <span class="ui red label"
                                                                        style="margin-left: 20px">{{\App\Order::whereStatus('waiting')->count()}}</span></a>
                     <a class="item" href="/manage/ads">Advertises</a>
+                    <a class="item" href="/manage/discounts">Discount codes</a>
                     <a class="item" href="/manage/blogs">Blogs</a>
                 </div>
             </div>
@@ -35,10 +36,14 @@
 
 
         <div class="right menu">
-            <a class="item" href="/cart"><i class="cart icon"></i> Cart</a>
+            <a class="item" href="/cart"><i class="cart icon"></i> Cart
+                @if(Session::has('discount'))
+                    <span class="ui red label">{{Session::get('discount')}}</span></a>
+            @endif
+
             <a class=" item" href="/checkout"><i class="payment icon"></i>Check out</a>
 
-            <div class=" item" >
+            <div class=" item">
                 <form class="ui action left icon input" method="get" action="/search" style="max-width: 70%">
                     <i class="search icon"></i>
                     <input type="text" placeholder="Search for products" value="{{old('query')}}" name="query">

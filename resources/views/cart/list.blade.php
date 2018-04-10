@@ -23,26 +23,27 @@
                 @include('cart.table_row',['item'=>$item])
             @endforeach
             </tbody>
-            <tfoot>
-            <tr>
-                <th colspan="5">
-                    <div class="ui action input">
-                        <input type="text" placeholder="Coupon code...">
-                        <button class="ui red button">Apply</button>
-                    </div>
-                    <button class="ui right floated primary button">Update cart</button>
-                    <div class="ui two column grid" style="margin-top: 20px">
-                        <div class="column"></div>
-                        <div class="column">
-                            <div class="ui dividing header">Cart total</div>
-                            <h1><strong>{{$total}}$</strong></h1>
-                            <a class="ui teal button" href="/checkout">Proceed to checkout</a>
-                        </div>
-                    </div>
-                </th>
-            </tr>
-            </tfoot>
         </table>
+        <div class="ui action input">
+            <input type="text" placeholder="Discount code..." id="discount_input">
+            <button class="ui red button" onclick="apply_discount()">Apply</button>
+        </div>
+        {{--<button class="ui right floated primary button">Update cart</button>--}}
+        <div class="ui two column grid" style="margin-top: 20px">
+            <div class="column"></div>
+            <div class="column">
+                <div class="ui dividing header">Cart total</div>
+                <h1><strong>{{$total}}$
+                        @if(Session::has('discount'))
+                            <span style="color: orangered;">{{Session::get('discount')}}</span>
+                        @endif
+
+
+                    </strong></h1>
+                <a class="ui icon labeled teal button" href="/checkout">
+                    <i class="check icon"></i>Proceed to checkout</a>
+            </div>
+        </div>
     </div>
 
 @endsection

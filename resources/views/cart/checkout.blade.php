@@ -18,14 +18,24 @@
                 <div class="ui  segment">
                     <h3 class="ui dividing header">Billing details</h3>
                     @include('layouts.errors_block')
+
+                    @if($discounted<$total)
+                        <h3 div class="ui gray huge header">
+                            <del>Total cost: {{$total}}$</del>
+                        </h3>
+                        <h3 div class="ui huge red dividing header">Discounted cost only: {{round($discounted,2)}}$</h3>
+                    @else
+                        <h3 div class="ui  huge blue dividing header">Total cost: {{$total}}$</h3>
+                    @endif
+
                     <form class="ui form" method="post" action="/save_checkout">
                         {{csrf_field()}}
                         @include('ui.form.input',['name'=>'email','label'=>'Email *','type'=>'email'])
                         @include('ui.form.input',['name'=>'name','label'=>'Reciver name *','type'=>'text'])
                         @include('ui.form.input',['name'=>'phone','label'=>'Phone number *','type'=>'tel'])
                         @include('ui.form.input',['name'=>'address','label'=>'Address *','type'=>'text'])
-                        @include('ui.form.ckeditor',['name'=>'note','label'=>'Additional information ','type'=>'text'])
-                        <button class="ui teal button" type="submit">Order</button>
+                        @include('ui.form.textarea',['name'=>'note','label'=>'Additional information ','type'=>'text'])
+                        <button class="ui teal button" type="submit">Confirm checking out</button>
                     </form>
                 </div>
             </div>

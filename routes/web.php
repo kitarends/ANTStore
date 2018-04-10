@@ -54,6 +54,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/products/{id}/delete', 'ProductController@destroy');
     Route::get('/manage/products', 'ProductController@manage')->middleware('admin');
     Route::get('/manage/categories', 'CategoryController@manage');
+    Route::get('/manage/discounts', 'DiscountController@manage');
     Route::get('/manage/ads', 'AdsController@manage');
     Route::get('/manage/blogs', 'BlogController@manage');
 
@@ -62,6 +63,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::resource('/categories', "CategoryController")->except(['show']);
     Route::get('/categories/{id}/delete', "CategoryController@delete");
+
+    Route::resource('/discounts', "DiscountController")->except(['show']);
+    Route::get('/discounts/{id}/delete', "DiscountController@delete");
 
     Route::resource('/ads', "AdsController")->except(['show']);
     Route::get('/ads/{id}/delete', "AdsController@delete");
@@ -82,6 +86,7 @@ Route::resource('/products', 'ProductController')->only(['show']);
 
 Route::resource('/categories', "CategoryController")->only(['show']);
 Route::resource('/blogs', "BlogController")->only(['show', 'index']);
+Route::get('/apply_discount','CartController@apply_discount');
 
 Route::get('/sale_off', 'SearchController@sale_off');
 Route::get('/search', 'SearchController@search');

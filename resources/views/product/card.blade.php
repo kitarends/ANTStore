@@ -8,7 +8,7 @@
                     ><i class="cart plus icon"></i> Add to cart
                     </div>
                     {{--<div class="ui inverted red button">--}}
-                        {{--<i class="heart icon"></i> Add to wish list--}}
+                    {{--<i class="heart icon"></i> Add to wish list--}}
                     {{--</div>--}}
                 </div>
             </div>
@@ -18,7 +18,7 @@
     <div class="content" style="text-align: center">
         <h2 class="header">{{$item->name}}</h2>
         <div class="meta">
-            @if($item->price>$item->sale_off)
+            @if($item->price > $item->sale_off)
                 <h2>
                     <del>{{$item->price}}$</del>
                     <span style="color: red">{{$item->sale_off}}$</span>
@@ -29,6 +29,7 @@
                 </h2>
             @endif
         </div>
-        <div class="ui star rating" data-rating="{{round($item->comments->avg('score'), 1)}}" data-max-rating="5" style="margin-top: 4px"></div>
+        <div class="ui star rating" data-rating="{{round($item->comments->avg('score'), 1)}}" data-max-rating="5"
+             style="margin-top: 4px"></div>
     </div>
 </a>

@@ -8,7 +8,7 @@
             <div class="ui borderless stackable menu">
                 <a class="item" href="/">Home</a>
                 <div class="ui dropdown item">
-                    Shop
+                    Categories
                     <i class="dropdown icon"></i>
                     <div class="menu">
                         <a class="item" href="/all">All</a>

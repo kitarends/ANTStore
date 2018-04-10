@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\Discount;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class DiscountController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function manage()
     {
-        return view('category.list', ['items' => Category::all(), 'title' => 'Manage categories']);
+        return view('discount.list', ['items' => Discount::all(), 'title' => 'Manage discounts']);
     }
 
     /**
@@ -24,10 +24,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        (new Category())->fill_olds();
-        FlashToOld::flash_to_old(Category::pluck('sort')->max() + 1, 'sort');
+        (new Discount())->fill_olds();
 
-        return view('category.edit', ['title' => 'Create new category']);
+        return view('discount.edit', ['title' => 'Create new discount']);
     }
 
     /**
@@ -41,33 +40,17 @@ class CategoryController extends Controller
     {
         $request->validate(
             [
-                'name' => 'required|unique:categories|max:255'
+                'name' => 'required|unique:discounts|max:255'
             ]
         );
-        $category = new Category();
-        $category->fill($request->all());
-        $category->save();
+        $discount = new Discount();
+        $discount->fill($request->all());
+        $discount->save();
 
-        return redirect('/manage/categories');
+        return redirect('/manage/discounts');
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $category = Category::findOrFail($id);
-
-        return view('product.list', [
-            'products' => $category->products()->paginate(10),
-            'title' => $category->name
-        ]);
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -76,11 +59,11 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Discount $discount)
     {
-        $category->fill_olds();
+        $discount->fill_olds();
 
-        return view('category.edit', ['item' => $category, 'title' => 'Edit category']);
+        return view('discount.edit', ['item' => $discount, 'title' => 'Edit discount']);
     }
 
     /**
@@ -91,17 +74,17 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Discount $discount)
     {
         $request->validate(
             [
                 'name' => 'required|max:255'
             ]
         );
-        $category->fill($request->all());
-        $category->save();
+        $discount->fill($request->all());
+        $discount->save();
 
-        return redirect('/manage/categories');
+        return redirect('/manage/discounts');
     }
 
     /**
@@ -117,7 +100,7 @@ class CategoryController extends Controller
 
     public function delete($id)
     {
-        Category::destroy($id);
-        return redirect('/manage/categories');
+        Discount::destroy($id);
+        return redirect('/manage/discounts');
     }
 }

@@ -152,5 +152,11 @@
         }
     }
 
+    function apply_discount() {
+        code=$("#discount_input").val();
+        alert(code);
+    }
+
+
 
 </script>

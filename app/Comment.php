@@ -16,29 +16,31 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $product_id
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Comment whereContent( $value )
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Comment whereCreatedAt( $value )
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Comment whereId( $value )
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Comment whereProductId( $value )
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Comment whereUpdatedAt( $value )
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Comment whereUserId( $value )
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Comment whereScore( $value )
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Comment whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Comment whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Comment whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Comment whereProductId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Comment whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Comment whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Comment whereScore($value)
  */
-class Comment extends Model {
-	protected $fillable = [
-		'content',
-		'score',
-	];
-	protected $attributes = [
-		'content'=>'',
-	];
+class Comment extends Model
+{
+    protected $fillable = [
+        'content',
+        'score',
+    ];
 
-	public function product(){
-		return $this->belongsTo('App\\Product');
-	}
-	public function user(){
-		return $this->belongsTo('App\\User');
-	}
+    public function product()
+    {
+        return $this->belongsTo('App\\Product');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\\User');
+    }
+
     public function fill_olds()
     {
         FlashToOld::flash_to_olds($this, $this->fillable);
