@@ -1,8 +1,8 @@
--- MySQL dump 10.16  Distrib 10.1.31-MariaDB, for Linux (x86_64)
+-- MySQL dump 10.16  Distrib 10.1.32-MariaDB, for Linux (x86_64)
 --
 -- Host: localhost    Database: natstore2_db
 -- ------------------------------------------------------
--- Server version	10.1.31-MariaDB
+-- Server version	10.1.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -132,6 +132,36 @@ INSERT INTO `comments` VALUES (2,'nice',3,2,8,'2018-04-04 06:38:32','2018-04-04 
 UNLOCK TABLES;
 
 --
+-- Table structure for table `discounts`
+--
+
+DROP TABLE IF EXISTS `discounts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `discounts` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `code` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `discount` int(11) NOT NULL,
+  `used_time` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `discounts`
+--
+
+LOCK TABLES `discounts` WRITE;
+/*!40000 ALTER TABLE `discounts` DISABLE KEYS */;
+INSERT INTO `discounts` VALUES (1,'Test code','OPEN','percent',15,0,'2018-04-10 01:33:23','2018-04-10 01:53:36'),(2,'Newxx','SUPER','total',10,0,'2018-04-10 08:51:23','2018-04-10 08:51:23');
+/*!40000 ALTER TABLE `discounts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -143,7 +173,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,7 +182,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (9,'2014_10_12_000000_create_users_table',1),(10,'2014_10_12_100000_create_password_resets_table',1),(11,'2018_03_08_144918_create_categories_table',1),(12,'2018_03_08_144926_create_products_table',1),(13,'2018_03_08_144948_create_comments_table',1),(17,'2018_03_08_150633_create_orders_table',2),(18,'2018_03_08_155043_create_wishes_table',2),(19,'2018_03_20_133622_create_order_items_table',2),(20,'2018_04_03_125141_create_blogs_table',3),(21,'2018_04_03_155914_add_thumb_to_blog',4),(22,'2017_02_02_232450_add_confirmation',5),(23,'2018_04_07_105021_create_ads_table',6);
+INSERT INTO `migrations` VALUES (9,'2014_10_12_000000_create_users_table',1),(10,'2014_10_12_100000_create_password_resets_table',1),(11,'2018_03_08_144918_create_categories_table',1),(12,'2018_03_08_144926_create_products_table',1),(13,'2018_03_08_144948_create_comments_table',1),(17,'2018_03_08_150633_create_orders_table',2),(18,'2018_03_08_155043_create_wishes_table',2),(19,'2018_03_20_133622_create_order_items_table',2),(20,'2018_04_03_125141_create_blogs_table',3),(21,'2018_04_03_155914_add_thumb_to_blog',4),(22,'2017_02_02_232450_add_confirmation',5),(23,'2018_04_07_105021_create_ads_table',6),(24,'2018_04_10_075235_create_discounts_table',7);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -357,4 +387,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-07 21:58:40
+-- Dump completed on 2018-04-10 22:54:43
