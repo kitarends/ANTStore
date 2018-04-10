@@ -8,11 +8,19 @@
             <img src="/images/{{explode(';',$item['product']->image_urls)[0]}}" style="width: 120px"><br>
             <strong>{{$item['product']->name}}</strong></a>
     </td>
-    <td>{{$item['product']->price }}$</td>
+    <td>
+        @if($item['product']->price>$item['product']->sale_off)
+            <del>{{$item['product']->price}}$</del>
+            <span style="color: orangered;margin-left: 10px">{{$item['product']->sale_off}}$</span>
+        @else
+            {{$item['product']->price}}$
+        @endif
+
+    </td>
     <td>
         {{$item['quantity']}}
         {{--<div class="ui input">--}}
-            {{--<input type="number" value="{{$item['quantity']}}" style="width: 80px">--}}
+        {{--<input type="number" value="{{$item['quantity']}}" style="width: 80px">--}}
         {{--</div>--}}
     </td>
     <td class="footable-last-visible" style="display: table-cell;">

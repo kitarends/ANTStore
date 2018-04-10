@@ -66,7 +66,19 @@ class CartController extends Controller
         }
         list($items, $item_number, $total) = $this->get_cart_items($request);
 
+
+        return view('cart.checkout', [
+            'title' => 'Checkout',
+            'items' => $items,
+            'total' => $total,
+            'discounted' => $this->get_discounted($total),
+            'item_number' => $item_number,]);
+    }
+
+    protected function get_discounted($total)
+    {
         $discounted = $total;
+
         if (\Session::has('code')) {
             $query = Discount::whereCode(\Session::get('code'));
             if ($query->count() != 1) {
@@ -82,14 +94,7 @@ class CartController extends Controller
                     $discounted = $total - $discount->discount;
             }
         }
-
-
-        return view('cart.checkout', [
-            'title' => 'Checkout',
-            'items' => $items,
-            'total' => $total,
-            'discounted' => $discounted,
-            'item_number' => $item_number,]);
+        return $discounted;
     }
 
     public function save_checkout(Request $request)
@@ -111,6 +116,12 @@ class CartController extends Controller
         $order->fill($request->all());
         $order->note .= '';
         $order->status = 'wait_confirm';
+
+        $discounted = $this->get_discounted($total);
+        if ($discounted < $total) {
+            $order->used_discount_code = \Session::get('code');
+            $order->discounted_price = $discounted;
+        }
         $order->save();
 
         foreach ($items as $item) {
@@ -147,7 +158,7 @@ class CartController extends Controller
                         'quantity' => $quantity
                     ];
                     $item_number += $quantity;
-                    $total += $product->price * $quantity;
+                    $total += min($product->price, $product->sale_off) * $quantity;
                 }
             }
         }
