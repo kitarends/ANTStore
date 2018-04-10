@@ -173,7 +173,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -182,7 +182,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (9,'2014_10_12_000000_create_users_table',1),(10,'2014_10_12_100000_create_password_resets_table',1),(11,'2018_03_08_144918_create_categories_table',1),(12,'2018_03_08_144926_create_products_table',1),(13,'2018_03_08_144948_create_comments_table',1),(17,'2018_03_08_150633_create_orders_table',2),(18,'2018_03_08_155043_create_wishes_table',2),(19,'2018_03_20_133622_create_order_items_table',2),(20,'2018_04_03_125141_create_blogs_table',3),(21,'2018_04_03_155914_add_thumb_to_blog',4),(22,'2017_02_02_232450_add_confirmation',5),(23,'2018_04_07_105021_create_ads_table',6),(24,'2018_04_10_075235_create_discounts_table',7);
+INSERT INTO `migrations` VALUES (9,'2014_10_12_000000_create_users_table',1),(10,'2014_10_12_100000_create_password_resets_table',1),(11,'2018_03_08_144918_create_categories_table',1),(12,'2018_03_08_144926_create_products_table',1),(13,'2018_03_08_144948_create_comments_table',1),(17,'2018_03_08_150633_create_orders_table',2),(18,'2018_03_08_155043_create_wishes_table',2),(19,'2018_03_20_133622_create_order_items_table',2),(20,'2018_04_03_125141_create_blogs_table',3),(21,'2018_04_03_155914_add_thumb_to_blog',4),(22,'2017_02_02_232450_add_confirmation',5),(23,'2018_04_07_105021_create_ads_table',6),(24,'2018_04_10_075235_create_discounts_table',7),(25,'2018_04_10_154711_add_to_order',8);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -237,6 +237,8 @@ CREATE TABLE `orders` (
   `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `used_discount_code` double NOT NULL,
+  `discounted_price` double NOT NULL,
   PRIMARY KEY (`id`),
   KEY `orders_user_id_index` (`user_id`),
   CONSTRAINT `orders_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
@@ -249,7 +251,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,NULL,'Hùng Anh Trịnh','nope','0982288173','Hà Đông','','disposed','2018-04-01 04:31:45','2018-04-01 04:32:25'),(4,2,'Adminxx','nope','0','not set yet','','done','2018-04-04 06:51:18','2018-04-04 06:56:23'),(5,2,'Adminxx','nope','0','not set yet','','done','2018-04-04 06:56:44','2018-04-04 06:56:53');
+INSERT INTO `orders` VALUES (1,NULL,'Hùng Anh Trịnh','nope','0982288173','Hà Đông','','disposed','2018-04-01 04:31:45','2018-04-01 04:32:25',0,0),(4,2,'Adminxx','nope','0','not set yet','','done','2018-04-04 06:51:18','2018-04-04 06:56:23',0,0),(5,2,'Adminxx','nope','0','not set yet','','done','2018-04-04 06:56:44','2018-04-04 06:56:53',0,0);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -387,4 +389,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-10 22:54:43
+-- Dump completed on 2018-04-10 23:18:28
