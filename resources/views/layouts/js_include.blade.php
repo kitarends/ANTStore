@@ -153,8 +153,8 @@
     }
 
     function apply_discount() {
-        code=$("#discount_input").val();
-        alert(code);
+        code = $("#discount_input").val();
+        location.href = '/apply_discount?discount=' + code;
     }
 
 
