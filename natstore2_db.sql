@@ -337,7 +337,7 @@ CREATE TABLE `users` (
   `confirmation_code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -346,7 +346,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (2,'Adminxx','0','not set yet',1,'admin@gmail.com','$2y$10$CErKa1sZiQNCECFOnksyRuySw.nlwL8Hq3rN0BuaT5WgHp47v2V6W','qB7ZicQa8AHaX3GbymcgcUg5lupOCgEKQUnGeynomav60FcEXcnKHrX1R4CF','2018-04-04 05:25:30','2018-04-04 05:25:39',1,NULL),(3,'Hung','0','not set yet',0,'hataketsu@gmail.com','$2y$10$7AIEaTipHVaE/8/A4laW9uK0GdNny7VrfePnT.x7Y5TGckH/z50.m','ud5vnyWoOGriITYYH0xqggRL6uyhtfT0IeLPzGPZjVZIozAcY9Mx9iPBDEec','2018-04-04 09:40:12','2018-04-07 07:47:57',1,NULL);
+INSERT INTO `users` VALUES (2,'Admin','0','not set yet',1,'admin@gmail.com','$2y$10$CErKa1sZiQNCECFOnksyRuySw.nlwL8Hq3rN0BuaT5WgHp47v2V6W','6EWkAXv3Lue9FLj8CtsRqgmg9RmHKnQW0O9ucn4AziTboa7tksIh0XMe7fRT','2018-04-04 05:25:30','2018-04-04 05:25:39',1,NULL),(3,'Thắng Phi','0','not set yet',0,'thangpmedia@gmail.com','$2y$10$CErKa1sZiQNCECFOnksyRuySw.nlwL8Hq3rN0BuaT5WgHp47v2V6W','ud5vnyWoOGriITYYH0xqggRL6uyhtfT0IeLPzGPZjVZIozAcY9Mx9iPBDEec','2018-04-04 09:40:12','2018-04-07 07:47:57',1,NULL),(4,'Tester 2 ','0','not set yet',0,'tester2@gmail.com','$2y$10$CErKa1sZiQNCECFOnksyRuySw.nlwL8Hq3rN0BuaT5WgHp47v2V6W','ud5vnyWoOGriITYYH0xqggRL6uyhtfT0IeLPzGPZjVZIozAcY9Mx9iPBDEec','2018-04-04 09:40:12','2018-04-07 07:47:57',1,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -389,4 +389,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-10 23:18:28
+-- Dump completed on 2018-04-11 11:48:49
