@@ -14,7 +14,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('blog.index', ['title' => 'All blogs','blogs'=>\App\Blog::query()->paginate(3)]);
+        return view('blog.index', ['title' => 'All blogs', 'blogs' => \App\Blog::query()->paginate(3)]);
     }
 
     public function manage()
@@ -67,7 +67,7 @@ class BlogController extends Controller
     public function show($id)
     {
         $blog = Blog::findOrFail($id);
-        return view('blog.view', ['item' => $blog, 'title' => $blog->title]);
+        return view('blog.view', ['item' => $blog, 'title' => $blog->title,'menu'=>'blog']);
     }
 
     /**
@@ -148,6 +148,7 @@ class BlogController extends Controller
     {
         return $this->custom_page('/terms_of_service');
     }
+
     public function contact()
     {
         return $this->custom_page('/contact');

@@ -6,21 +6,21 @@
         </a>
         <div class="column">
             <div class="ui borderless stackable menu">
-                <a class="item" href="/">Home</a>
-                <div class="ui dropdown item">
+                <a class="item {{Request::is('/')?'active':''}}" href="/">Home</a>
+                <div class="ui dropdown dividing item">
                     Categories
                     <i class="dropdown icon"></i>
                     <div class="menu">
-                        <a class="item" href="/all">All</a>
+                        <a class="{{Request::is('all')?'active':''}} item" href="/all">All</a>
                         @foreach(\App\Category::all() as $category)
-                            <a href="/category/{{$category->id}}" class="item">{{$category->name}}</a>
+                            <a href="/category/{{$category->id}}" class="{{Request::is('category/'.$category->id)?'active':''}} item">{{$category->name}}</a>
                         @endforeach
                     </div>
                 </div>
-                <a class="item" href="/sale_off" style="color: red">Sales</a>
-                <a class="item" href="/blogs">Blogs</a>
-                <a class="item" href="/contact">Contact</a>
-                <a class="item" href="/about">About us</a>
+                <a class="item {{Request::is('sale_off')?'active':''}}" href="/sale_off" style="color: red">Sales</a>
+                <a class="item {{Request::is('blogs*')?'active':''}}" href="/blogs">Blogs</a>
+                <a class="item {{Request::is('contact')?'active':''}}" href="/contact">Contact</a>
+                <a class="item {{Request::is('about')?'active':''}}" href="/about">About us</a>
             </div>
         </div>
     </div>

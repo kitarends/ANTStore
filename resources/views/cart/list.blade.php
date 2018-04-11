@@ -3,7 +3,7 @@
 
     <div class="ui container">
         <div class="ui breadcrumb">
-            <a class="section" href="/">Home</a>
+            <a class="section" href="/"><i class="home icon"></i> Home</a>
             <i class="right angle icon divider"></i>
             <div class="active section">Cart</div>
         </div>
