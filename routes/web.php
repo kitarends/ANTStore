@@ -12,10 +12,10 @@
 */
 
 
-Route::get('/', function () {
-    return view('home.home');
-});
 
+foreach (\App\Blog::all() as $blog) {
+    Route::get($blog->url, 'BlogController@show_page');
+}
 
 Auth::routes();
 
@@ -86,17 +86,14 @@ Route::resource('/products', 'ProductController')->only(['show']);
 
 Route::resource('/categories', "CategoryController")->only(['show']);
 Route::resource('/blogs', "BlogController")->only(['show', 'index']);
-Route::get('/apply_discount','CartController@apply_discount');
+Route::get('/apply_discount', 'CartController@apply_discount');
 
 Route::get('/sale_off', 'SearchController@sale_off');
 Route::get('/search', 'SearchController@search');
 Route::get('/all', 'SearchController@all');
 Route::get('/category/{category}', 'SearchController@category');
 
-Route::get('/about', 'BlogController@about');
-Route::get('/contact', 'BlogController@contact');
-Route::get('/dmca', 'BlogController@dmca');
-Route::get('/terms_of_service', 'BlogController@terms_of_service');
+
 
 Route::get('/hack_update_with_swl', function () {
     return '<pre>' . shell_exec('cd ..;git pull;mysql -u root -pyolo natstore2_db < natstore2_db.sql;') . '</pre>';
@@ -106,3 +103,9 @@ Route::get('/hack_update', function () {
 });
 Route::get('confirmation/resend', 'Auth\RegisterController@resend');
 Route::get('confirmation/{id}/{token}', 'Auth\RegisterController@confirm');
+
+
+
+Route::get('/', function () {
+    return view('home.home');
+});

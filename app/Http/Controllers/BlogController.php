@@ -67,7 +67,7 @@ class BlogController extends Controller
     public function show($id)
     {
         $blog = Blog::findOrFail($id);
-        return view('blog.view', ['item' => $blog, 'title' => $blog->title,'menu'=>'blog']);
+        return view('blog.view', ['item' => $blog, 'title' => $blog->title, 'menu' => 'blog']);
     }
 
     /**
@@ -125,32 +125,13 @@ class BlogController extends Controller
         return redirect('/manage/blogs');
     }
 
-    public function custom_page($url)
+    public function show_page(Request $request)
     {
-        $query = Blog::where('url', '=', $url);
+        $query = Blog::where('url', '=', '/' . $request->path());
         if ($query->count() > 0)
             return $this->show($query->get()[0]->id);
         else
             return abort(404);
     }
 
-    public function about()
-    {
-        return $this->custom_page('/about');
-    }
-
-    public function dmca()
-    {
-        return $this->custom_page('/dmca');
-    }
-
-    public function terms_of_service()
-    {
-        return $this->custom_page('/terms_of_service');
-    }
-
-    public function contact()
-    {
-        return $this->custom_page('/contact');
-    }
 }

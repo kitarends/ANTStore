@@ -35,7 +35,7 @@
 
             @if(Auth::check()&&Auth::user()->is_admin)
                 <div class="ui dropdown item">
-                    <div class="header">Admin</div>
+                    <div class="header">Manage</div>
                     <i class="dropdown icon"></i>
                     <div class="menu">
                         <a class="item" href="/manage">Dashboard</a>
