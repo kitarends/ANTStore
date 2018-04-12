@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.6.15 on 2018-04-01 07:13:17.
+ * Generated for Laravel 5.6.15 on 2018-04-12 02:07:38.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -12418,6 +12418,98 @@ namespace Illuminate\Support\Facades {
  
 }
 
+namespace Unisharp\Setting { 
+
+    class SettingFacade {
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function all()
+        {
+            return \Unisharp\Setting\Setting::all();
+        }
+        
+        /**
+         * Return setting value or default value by key.
+         *
+         * @param string $key
+         * @param string $value
+         * @return string|null 
+         * @static 
+         */ 
+        public static function get($key, $default_value = null)
+        {
+            return \Unisharp\Setting\Setting::get($key, $default_value);
+        }
+        
+        /**
+         * Set the setting by key and value.
+         *
+         * @param string $key
+         * @param mixed $value
+         * @return void 
+         * @static 
+         */ 
+        public static function set($key, $value)
+        {
+            \Unisharp\Setting\Setting::set($key, $value);
+        }
+        
+        /**
+         * Check if the setting exists.
+         *
+         * @param string $key
+         * @return bool 
+         * @static 
+         */ 
+        public static function has($key)
+        {
+            return \Unisharp\Setting\Setting::has($key);
+        }
+        
+        /**
+         * Delete a setting.
+         *
+         * @param string $key
+         * @return void 
+         * @static 
+         */ 
+        public static function forget($key)
+        {
+            \Unisharp\Setting\Setting::forget($key);
+        }
+        
+        /**
+         * Should language parameter auto retested ?
+         *
+         * @param bool $option
+         * @return \Unisharp\Setting\instance of Setting
+         * @static 
+         */ 
+        public static function langResetting($option = false)
+        {
+            return \Unisharp\Setting\Setting::langResetting($option);
+        }
+        
+        /**
+         * Set the language to work with other functions.
+         *
+         * @param string $language
+         * @return \Unisharp\Setting\instance of Setting
+         * @static 
+         */ 
+        public static function lang($language)
+        {
+            return \Unisharp\Setting\Setting::lang($language);
+        }
+         
+    }
+ 
+}
+
 
 namespace  { 
 
@@ -14654,6 +14746,8 @@ namespace  {
     class Validator extends \Illuminate\Support\Facades\Validator {}
 
     class View extends \Illuminate\Support\Facades\View {}
+
+    class Setting extends \Unisharp\Setting\SettingFacade {}
  
 }
 

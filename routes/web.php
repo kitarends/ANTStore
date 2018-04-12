@@ -106,6 +106,4 @@ Route::get('confirmation/{id}/{token}', 'Auth\RegisterController@confirm');
 
 
 
-Route::get('/', function () {
-    return view('home.home');
-});
+Route::get('/', 'HomeController@index');

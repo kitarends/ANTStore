@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Hamcrest\Core\Set;
 use Illuminate\Http\Request;
+use Setting;
 
 class HomeController extends Controller
 {
@@ -14,6 +16,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home','menu'=>'home');
+        return view('home');
     }
 }
