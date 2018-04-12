@@ -3,6 +3,7 @@
     <div class="ui container">
         <div class="ui inverted secondary menu stackable three column grid">
             <div class=" column">
+                <p class="ui dividing header item"><strong>Copyright</strong></p>
                 <p class="item"> NATStore © 2018. All Rights Reserved.</p>
             </div>
             <div class=" column">
