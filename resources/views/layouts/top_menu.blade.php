@@ -47,6 +47,7 @@
                         <a class="item" href="/manage/ads">Advertises</a>
                         <a class="item" href="/manage/discounts">Discount codes</a>
                         <a class="item" href="/manage/blogs">Blogs</a>
+                        <a class="item" href="/manage/settings">Settings</a>
                     </div>
                 </div>
             @endif

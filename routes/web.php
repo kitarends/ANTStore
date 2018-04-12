@@ -81,6 +81,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/orders/{id}/confirm', 'OrderController@confirm');
     Route::get('/orders/{id}/ship', 'OrderController@ship');
     Route::get('/orders/{id}/done', 'OrderController@done');
+
+    Route::get('/manage/settings','SettingController@index');
+    Route::post('/manage/settings','SettingController@save');
 });
 Route::resource('/products', 'ProductController')->only(['show']);
 
@@ -107,3 +110,4 @@ Route::get('confirmation/{id}/{token}', 'Auth\RegisterController@confirm');
 
 
 Route::get('/', 'HomeController@index');
+

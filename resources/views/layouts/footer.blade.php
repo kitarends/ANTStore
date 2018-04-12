@@ -1,16 +1,20 @@
 <div class="ui divider" style="margin-top: 20px"></div>
-<div class="ui container" style="margin-bottom: 30px">
-    <div class="ui secondary menu">
-        <div class="ui two column stackable grid">
-            <div class="column">
-                <p class="item">NATStore © 2018. All Rights Reserved.</p>
+<div style="background: black;padding-top:10px;padding-bottom: 50px">
+    <div class="ui container">
+        <div class="ui inverted secondary menu stackable three column grid">
+            <div class=" column">
+                <p class="item"> NATStore © 2018. All Rights Reserved.</p>
             </div>
-            <div class="column">
-                <div class="right menu">
-                    <a class="item" href="/feedback">Feedback</a>
-                    <a class="item" href="/terms_of_service">Terms of services</a>
-                    <a class="item" href="/dmca">DMCA</a>
-                </div>
+            <div class=" column">
+                <p class="ui dividing header item"><strong>Contact</strong></p>
+                <p class="item" >Email: {{Setting::get('email','not_set@gmail.com')}}</p>
+                <p class="item" >Phone: {{Setting::get('phone','000000')}}</p>
+            </div>
+            <div class=" column">
+                <p class="ui  dividing header item"><strong>More links</strong></p>
+                @foreach(Setting::get('more_links',[]) as $label=>$link)
+                    <a class="item" href="{{$link}}">{{$label}}</a>
+                @endforeach
             </div>
         </div>
     </div>
