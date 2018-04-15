@@ -14,7 +14,7 @@ class AddToOrder extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->double('used_discount_code');
+            $table->string('used_discount_code');
             $table->double('discounted_price');
         });
     }

@@ -1,7 +1,7 @@
 <div class="ui container" style="margin-top: 60px">
     <div class="ui two column stackable grid">
         <a class="column" style="padding-left: 100px" href="/">
-            <div class="ui huge header"><span style="color: white;background: black;padding: 10px">NAT</span>Store</div>
+            <div class="ui huge header"><span style="color: white;background: black;padding: 10px">ANT</span>Store</div>
             <div class="ui small header">Only authentic available</div>
         </a>
         <div class="column">

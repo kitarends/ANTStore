@@ -45,7 +45,7 @@ class Order extends Model
         'used_discount_code' => '',
         'discounted_price' => 0
     ];
-    protected $fillable = ['status', 'name', 'address', 'phone', 'note'];
+    protected $fillable = ['status', 'name', 'address', 'phone', 'note','email'];
 
     public function items()
     {

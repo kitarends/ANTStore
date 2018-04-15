@@ -24,7 +24,7 @@ class OrderController extends Controller {
 		$order = Order::findOrFail( $id );
 
 		return view( 'order.detail', [
-			'item'  => $order,
+			'order'  => $order,
 			'items' => $order->items,
 			'total' => $order->getFinalTotal()
 		] );

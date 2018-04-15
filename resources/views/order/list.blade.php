@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-lg-5 col-md-6 col-sm-12">
                     <ul class="breadcrumb float-md-right">
-                        <li class="breadcrumb-item"><a href="/"><i class="zmdi zmdi-home"></i> NATStore</a>
+                        <li class="breadcrumb-item"><a href="/"><i class="zmdi zmdi-home"></i> ANTStore</a>
                         </li>
                         <li class="breadcrumb-item active">Cart</li>
                     </ul>

@@ -30,6 +30,9 @@
 
                     <form class="ui form" method="post" action="/save_checkout">
                         {{csrf_field()}}
+                        @if(Auth::check()&&Auth::user()->is_admin)
+                            @include('ui.form.select',['name'=>'user_id','label'=>'Customer (for manual order) (admin only)','options'=>\App\User::all()])
+                        @endif
                         @include('ui.form.input',['name'=>'email','label'=>'Email *','type'=>'email'])
                         @include('ui.form.input',['name'=>'name','label'=>'Reciver name *','type'=>'text'])
                         @include('ui.form.input',['name'=>'phone','label'=>'Phone number *','type'=>'tel'])

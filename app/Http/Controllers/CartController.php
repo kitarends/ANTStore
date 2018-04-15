@@ -108,7 +108,9 @@ class CartController extends Controller
         list($items, $item_number, $total) = $this->get_cart_items($request);
 
         $order = new Order();
-        if (\Auth::check()) {
+        if ($request->has('user_id')) {
+            $order->user_id = $request->get('user_id');
+        } elseif (\Auth::check()) {
             $order->user_id = \Auth::id();
         } else {
             $order->user_id = null;

@@ -16,6 +16,7 @@
                 <th>User</th>
                 <th>Email</th>
                 <th>Phone</th>
+                <th>Address</th>
                 <th>Permission</th>
                 <th>Actions</th>
             </tr>
