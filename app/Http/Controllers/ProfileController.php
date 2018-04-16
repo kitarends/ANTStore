@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller {
 	public function info( Request $request ) {
 		FlashToOld::flash_to_olds(\Auth::user(),[ 'name', 'phone', 'address' ]);
-
 		return view( 'profile.info' );
 	}
 

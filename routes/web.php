@@ -58,9 +58,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/manage/ads', 'AdsController@manage');
     Route::get('/manage/blogs', 'BlogController@manage');
 
-    Route::get('/profile/info', 'ProfileController@info');
-    Route::post('/profile/save_info', 'ProfileController@save_info');
-
     Route::resource('/categories', "CategoryController")->except(['show']);
     Route::get('/categories/{id}/delete', "CategoryController@delete");
 
