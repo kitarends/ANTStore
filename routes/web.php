@@ -107,9 +107,16 @@ Route::get('confirmation/{id}/{token}', 'Auth\RegisterController@confirm');
 
 Route::get('/', 'HomeController@index');
 Route::get('/statistics', 'StatisticsController@index');
-Route::get('/reset_admin',function (){
+Route::get('/reset_admin', function () {
     $admin = \App\User::whereEmail('admin@gmail.com')->get()[0];
-    $admin->is_admin=1;
+    $admin->is_admin = 1;
     $admin->save();
     return 'Set';
+});
+Route::get('/test', function () {
+    $log_view = \App\LogProductView::firstOrNew(['day' => Carbon::today()->timestamp]);
+    $log_view->product_id = 0;
+    $log_view->views += 1;
+    $log_view->save();
+    return $log_view->views;
 });

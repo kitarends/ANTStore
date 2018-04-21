@@ -8,17 +8,93 @@
 
     <div class="ui container">
         <h3 class="ui huge header">Statistics</h3>
-        <div class="ui right floated buttons">
-            <button id="reportrange" class="ui  icon labeled  button">
-                <i class="calendar icon" style="margin:0"></i>
-                <span>{{old('start')}} - {{old('end')}}</span>
-            </button>
+        <div class="ui one column grid">
+            <div class="column">
+                <div class="ui right floated buttons">
+                    <button id="reportrange" class="ui  icon labeled  button">
+                        <i class="calendar icon" style="margin:0"></i>
+                        <span>{{old('start')}} - {{old('end')}}</span>
+                    </button>
+                </div>
+            </div>
         </div>
+
         <form method="get" id="time_form">
             <input type="hidden" id="start_time" name="start" value="{{old('start')}}">
             <input type="hidden" id="end_time" name="end" value="{{old('end')}}">
         </form>
-        <canvas id="visits_chart"></canvas>
+
+        <div class="ui stackable grid">
+
+            <div class="ui twelve wide column">
+                <h4 class="ui header">Page visits</h4>
+                <canvas id="visits_chart"></canvas>
+            </div>
+            <div class="ui four wide column">
+                <div class="ui two statistics">
+                    <a class="ui statistic" href="/manage/products">
+                        <div class="value">
+                            {{Tracker::onlineUsers()->count()}}
+                        </div>
+                        <div class="label">
+                            Current online users
+                        </div>
+                    </a>
+                    <a class="ui statistic" href="/manage/products">
+                        <div class="value">
+                            {{Tracker::onlineUsers()->count()}}
+                        </div>
+                        <div class="label">
+                            Current online users
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <h4 class="ui header">Top viewed products</h4>
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th>Product</th>
+                <th>Viewed</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($top_views as $item)
+                <tr>
+                    <td>
+                        <a href="/products/{{$item->product_id}}">{{$item->product->name}}</a>
+                    </td>
+                    <td>
+                        {{$item->views}}
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+
+        <h4 class="ui header">Top sold products</h4>
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th>Product</th>
+                <th>Sold</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($top_solds as $item)
+                <tr>
+                    <td>
+                        <a href="/products/{{$item->product_id}}">{{$item->product->name}}</a>
+                    </td>
+                    <td>
+                        {{$item->solds}}
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
 
     <script>

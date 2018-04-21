@@ -72,6 +72,7 @@ class ProductController extends Controller
         }
         $products = Product::where('id', '!=', $product->id)->get();
         $product->views+=1;
+        $product->increaseView();
         $product->save();
         $related = $products->random(min($products->count(), 4));
         return view('product.detail', ['item' => $product,

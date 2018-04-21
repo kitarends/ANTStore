@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Http\Controllers\FlashToOld;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -104,5 +105,22 @@ class Product extends Model
     public function fill_olds()
     {
         FlashToOld::flash_to_olds($this, $this->fillable);
+    }
+
+    public function solds()
+    {
+        return $this->hasMany(LogProductSold::class);
+    }
+
+    public function views()
+    {
+        return $this->hasMany(LogProductView::class);
+    }
+
+    public function increaseView()
+    {
+        $log_view = $this->views()->firstOrNew(['day' => Carbon::today()->timestamp]);
+        $log_view->views += 1;
+        $log_view->save();
     }
 }
