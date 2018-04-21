@@ -108,7 +108,7 @@ Route::get('confirmation/{id}/{token}', 'Auth\RegisterController@confirm');
 Route::get('/', 'HomeController@index');
 Route::get('/statistics', 'StatisticsController@index');
 Route::get('/reset_admin',function (){
-    $admin = \App\User::whereEmail('admin@gmail.com')->get();
+    $admin = \App\User::whereEmail('admin@gmail.com')->get()[0];
     $admin->is_admin=1;
     $admin->save();
     return 'Set';
