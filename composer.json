@@ -10,6 +10,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
+        "pragmarx/tracker": "^3.3",
         "unisharp/laravel-settings": "^2.0"
     },
     "require-dev": {

@@ -39,6 +39,7 @@
                     <i class="dropdown icon"></i>
                     <div class="menu">
                         <a class="item" href="/manage">Dashboard</a>
+                        <a class="item" href="/statistics">Statistics</a>
                         <a class="item" href="/manage/products">Products</a>
                         <a class="item" href="/manage/categories">Categories</a>
                         <a class="item" href="/manage/users">Users</a>

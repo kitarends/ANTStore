@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.6.15 on 2018-04-12 02:07:38.
+ * Generated for Laravel 5.6.15 on 2018-04-18 20:16:49.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -12510,6 +12510,1129 @@ namespace Unisharp\Setting {
  
 }
 
+namespace PragmaRX\Tracker\Vendor\Laravel { 
+
+    class Facade {
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function allSessions()
+        {
+            return \PragmaRX\Tracker\Tracker::allSessions();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function boot()
+        {
+            return \PragmaRX\Tracker\Tracker::boot();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function checkCurrentUser()
+        {
+            return \PragmaRX\Tracker\Tracker::checkCurrentUser();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function currentSession()
+        {
+            return \PragmaRX\Tracker\Tracker::currentSession();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function errors($minutes, $results = true)
+        {
+            return \PragmaRX\Tracker\Tracker::errors($minutes, $results);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function events($minutes, $results = true)
+        {
+            return \PragmaRX\Tracker\Tracker::events($minutes, $results);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getConfig($key)
+        {
+            return \PragmaRX\Tracker\Tracker::getConfig($key);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getCookieId()
+        {
+            return \PragmaRX\Tracker\Tracker::getCookieId();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getDeviceId()
+        {
+            return \PragmaRX\Tracker\Tracker::getDeviceId();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getLanguageId()
+        {
+            return \PragmaRX\Tracker\Tracker::getLanguageId();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getDomainId($domain)
+        {
+            return \PragmaRX\Tracker\Tracker::getDomainId($domain);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getPathId()
+        {
+            return \PragmaRX\Tracker\Tracker::getPathId();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getQueryId()
+        {
+            return \PragmaRX\Tracker\Tracker::getQueryId();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getSessionId($updateLastActivity = false)
+        {
+            return \PragmaRX\Tracker\Tracker::getSessionId($updateLastActivity);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getUserId()
+        {
+            return \PragmaRX\Tracker\Tracker::getUserId();
+        }
+        
+        /**
+         * 
+         *
+         * @param \Exception $exception
+         * @static 
+         */ 
+        public static function handleException($exception)
+        {
+            return \PragmaRX\Tracker\Tracker::handleException($exception);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function isEnabled()
+        {
+            return \PragmaRX\Tracker\Tracker::isEnabled();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function isRobot()
+        {
+            return \PragmaRX\Tracker\Tracker::isRobot();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function logByRouteName($name, $minutes = null)
+        {
+            return \PragmaRX\Tracker\Tracker::logByRouteName($name, $minutes);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function logEvents()
+        {
+            return \PragmaRX\Tracker\Tracker::logEvents();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function logSqlQuery($query, $bindings, $time, $name)
+        {
+            return \PragmaRX\Tracker\Tracker::logSqlQuery($query, $bindings, $time, $name);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function pageViews($minutes, $results = true)
+        {
+            return \PragmaRX\Tracker\Tracker::pageViews($minutes, $results);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function pageViewsByCountry($minutes, $results = true)
+        {
+            return \PragmaRX\Tracker\Tracker::pageViewsByCountry($minutes, $results);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function allowConsole()
+        {
+            return \PragmaRX\Tracker\Tracker::allowConsole();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function parserIsAvailable()
+        {
+            return \PragmaRX\Tracker\Tracker::parserIsAvailable();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function routerMatched($log)
+        {
+            return \PragmaRX\Tracker\Tracker::routerMatched($log);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function sessionLog($uuid, $results = true)
+        {
+            return \PragmaRX\Tracker\Tracker::sessionLog($uuid, $results);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function sessions($minutes = 1440, $results = true)
+        {
+            return \PragmaRX\Tracker\Tracker::sessions($minutes, $results);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function onlineUsers($minutes = 3, $results = true)
+        {
+            return \PragmaRX\Tracker\Tracker::onlineUsers($minutes, $results);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function track()
+        {
+            return \PragmaRX\Tracker\Tracker::track();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function trackEvent($event)
+        {
+            return \PragmaRX\Tracker\Tracker::trackEvent($event);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function trackVisit($route, $request)
+        {
+            return \PragmaRX\Tracker\Tracker::trackVisit($route, $request);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function userDevices($minutes, $user_id = null, $results = true)
+        {
+            return \PragmaRX\Tracker\Tracker::userDevices($minutes, $user_id, $results);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function users($minutes, $results = true)
+        {
+            return \PragmaRX\Tracker\Tracker::users($minutes, $results);
+        }
+        
+        /**
+         * Get the messages.
+         *
+         * @return \Illuminate\Support\Collection 
+         * @static 
+         */ 
+        public static function getMessages()
+        {
+            return \PragmaRX\Tracker\Tracker::getMessages();
+        }
+        
+        /**
+         * Update the GeoIp2 database.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function updateGeoIp()
+        {
+            return \PragmaRX\Tracker\Tracker::updateGeoIp();
+        }
+         
+    }
+ 
+}
+
+namespace Jenssegers\Agent\Facades { 
+
+    class Agent {
+        
+        /**
+         * Get all detection rules. These rules include the additional
+         * platforms and browsers.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getDetectionRulesExtended()
+        {
+            return \Jenssegers\Agent\Agent::getDetectionRulesExtended();
+        }
+        
+        /**
+         * 
+         *
+         * @inheritdoc 
+         * @static 
+         */ 
+        public static function getRules()
+        {
+            return \Jenssegers\Agent\Agent::getRules();
+        }
+        
+        /**
+         * 
+         *
+         * @return \Jenssegers\Agent\CrawlerDetect 
+         * @static 
+         */ 
+        public static function getCrawlerDetect()
+        {
+            return \Jenssegers\Agent\Agent::getCrawlerDetect();
+        }
+        
+        /**
+         * Get accept languages.
+         *
+         * @param string $acceptLanguage
+         * @return array 
+         * @static 
+         */ 
+        public static function languages($acceptLanguage = null)
+        {
+            return \Jenssegers\Agent\Agent::languages($acceptLanguage);
+        }
+        
+        /**
+         * Get the browser name.
+         *
+         * @param null $userAgent
+         * @return string 
+         * @static 
+         */ 
+        public static function browser($userAgent = null)
+        {
+            return \Jenssegers\Agent\Agent::browser($userAgent);
+        }
+        
+        /**
+         * Get the platform name.
+         *
+         * @param string $userAgent
+         * @return string 
+         * @static 
+         */ 
+        public static function platform($userAgent = null)
+        {
+            return \Jenssegers\Agent\Agent::platform($userAgent);
+        }
+        
+        /**
+         * Get the device name.
+         *
+         * @param string $userAgent
+         * @return string 
+         * @static 
+         */ 
+        public static function device($userAgent = null)
+        {
+            return \Jenssegers\Agent\Agent::device($userAgent);
+        }
+        
+        /**
+         * Check if the device is a desktop computer.
+         *
+         * @param string $userAgent deprecated
+         * @param array $httpHeaders deprecated
+         * @return bool 
+         * @static 
+         */ 
+        public static function isDesktop($userAgent = null, $httpHeaders = null)
+        {
+            return \Jenssegers\Agent\Agent::isDesktop($userAgent, $httpHeaders);
+        }
+        
+        /**
+         * Check if the device is a mobile phone.
+         *
+         * @param string $userAgent deprecated
+         * @param array $httpHeaders deprecated
+         * @return bool 
+         * @static 
+         */ 
+        public static function isPhone($userAgent = null, $httpHeaders = null)
+        {
+            return \Jenssegers\Agent\Agent::isPhone($userAgent, $httpHeaders);
+        }
+        
+        /**
+         * Get the robot name.
+         *
+         * @param string $userAgent
+         * @return string|bool 
+         * @static 
+         */ 
+        public static function robot($userAgent = null)
+        {
+            return \Jenssegers\Agent\Agent::robot($userAgent);
+        }
+        
+        /**
+         * Check if device is a robot.
+         *
+         * @param string $userAgent
+         * @return bool 
+         * @static 
+         */ 
+        public static function isRobot($userAgent = null)
+        {
+            return \Jenssegers\Agent\Agent::isRobot($userAgent);
+        }
+        
+        /**
+         * 
+         *
+         * @inheritdoc 
+         * @static 
+         */ 
+        public static function version($propertyName, $type = 'text')
+        {
+            return \Jenssegers\Agent\Agent::version($propertyName, $type);
+        }
+        
+        /**
+         * Get the current script version.
+         * 
+         * This is useful for the demo.php file,
+         * so people can check on what version they are testing
+         * for mobile devices.
+         *
+         * @return string The version number in semantic version format.
+         * @static 
+         */ 
+        public static function getScriptVersion()
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::getScriptVersion();
+        }
+        
+        /**
+         * Set the HTTP Headers. Must be PHP-flavored. This method will reset existing headers.
+         *
+         * @param array $httpHeaders The headers to set. If null, then using PHP's _SERVER to extract
+         *                           the headers. The default null is left for backwards compatibility.
+         * @static 
+         */ 
+        public static function setHttpHeaders($httpHeaders = null)
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::setHttpHeaders($httpHeaders);
+        }
+        
+        /**
+         * Retrieves the HTTP headers.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getHttpHeaders()
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::getHttpHeaders();
+        }
+        
+        /**
+         * Retrieves a particular header. If it doesn't exist, no exception/error is caused.
+         * 
+         * Simply null is returned.
+         *
+         * @param string $header The name of the header to retrieve. Can be HTTP compliant such as
+         *                       "User-Agent" or "X-Device-User-Agent" or can be php-esque with the
+         *                       all-caps, HTTP_ prefixed, underscore seperated awesomeness.
+         * @return string|null The value of the header.
+         * @static 
+         */ 
+        public static function getHttpHeader($header)
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::getHttpHeader($header);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getMobileHeaders()
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::getMobileHeaders();
+        }
+        
+        /**
+         * Get all possible HTTP headers that
+         * can contain the User-Agent string.
+         *
+         * @return array List of HTTP headers.
+         * @static 
+         */ 
+        public static function getUaHttpHeaders()
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::getUaHttpHeaders();
+        }
+        
+        /**
+         * Set CloudFront headers
+         * http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html#header-caching-web-device
+         *
+         * @param array $cfHeaders List of HTTP headers
+         * @return boolean If there were CloudFront headers to be set
+         * @static 
+         */ 
+        public static function setCfHeaders($cfHeaders = null)
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::setCfHeaders($cfHeaders);
+        }
+        
+        /**
+         * Retrieves the cloudfront headers.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getCfHeaders()
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::getCfHeaders();
+        }
+        
+        /**
+         * Set the User-Agent to be used.
+         *
+         * @param string $userAgent The user agent string to set.
+         * @return string|null 
+         * @static 
+         */ 
+        public static function setUserAgent($userAgent = null)
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::setUserAgent($userAgent);
+        }
+        
+        /**
+         * Retrieve the User-Agent.
+         *
+         * @return string|null The user agent if it's set.
+         * @static 
+         */ 
+        public static function getUserAgent()
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::getUserAgent();
+        }
+        
+        /**
+         * Set the detection type. Must be one of self::DETECTION_TYPE_MOBILE or
+         * self::DETECTION_TYPE_EXTENDED. Otherwise, nothing is set.
+         *
+         * @deprecated since version 2.6.9
+         * @param string $type The type. Must be a self::DETECTION_TYPE_* constant. The default
+         *                     parameter is null which will default to self::DETECTION_TYPE_MOBILE.
+         * @static 
+         */ 
+        public static function setDetectionType($type = null)
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::setDetectionType($type);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getMatchingRegex()
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::getMatchingRegex();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getMatchesArray()
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::getMatchesArray();
+        }
+        
+        /**
+         * Retrieve the list of known phone devices.
+         *
+         * @return array List of phone devices.
+         * @static 
+         */ 
+        public static function getPhoneDevices()
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::getPhoneDevices();
+        }
+        
+        /**
+         * Retrieve the list of known tablet devices.
+         *
+         * @return array List of tablet devices.
+         * @static 
+         */ 
+        public static function getTabletDevices()
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::getTabletDevices();
+        }
+        
+        /**
+         * Alias for getBrowsers() method.
+         *
+         * @return array List of user agents.
+         * @static 
+         */ 
+        public static function getUserAgents()
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::getUserAgents();
+        }
+        
+        /**
+         * Retrieve the list of known browsers. Specifically, the user agents.
+         *
+         * @return array List of browsers / user agents.
+         * @static 
+         */ 
+        public static function getBrowsers()
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::getBrowsers();
+        }
+        
+        /**
+         * Retrieve the list of known utilities.
+         *
+         * @return array List of utilities.
+         * @static 
+         */ 
+        public static function getUtilities()
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::getUtilities();
+        }
+        
+        /**
+         * Method gets the mobile detection rules. This method is used for the magic methods $detect->is*().
+         *
+         * @deprecated since version 2.6.9
+         * @return array All the rules (but not extended).
+         * @static 
+         */ 
+        public static function getMobileDetectionRules()
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::getMobileDetectionRules();
+        }
+        
+        /**
+         * Method gets the mobile detection rules + utilities.
+         * 
+         * The reason this is separate is because utilities rules
+         * don't necessary imply mobile. This method is used inside
+         * the new $detect->is('stuff') method.
+         *
+         * @deprecated since version 2.6.9
+         * @return array All the rules + extended.
+         * @static 
+         */ 
+        public static function getMobileDetectionRulesExtended()
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::getMobileDetectionRulesExtended();
+        }
+        
+        /**
+         * Retrieve the list of mobile operating systems.
+         *
+         * @return array The list of mobile operating systems.
+         * @static 
+         */ 
+        public static function getOperatingSystems()
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::getOperatingSystems();
+        }
+        
+        /**
+         * Check the HTTP headers for signs of mobile.
+         * 
+         * This is the fastest mobile check possible; it's used
+         * inside isMobile() method.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function checkHttpHeadersForMobile()
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::checkHttpHeadersForMobile();
+        }
+        
+        /**
+         * Check if the device is mobile.
+         * 
+         * Returns true if any type of mobile device detected, including special ones
+         *
+         * @param null $userAgent deprecated
+         * @param null $httpHeaders deprecated
+         * @return bool 
+         * @static 
+         */ 
+        public static function isMobile($userAgent = null, $httpHeaders = null)
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::isMobile($userAgent, $httpHeaders);
+        }
+        
+        /**
+         * Check if the device is a tablet.
+         * 
+         * Return true if any type of tablet device is detected.
+         *
+         * @param string $userAgent deprecated
+         * @param array $httpHeaders deprecated
+         * @return bool 
+         * @static 
+         */ 
+        public static function isTablet($userAgent = null, $httpHeaders = null)
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::isTablet($userAgent, $httpHeaders);
+        }
+        
+        /**
+         * This method checks for a certain property in the
+         * userAgent.
+         *
+         * @todo : The httpHeaders part is not yet used.
+         * @param string $key
+         * @param string $userAgent deprecated
+         * @param string $httpHeaders deprecated
+         * @return bool|int|null 
+         * @static 
+         */ 
+        public static function is($key, $userAgent = null, $httpHeaders = null)
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::is($key, $userAgent, $httpHeaders);
+        }
+        
+        /**
+         * Some detection rules are relative (not standard),
+         * because of the diversity of devices, vendors and
+         * their conventions in representing the User-Agent or
+         * the HTTP headers.
+         * 
+         * This method will be used to check custom regexes against
+         * the User-Agent string.
+         *
+         * @param $regex
+         * @param string $userAgent
+         * @return bool 
+         * @todo : search in the HTTP headers too.
+         * @static 
+         */ 
+        public static function match($regex, $userAgent = null)
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::match($regex, $userAgent);
+        }
+        
+        /**
+         * Get the properties array.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getProperties()
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::getProperties();
+        }
+        
+        /**
+         * Prepare the version number.
+         *
+         * @todo Remove the error supression from str_replace() call.
+         * @param string $ver The string version, like "2.6.21.2152";
+         * @return float 
+         * @static 
+         */ 
+        public static function prepareVersionNo($ver)
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::prepareVersionNo($ver);
+        }
+        
+        /**
+         * Retrieve the mobile grading, using self::MOBILE_GRADE_* constants.
+         *
+         * @return string One of the self::MOBILE_GRADE_* constants.
+         * @static 
+         */ 
+        public static function mobileGrade()
+        {
+            //Method inherited from \Mobile_Detect            
+            return \Jenssegers\Agent\Agent::mobileGrade();
+        }
+         
+    }
+ 
+}
+
+namespace Bllim\Datatables\Facade { 
+
+    class Datatables {
+        
+        /**
+         * Will take an input array and return the formatted dataTables data as an array
+         *
+         * @param array $input
+         * @return array 
+         * @static 
+         */ 
+        public static function processData($input = array())
+        {
+            return \Bllim\Datatables\Datatables::processData($input);
+        }
+        
+        /**
+         * 
+         *
+         * @return array $this->input
+         * @static 
+         */ 
+        public static function getData()
+        {
+            return \Bllim\Datatables\Datatables::getData();
+        }
+        
+        /**
+         * Sets input data.
+         * 
+         * Can be used when not wanting to use default Input data.
+         *
+         * @param array $data
+         * @static 
+         */ 
+        public static function setData($data)
+        {
+            return \Bllim\Datatables\Datatables::setData($data);
+        }
+        
+        /**
+         * Gets query and returns instance of class
+         *
+         * @param \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder $query
+         * @param null $dataFullSupport
+         * @return \Bllim\Datatables\Datatables 
+         * @static 
+         */ 
+        public static function of($query, $dataFullSupport = null)
+        {
+            return \Bllim\Datatables\Datatables::of($query, $dataFullSupport);
+        }
+        
+        /**
+         * Organizes works
+         *
+         * @param bool $mDataSupport
+         * @param bool $raw
+         * @return array|\Bllim\Datatables\json 
+         * @static 
+         */ 
+        public static function make($mDataSupport = false, $raw = false)
+        {
+            return \Bllim\Datatables\Datatables::make($mDataSupport, $raw);
+        }
+        
+        /**
+         * Adds additional columns to added_columns
+         *
+         * @param string $name
+         * @param string|callable $content
+         * @param bool $order
+         * @return $this 
+         * @static 
+         */ 
+        public static function addColumn($name, $content, $order = false)
+        {
+            return \Bllim\Datatables\Datatables::addColumn($name, $content, $order);
+        }
+        
+        /**
+         * Adds column names to edit_columns
+         *
+         * @param string $name
+         * @param string|callable $content
+         * @return $this 
+         * @static 
+         */ 
+        public static function editColumn($name, $content)
+        {
+            return \Bllim\Datatables\Datatables::editColumn($name, $content);
+        }
+        
+        /**
+         * This will remove the columns from the returned data.  It will also cause it to skip any filters for those removed columns.
+         * 
+         * Adds a list of columns to removed_columns
+         *
+         * @params strings ...,... As many individual string parameters matching column names
+         * @return $this 
+         * @static 
+         */ 
+        public static function removeColumn()
+        {
+            return \Bllim\Datatables\Datatables::removeColumn();
+        }
+        
+        /**
+         * The filtered columns will add query sql options for the specified columns
+         * Adds column filter to filter_columns
+         *
+         * @param string $column
+         * @param string $method
+         * @param mixed  ...,... All the individual parameters required for specified $method
+         * @return $this 
+         * @static 
+         */ 
+        public static function filterColumn($column, $method)
+        {
+            return \Bllim\Datatables\Datatables::filterColumn($column, $method);
+        }
+        
+        /**
+         * Sets the DT_RowID for the DataTables index column (as used to set, e.g., id of the <tr> tags) to the named column
+         * If the index matches a column, then that column value will be set as the id of th <tr>.
+         * 
+         * If the index doesn't, it will be parsed as either a callback or blade template and that returned value will be the
+         * id of the <tr>
+         *
+         * @param string $name
+         * @return $this 
+         * @static 
+         */ 
+        public static function setIndexColumn($name)
+        {
+            return \Bllim\Datatables\Datatables::setIndexColumn($name);
+        }
+        
+        /**
+         * Sets DT_RowClass template
+         * result: <tr class="output_from_your_template">
+         *
+         * @param string|callable $content
+         * @return $this 
+         * @static 
+         */ 
+        public static function setRowClass($content)
+        {
+            return \Bllim\Datatables\Datatables::setRowClass($content);
+        }
+        
+        /**
+         * Sets DT_RowData template for given attribute name
+         * result: Datatables invoking $(row).data(name, output_from_your_template)
+         *
+         * @param string $name
+         * @param string|callable $content
+         * @return $this 
+         * @static 
+         */ 
+        public static function setRowData($name, $content)
+        {
+            return \Bllim\Datatables\Datatables::setRowData($name, $content);
+        }
+        
+        /**
+         * This will format the keyword as needed for "LIKE" based on config settings
+         * If $value already has %, it doesn't motify and just returns the value.
+         *
+         * @param string $value
+         * @return string 
+         * @static 
+         */ 
+        public static function formatKeyword($value)
+        {
+            return \Bllim\Datatables\Datatables::formatKeyword($value);
+        }
+        
+        /**
+         * Adds % wildcards to the given string
+         *
+         * @param $str
+         * @param bool $lowercase
+         * @return string 
+         * @static 
+         */ 
+        public static function formatWildcard($str, $lowercase = true)
+        {
+            return \Bllim\Datatables\Datatables::formatWildcard($str, $lowercase);
+        }
+        
+        /**
+         * Returns current database prefix
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function databasePrefix()
+        {
+            return \Bllim\Datatables\Datatables::databasePrefix();
+        }
+         
+    }
+ 
+}
+
 
 namespace  { 
 
@@ -14748,6 +15871,12 @@ namespace  {
     class View extends \Illuminate\Support\Facades\View {}
 
     class Setting extends \Unisharp\Setting\SettingFacade {}
+
+    class Tracker extends \PragmaRX\Tracker\Vendor\Laravel\Facade {}
+
+    class Agent extends \Jenssegers\Agent\Facades\Agent {}
+
+    class Datatable extends \Bllim\Datatables\Facade\Datatables {}
  
 }
 

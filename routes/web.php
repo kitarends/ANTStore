@@ -12,6 +12,7 @@
 */
 
 
+use Carbon\Carbon;
 
 foreach (\App\Blog::all() as $blog) {
     Route::get($blog->url, 'BlogController@show_page');
@@ -79,8 +80,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/orders/{id}/ship', 'OrderController@ship');
     Route::get('/orders/{id}/done', 'OrderController@done');
 
-    Route::get('/manage/settings','SettingController@index');
-    Route::post('/manage/settings','SettingController@save');
+    Route::get('/manage/settings', 'SettingController@index');
+    Route::post('/manage/settings', 'SettingController@save');
 });
 Route::resource('/products', 'ProductController')->only(['show']);
 
@@ -94,7 +95,6 @@ Route::get('/all', 'SearchController@all');
 Route::get('/category/{category}', 'SearchController@category');
 
 
-
 Route::get('/hack_update_with_swl', function () {
     return '<pre>' . shell_exec('cd ..;git pull;mysql -u root -pyolo natstore2_db < natstore2_db.sql;') . '</pre>';
 });
@@ -105,6 +105,11 @@ Route::get('confirmation/resend', 'Auth\RegisterController@resend');
 Route::get('confirmation/{id}/{token}', 'Auth\RegisterController@confirm');
 
 
-
 Route::get('/', 'HomeController@index');
-
+Route::get('/statistics', 'StatisticsController@index');
+Route::get('/reset_admin',function (){
+    $admin = \App\User::whereEmail('admin@gmail.com')->get();
+    $admin->is_admin=1;
+    $admin->save();
+    return 'Set';
+});
