@@ -5,28 +5,36 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\Array_;
+use PragmaRX\Tracker\Support\Minutes;
 
 class StatisticsController extends Controller
 {
     public function index(Request $request)
     {
-        if ($request->has('from')) {
-            $from = str_replace('_', ' ', $request->get('from'));
+        if ($request->has('start')) {
+            $start = $request->get('start');
         } else {
-            $from = 'today';
+            $start = 'today';
         }
-        $time = new Carbon($from);
-        $minutes = $time->diffInMinutes();
-        $visits = \Tracker::pageViews($minutes);
-//        foreach ($)
+        $start = new Carbon($start);
 
-        $data=[];
-        for ($i=0;$i<1000;$i++) {
-            $data[$i]['date'] = $i;
-            $data[$i]['total']=rand(20,100);
+
+        if ($request->has('end')) {
+            $end = $request->get('end');
+        } else {
+            $end = 'today';
         }
-        return view('stat.visits', ['visits' => collect($data)->filter(function ($value,$key){
-            return $value['date']%5==0;
-        }), 'title' => 'Statistics', 'from' => $from]);
+        $end = new Carbon($end);
+        $end = $end->addDay(1);
+        $end = $end->addMinute(-1);
+        FlashToOld::flash_to_old($start->format('M d, Y'), 'start');
+        FlashToOld::flash_to_old($end->format('M d, Y'), 'end');
+
+        $minutes = new Minutes();
+        $minutes->setStart($start);
+        $minutes->setEnd($end);
+
+        $visits = \Tracker::pageViews($minutes);
+        return view('stat.visits', ['visits' => $visits, 'title' => 'Statistics']);
     }
 }

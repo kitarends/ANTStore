@@ -8,20 +8,29 @@
 
     <div class="ui container">
         <h3 class="ui huge header">Statistics</h3>
-        <button id="reportrange" class="ui right floated icon labeled basic button">
-            <i class="calendar icon" style="margin:0"></i>
-            <span>Select time</span>
-        </button>
+        <div class="ui right floated buttons">
+            <button id="reportrange" class="ui  icon labeled  button">
+                <i class="calendar icon" style="margin:0"></i>
+                <span>{{old('start')}} - {{old('end')}}</span>
+            </button>
+        </div>
+        <form method="get" id="time_form">
+            <input type="hidden" id="start_time" name="start" value="{{old('start')}}">
+            <input type="hidden" id="end_time" name="end" value="{{old('end')}}">
+        </form>
         <canvas id="visits_chart"></canvas>
     </div>
 
     <script>
         var cb = function (start, end, label) {
             console.log(start.toISOString(), end.toISOString(), label);
+            $("#start_time").val(start.format('MMMM D, YYYY'));
+            $("#end_time").val(end.format('MMMM D, YYYY'));
             $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+            $('#time_form').submit();
         };
 
-        var optionSet2 = {
+        var optionSet = {
             startDate: moment().subtract(7, 'days'),
             endDate: moment(),
             opens: 'left',
@@ -36,19 +45,19 @@
         };
 
         $(function () {
-            $('#reportrange').daterangepicker(optionSet2, cb);
+            $('#reportrange').daterangepicker(optionSet, cb);
         });
+
+        //visits chart
         visits_chart_canvas = $('#visits_chart').get(0).getContext('2d');
-        //        visits_chart = new Chart();
-        var myChart = new Chart(visits_chart_canvas, {
+        new Chart(visits_chart_canvas, {
             type: 'line',
             data: {
                 labels: {!! $visits->pluck('date') !!},
                 datasets: [{
-                    label: '# of Votes',
+                    label: '# of Visits',
                     data: {!! $visits->pluck('total') !!},
                     borderColor: '#3c8dbc',
-//                    backgroundColor: 'white',
                     borderWidth: 2
                 }]
             }
