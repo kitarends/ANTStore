@@ -46,7 +46,7 @@ class StatisticsController extends Controller
         $top_sold_product_logs = LogProductSold::query()
             ->where('day', '>=', $start->timestamp)
             ->where('day', '<=', $end->timestamp)->get();
-$
+
         $data = ['visits' => $visits, 'title' => 'Statistics'];
         $data['top_views']=$top_view_product_logs;
         $data['top_solds']=$top_sold_product_logs;
