@@ -50,6 +50,7 @@ class StatisticsController extends Controller
         $data = ['visits' => $visits, 'title' => 'Statistics'];
         $data['top_views']=$top_view_product_logs;
         $data['top_solds']=$top_sold_product_logs;
+
         return view('stat.visits', $data);
     }
 }

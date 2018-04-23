@@ -19,6 +19,8 @@ class SettingController extends Controller
             'email' => 'required|email',
             'phone' => 'required|numeric',
         ]);
+        \Setting::set('email',$request->get('email'));
+        \Setting::set('phone',$request->get('phone'));
         $more_links = [];
         $labels = $request->get('more_labels');
         $links = $request->get('more_links');
