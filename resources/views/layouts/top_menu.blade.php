@@ -24,6 +24,7 @@
                     @if(Auth::check())
                         <a class="item" href="/orders">View my orders</a>
                         <a class="item" href="/profile/info">Edit my information</a>
+                        <a class="item" href="/profile/password">Change password</a>
                         <a class="item" href="/logout">Logout</a>
                     @else
                         <a class="item" href="/login">Login</a>

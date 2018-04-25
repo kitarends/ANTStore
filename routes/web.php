@@ -29,6 +29,9 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::get('/profile/info', 'ProfileController@info');
     Route::post('/profile/save_info', 'ProfileController@save_info');
+    Route::get('/profile/password', 'ProfileController@change_password');
+    Route::post('/profile/save_password', 'ProfileController@save_password');
+
     Route::get('/orders/{id}/dispose', 'OrderController@dispose');
     Route::get('/orders', 'OrderController@all');
     Route::get('/orders/{id}', 'OrderController@show');
