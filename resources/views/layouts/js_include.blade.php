@@ -9,8 +9,7 @@
 <script type="text/javascript" src="/bower_components/slick-carousel/slick/slick.js"></script>
 
 <script>
-    $(document)
-        .ready(function () {
+    $(function () {
             $('.square').each(function () {
                 $(this).height($(this).width());
                 var image = $(this).find('.product_image');
