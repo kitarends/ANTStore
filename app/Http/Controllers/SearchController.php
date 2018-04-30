@@ -62,6 +62,6 @@ class SearchController extends Controller
 
         Input::flash();
 
-        return view('search.index', ['products' => $products->paginate(12), 'title' => $title]);
+        return view('search.index', ['products' => $products->paginate(12)->appends(Input::except('page')), 'title' => $title]);
     }
 }
