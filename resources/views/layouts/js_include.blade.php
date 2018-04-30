@@ -11,6 +11,13 @@
 <script>
     $(document)
         .ready(function () {
+            $('.square').each(function () {
+               $(this).height($(this).width()*4/5);
+                var image = $(this).find('.product_image');
+                image.css('margin-top',($(this).height()-image.height())/2);
+            });
+
+
             $('.ui.menu .ui.dropdown').dropdown({
                 on: 'hover'
             });
@@ -38,7 +45,7 @@
                         $('#input_rating').val(rating)
                     }
                 });
-            ;
+
             $('.card .dimmer')
                 .dimmer({
                     on: 'hover'

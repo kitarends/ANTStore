@@ -1,5 +1,5 @@
 <a class="ui card" href="/products/{{$item->id}}">
-    <div class="image dimmable" style="padding: 20px; background: white">
+    <div class="image dimmable square" style="padding: 20px; background: white;display: table">
         <div class="ui blurring inverted dimmer transition hidden">
             <div class="content">
                 <div class="center">
@@ -13,10 +13,10 @@
                 </div>
             </div>
         </div>
-        <img src="/images/{{explode(';',$item->image_urls)[0]}}">
+        <img src="/images/{{explode(';',$item->image_urls)[0]}}" class="product_image">
     </div>
     <div class="content" style="text-align: center">
-        <h2 class="header">{{$item->name}}</h2>
+        <h2 class="header" style="white-space: nowrap;overflow-x: hidden;text-overflow: ellipsis">{{$item->name}}</h2>
         <div class="meta">
             @if($item->price > $item->sale_off)
                 <h2>

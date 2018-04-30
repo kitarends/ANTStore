@@ -43,6 +43,7 @@
                     @endforeach
                 </div>
                 <div class="ui content" style="text-align: center">
+                    <br>
                     {{$products->links('vendor.pagination.semantic-ui')}}
                 </div>
             </div>
