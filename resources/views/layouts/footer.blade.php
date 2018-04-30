@@ -18,5 +18,7 @@
                 @endforeach
             </div>
         </div>
+        <h1 style="color: white;text-align: center">
+            <span style="border: solid 2px white;padding: 10px">ANTStore.shop</span></h1>
     </div>
 </div>

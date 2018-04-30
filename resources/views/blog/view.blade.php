@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('content')
     <div class="ui container">
-        <div class="ui grid">
+        <div class="ui stackable grid">
             <div class="ui twelve wide column">
                 <div class="ui huge header">{{$item->title}}</div>
                 <p>Updated at <strong>{{$item->updated_at}}</strong> by <strong>Admin</strong>

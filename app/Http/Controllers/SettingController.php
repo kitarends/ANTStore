@@ -17,7 +17,7 @@ class SettingController extends Controller
     {
         $request->validate([
             'email' => 'required|email',
-            'phone' => 'required|numeric',
+            'phone' => 'required|string',
         ]);
         \Setting::set('email',$request->get('email'));
         \Setting::set('phone',$request->get('phone'));

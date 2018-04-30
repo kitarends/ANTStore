@@ -1,12 +1,15 @@
 <div class="ui stackable  menu" style="background: #f7f7f7">
     <div class="ui container">
 
-        <div class=" item">
-            <form class="ui action left icon input" method="get" action="/search" style="width: 70%">
-                <i class="search icon"></i>
-                <input type="text" placeholder="Search for products" value="{{old('query')}}" name="query">
-                <button class="ui button" type="submit">Search</button>
-            </form>
+        <div class="left menu">
+
+            <div class=" item">
+                <form class="ui action left icon input" method="get" action="/search" style="width: 70%">
+                    <i class="search icon"></i>
+                    <input type="text" placeholder="Search for products" value="{{old('query')}}" name="query">
+                    <button class="ui button" type="submit">Search</button>
+                </form>
+            </div>
         </div>
 
 
