@@ -14,7 +14,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('blog.index', ['title' => 'All blogs', 'blogs' => \App\Blog::query()->paginate(3)]);
+        return view('blog.index', ['title' => 'All blogs', 'blogs' => \App\Blog::query()->paginate(10)]);
     }
 
     public function manage()
