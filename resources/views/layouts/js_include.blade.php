@@ -12,9 +12,11 @@
     $(document)
         .ready(function () {
             $('.square').each(function () {
-                $(this).height($(this).width()*4/5);
+                $(this).height($(this).width());
                 var image = $(this).find('.product_image');
-                image.css('margin-top', ($(this).height() - image.height()) / 2);
+                if (image.height() < $(this).height()) {
+                    image.css('margin-top', ($(this).height() - image.height()) / 2);
+                }
             });
 
             $('.small_thumbnail').on('hover', function (e) {
@@ -110,9 +112,6 @@
                             slidesToScroll: 1
                         }
                     }
-                    // You can unslick at a given breakpoint now by adding:
-                    // settings: "unslick"
-                    // instead of a settings object
                 ]
             });
         });
