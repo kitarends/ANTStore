@@ -49,6 +49,7 @@ class Product extends Model
     ];
     protected $attributes = [
         'image_urls' => 'no-thumbnail.png',
+        'short_detail' => '_',
         'sold' => 0,
         'views' => 0,
     ];
