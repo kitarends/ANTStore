@@ -10,10 +10,17 @@
             <div class="active section">{{$item->name}}</div>
         </div>
 
-        <div class="ui two column stackable grid">
+        <div class="ui two column stackable grid ">
             <div class="column">
-                <div class="image">
-                    <img src="/images/{{explode(';',$item->image_urls)[0]}}" style="width: 100%">
+                <div class="image square">
+                    <img src="/images/{{explode(';',$item->image_urls)[0]}}" style="width: 100%" class="product_image" id="main_image">
+                </div>
+                <div class="ui five column grid">
+                    @foreach(array_filter(explode(';',$item->image_urls)) as $image)
+                        <div class="column">
+                            <img src="/images/{{$image}}" class="small_thumbnail">
+                        </div>
+                    @endforeach
                 </div>
             </div>
             <div class="column">

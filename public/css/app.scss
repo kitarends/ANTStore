@@ -1,0 +1,13 @@
+$dark-gray: #9f9693;
+#top_menu > * {
+  color: $dark-gray;
+}
+
+
+.small_thumbnail{
+  width: 100%;
+  border: solid 2px white;
+  &:hover{
+    border: solid 2px $dark-gray;
+  }
+}

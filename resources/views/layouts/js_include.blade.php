@@ -12,11 +12,16 @@
     $(document)
         .ready(function () {
             $('.square').each(function () {
-               $(this).height($(this).width()*4/5);
+                $(this).height($(this).width()*4/5);
                 var image = $(this).find('.product_image');
-                image.css('margin-top',($(this).height()-image.height())/2);
+                image.css('margin-top', ($(this).height() - image.height()) / 2);
             });
 
+            $('.small_thumbnail').on('hover', function (e) {
+                var mainImage = $('#main_image');
+                mainImage.attr('src', $(this).attr('src'));
+                mainImage.css('margin-top', (mainImage.parent().height() - mainImage.height()) / 2);
+            });
 
             $('.ui.menu .ui.dropdown').dropdown({
                 on: 'hover'
@@ -163,7 +168,6 @@
         code = $("#discount_input").val();
         location.href = '/apply_discount?discount=' + code;
     }
-
 
 
 </script>

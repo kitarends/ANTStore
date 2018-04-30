@@ -41,6 +41,11 @@ class SearchController extends Controller
 
     protected function process(Request $request, $products, $title)
     {
+        if ($request->has('query')) {
+            $query = $request->get('query');
+            $products = $products->where('name', 'LIKE', '%' . $query . '%');
+        }
+
         if ($request->has('lower_price'))
             $products = $products->where('sale_off', '>=', $request->get('lower_price'));
         if ($request->has('higher_price'))
