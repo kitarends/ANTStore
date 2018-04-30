@@ -9,20 +9,23 @@
 <script type="text/javascript" src="/bower_components/slick-carousel/slick/slick.js"></script>
 
 <script>
-    $(function () {
-            $('.square').each(function () {
-                $(this).height($(this).width());
-                var image = $(this).find('.product_image');
-                if (image.height() < $(this).height()) {
-                    image.css('margin-top', ($(this).height() - image.height()) / 2);
-                }
-            });
+    $(window).on('load',function () {
+        $('.square').each(function () {
+            $(this).height($(this).width());
+            var image = $(this).find('.product_image');
+            if (image.height() < $(this).height()) {
+                image.css('margin-top', ($(this).height() - image.height()) / 2);
+            }
+        });
 
-            $('.small_thumbnail').on('hover', function (e) {
-                var mainImage = $('#main_image');
-                mainImage.attr('src', $(this).attr('src'));
-                mainImage.css('margin-top', (mainImage.parent().height() - mainImage.height()) / 2);
-            });
+        $('.small_thumbnail').on('hover', function (e) {
+            var mainImage = $('#main_image');
+            mainImage.attr('src', $(this).attr('src'));
+            mainImage.css('margin-top', (mainImage.parent().height() - mainImage.height()) / 2);
+        });
+
+    });
+    $(function () {
 
             $('.ui.menu .ui.dropdown').dropdown({
                 on: 'hover'
