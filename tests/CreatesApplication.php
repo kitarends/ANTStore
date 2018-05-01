@@ -19,7 +19,7 @@ trait CreatesApplication
         $app->make(Kernel::class)->bootstrap();
 
         Hash::driver('bcrypt')->setRounds(4);
-
+        $this->baseUrl=env('APP_URL');
         return $app;
     }
 }

@@ -70,11 +70,11 @@ class ProductController extends Controller
             $is_bought = $this->is_bought_this_product($product->id);
 
         }
-        $products = Product::where('id', '!=', $product->id)->get();
         $product->views+=1;
         $product->increaseView();
         $product->save();
-        $related = $products->random(min($products->count(), 4));
+
+        $related = $product->category->products->random(4);
         return view('product.detail', ['item' => $product,
             'is_bought' => $is_bought,
             'liked' => $liked,
@@ -193,7 +193,6 @@ class ProductController extends Controller
 
     private function is_bought_this_product($product_id)
     {
-//        dd(\Auth::user()->orders);
         foreach (\Auth::user()->orders()->whereStatus('done')->get() as $order) {
 
             foreach ($order->items as $item) {

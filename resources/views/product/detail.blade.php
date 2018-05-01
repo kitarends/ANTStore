@@ -12,6 +12,9 @@
 
         <div class="ui two column stackable grid ">
             <div class="column">
+                @if($item->price > $item->sale_off)
+                    <div class="ui red top right attached label">Sale-off</div>
+                @endif
                 <div class="image square">
                     <img src="/images/{{explode(';',$item->image_urls)[0]}}" style="width: 100%" class="product_image" id="main_image">
                 </div>

@@ -63,8 +63,6 @@ class SearchController extends Controller
             elseif ($sortby == 'time')
                 $products = $products->orderBy('updated_at', $orderby);
         }
-
-
         Input::flash();
 
         return view('search.index', ['products' => $products->paginate(12)->appends(Input::except('page')), 'title' => $title]);

@@ -40,7 +40,7 @@ class AdsController extends Controller
     {
         $request->validate(
             [
-                'url' => 'required|max:255',
+                'url' => 'required',
                 'image'=>'required'
             ]
         );
@@ -96,7 +96,7 @@ class AdsController extends Controller
 
         $request->validate(
             [
-                'url' => 'required|max:255',
+                'url' => 'required',
                 'image' => 'required'
             ]
         );

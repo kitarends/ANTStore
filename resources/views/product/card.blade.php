@@ -15,6 +15,9 @@
         </div>
         <img src="/images/{{explode(';',$item->image_urls)[0]}}" class="product_image">
     </div>
+    @if($item->price > $item->sale_off)
+        <div class="ui red top right attached label">Sale-off</div>
+    @endif
     <div class="content" style="text-align: center">
         <h2 class="header" style="white-space: nowrap;overflow-x: hidden;text-overflow: ellipsis">{{$item->name}}</h2>
         <div class="meta">

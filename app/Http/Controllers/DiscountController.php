@@ -40,7 +40,7 @@ class DiscountController extends Controller
     {
         $request->validate(
             [
-                'name' => 'required|unique:discounts|max:255'
+                'name' => 'required|unique:discounts'
             ]
         );
         $discount = new Discount();
@@ -78,7 +78,7 @@ class DiscountController extends Controller
     {
         $request->validate(
             [
-                'name' => 'required|max:255'
+                'name' => 'required'
             ]
         );
         $discount->fill($request->all());

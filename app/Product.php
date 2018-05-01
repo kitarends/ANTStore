@@ -52,6 +52,7 @@ class Product extends Model
         'short_detail' => '_',
         'sold' => 0,
         'views' => 0,
+        'category_id'=>1
     ];
 
     public static function get_sold()
