@@ -48,7 +48,7 @@
                         <a class="item" href="/manage/categories">Categories</a>
                         <a class="item" href="/manage/users">Users</a>
                         <a class="item" href="/manage/orders">Orders <span class="ui red label"
-                                                                           style="margin-left: 20px">{{\App\Order::whereStatus('waiting')->count()}}</span></a>
+                                                                           style="margin-left: 20px">{{\App\Order::whereStatus('wait_confirm')->count()}}</span></a>
                         <a class="item" href="/manage/ads">Advertises</a>
                         <a class="item" href="/manage/discounts">Discount codes</a>
                         <a class="item" href="/manage/blogs">Blogs</a>
