@@ -104,7 +104,7 @@ class CartController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'phone' => 'required|min:11|numeric',
+            'phone' => 'required|min:10|numeric',
             'address' => 'required',
         ]);
         list($items, $item_number, $total) = $this->get_cart_items($request);

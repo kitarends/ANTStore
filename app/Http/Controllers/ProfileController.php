@@ -17,7 +17,7 @@ class ProfileController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'phone' => 'required|numeric',
+            'phone' => 'required|numeric|min:10',
             'address' => 'required|string',
         ]);
         \Auth::user()->fill($request->all());
