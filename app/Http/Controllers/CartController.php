@@ -61,9 +61,11 @@ class CartController extends Controller
 
             return redirect('/cart');
         }
-        if (\Auth::check()) {
-            FlashToOld::flash_to_olds(\Auth::user(), ['name', 'phone', 'email', 'address']);
-        }
+        $errors=\Session::get('errors');
+        if ($errors==null)
+            if (\Auth::check()) {
+                FlashToOld::flash_to_olds(\Auth::user(), ['name', 'phone', 'email', 'address']);
+            }
         list($items, $item_number, $total) = $this->get_cart_items($request);
 
 
@@ -101,8 +103,8 @@ class CartController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|min:11|numeric',
             'address' => 'required',
         ]);
         list($items, $item_number, $total) = $this->get_cart_items($request);
