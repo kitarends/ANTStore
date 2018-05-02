@@ -12,13 +12,14 @@
         </div>
 
         @if($top_views->count()>0)
-
             <h1>Today's top viewed products</h1>
             <div class="ui four column stackable grid">
                 @foreach($top_views as $log)
-                    <div class="column">
-                        @include('product.card',['item'=>$log->product])
-                    </div>
+                    @if($log->product!=null)
+                        <div class="column">
+                            @include('product.card',['item'=>$log->product])
+                        </div>
+                    @endif
                 @endforeach
             </div>
         @endif
@@ -27,9 +28,11 @@
             <h1>Today's top sold products</h1>
             <div class="ui four column stackable grid">
                 @foreach($top_sold as $log)
-                    <div class="column">
-                        @include('product.card',['item'=>$log->product])
-                    </div>
+                    @if($log->product!=null)
+                        <div class="column">
+                            @include('product.card',['item'=>$log->product])
+                        </div>
+                    @endif
                 @endforeach
             </div>
         @endif

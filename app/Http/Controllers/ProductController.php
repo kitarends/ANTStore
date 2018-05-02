@@ -68,7 +68,6 @@ class ProductController extends Controller
             $mycomment = $this->get_my_comment($product->id);
             $mycomment->fill_olds();
             $is_bought = $this->is_bought_this_product($product->id);
-
         }
         $product->views+=1;
         $product->increaseView();

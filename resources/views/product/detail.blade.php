@@ -54,7 +54,7 @@
                                 <div class="column">
                                     <form class="ui form">
 
-                                        <input type="number" style="width:80px;" value="1" id="product_quantity">
+                                        <input type="number" style="width:80px;" value="1" id="product_quantity" min="1">
                                     </form>
 
                                 </div>

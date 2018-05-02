@@ -23,8 +23,7 @@ class HomeController extends Controller
         $data['top_views'] = LogProductView::query()
             ->where('day', '>=', (new Carbon('yesterday'))->timestamp)
             ->orderByDesc('views')
-            ->take(4)
-            ->get();
+            ->get()->take(4);
         $data['top_sold'] = LogProductSold::query()
             ->where('day', '>=', (new Carbon('yesterday'))->timestamp)
             ->orderByDesc('solds')

@@ -56,7 +56,6 @@ class ProductTest extends TestCase
 
     public function testDeleteProduct()
     {
-        Product::destroy($this->product_id);
         Product::whereName($this->product_name)->delete();
         self::assertTrue(true);
     }
