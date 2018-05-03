@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
+    private $validator_rules = [
+        'title' => 'required|unique:blogs',
+        'html_content' => 'required',
+        'thumb' => 'required',
+        'url' => 'required'
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -44,12 +51,7 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $request->validate(
-            [
-                'title' => 'required|unique:blogs',
-                'html_content' => 'required',
-                'thumb' => 'required'
-
-            ]
+            $this->validator_rules
         );
         $blog = new Blog();
         $blog->fill($request->all());
@@ -93,13 +95,7 @@ class BlogController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate(
-            [
-                'title' => 'required',
-                'html_content' => 'required',
-                'thumb' => 'required'
-
-
-            ]
+            $this->validator_rules
         );
         $blog = Blog::findOrFail($id);
         $blog->fill($request->all());
