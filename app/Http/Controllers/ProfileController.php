@@ -37,7 +37,7 @@ class ProfileController extends Controller
     {
         $request->validate([
             'old_password' => 'required',
-            'new_password' => 'required|string|min:6|confirmed',
+            'new_password' => 'required|string|min:6|confirmed|different:old_password',
         ]);
         $user = \Auth::user();
         if (\Hash::check($request->get('old_pw'), $user->password)) {
@@ -45,9 +45,9 @@ class ProfileController extends Controller
             $user->save();
             \Session::flash('message', 'Password changed successfully!');
         } else {
-            \Session::flash('message', 'Wrong old password!');
+            \Session::flash('message', 'Your password was incorrect!');
         }
-        return redirect('/profile/info');
+        return redirect('/profile/password');
     }
 
 }

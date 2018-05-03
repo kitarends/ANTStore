@@ -27,7 +27,7 @@ class ViewTest extends TestCase
             'sale_off' => 100,
         ]);
         $product->delete();
-        assertTrue(true);
+        $this->assertTrue(true);
     }
 
 }
