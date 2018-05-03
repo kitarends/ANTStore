@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class DiscountController extends Controller
 {
+    private $validator_rule = [
+        'name' => 'required|unique:discounts',
+        'code' => 'required|unique:discounts',
+        'type' => 'required',
+        'discount' => 'required|numeric|min:0'
+
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -39,13 +47,7 @@ class DiscountController extends Controller
     public function store(Request $request)
     {
         $request->validate(
-            [
-                'name' => 'required|unique:discounts',
-                'code'=>'required|unique:discounts',
-                'type'=>'required',
-                'discount'=>'required|numeric|min:0'
-
-            ]
+            $this->validator_rule
         );
         $discount = new Discount();
         $discount->fill($request->all());
@@ -81,9 +83,7 @@ class DiscountController extends Controller
     public function update(Request $request, Discount $discount)
     {
         $request->validate(
-            [
-                'name' => 'required'
-            ]
+            $this->validator_rule
         );
         $discount->fill($request->all());
         $discount->save();
