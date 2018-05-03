@@ -34,7 +34,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        (new Product())->fill_olds();
+        if (null == \Session::get('errors'))
+            (new Product())->fill_olds();
 
         return view('product.edit');
     }
@@ -69,7 +70,7 @@ class ProductController extends Controller
             $mycomment->fill_olds();
             $is_bought = $this->is_bought_this_product($product->id);
         }
-        $product->views+=1;
+        $product->views += 1;
         $product->increaseView();
         $product->save();
 
@@ -91,7 +92,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $product->fill_olds();
+        if (null == \Session::get('errors'))
+            $product->fill_olds();
 
         return view('product.edit', ['item' => $product]);
     }
@@ -132,9 +134,8 @@ class ProductController extends Controller
             'category_id' => 'required',
             'short_detail' => 'required',
             'full_html_detail' => 'required',
-            'price' => 'required|numeric',
-            'sale_off' => 'required|numeric',
-
+            'price' => 'required|numeric|min:0',
+            'sale_off' => 'required|numeric|min:0|max:' . $request->get('price'),
         ]);
         $product->fill($request->all());
 

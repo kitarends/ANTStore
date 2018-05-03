@@ -39,6 +39,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Product extends Model
 {
+    use \App\CanFillOld;
     protected $fillable = [
         'name',
         'short_detail',
@@ -104,10 +105,6 @@ class Product extends Model
         return Product::query()->where('name', 'LIKE', '%' . $name . '%');
     }
 
-    public function fill_olds()
-    {
-        FlashToOld::flash_to_olds($this, $this->fillable);
-    }
 
     public function solds()
     {

@@ -40,7 +40,11 @@ class DiscountController extends Controller
     {
         $request->validate(
             [
-                'name' => 'required|unique:discounts'
+                'name' => 'required|unique:discounts',
+                'code'=>'required|unique:discounts',
+                'type'=>'required',
+                'discount'=>'required|numeric|min:0'
+
             ]
         );
         $discount = new Discount();

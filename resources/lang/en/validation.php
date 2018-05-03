@@ -104,6 +104,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'sale_off'=>[
+            'max'=>'Sale-off price must be lower or equal to the price'
+        ]
     ],
 
     /*

@@ -5,13 +5,13 @@ namespace App;
 use App\Http\Controllers\FlashToOld;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Blog extends Model
 {
-    protected $fillable = [ 'title','url', 'html_content' ,'thumb'];
+    use \App\CanFillOld;
 
-    protected $attributes=['url'=>'/','thumb'=>'No preview'];
+    protected $fillable = ['title', 'url', 'html_content', 'thumb'];
 
-    public function fill_olds( ) {
-        FlashToOld::flash_to_olds( $this, $this->fillable );
-    }
+    protected $attributes = ['url' => '/', 'thumb' => 'No preview'];
+
 }

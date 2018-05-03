@@ -138,6 +138,8 @@ class CartController extends Controller
         }
 
         \Session::flash('message', 'Checked out, thank you!');
+        \Session::remove('code');
+        \Session::remove('discount');
 
         return redirect('/')->cookie(cookie('cart', null));
     }

@@ -7,10 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ads extends Model
 {
+    use \App\CanFillOld;
+
     protected $fillable = [ 'url' ];
-
-
-    public function fill_olds( ) {
-        FlashToOld::flash_to_olds( $this, $this->fillable );
-    }
 }

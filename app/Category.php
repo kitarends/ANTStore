@@ -19,13 +19,12 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereUpdatedAt( $value )
  */
 class Category extends Model {
-	protected $fillable = [ 'name', 'sort' ];
+    use \App\CanFillOld;
+
+    protected $fillable = [ 'name', 'sort' ];
 
 	public function products() {
 		return $this->hasMany( 'App\Product' );
 	}
 
-	public function fill_olds( ) {
-		FlashToOld::flash_to_olds( $this, $this->fillable );
-	}
 }

@@ -27,8 +27,8 @@
                         @include('ui.form.select',['name'=>'category_id','label'=>'Category *','options'=>\App\Category::all()])
                         @include('ui.form.input',['name'=>'short_detail','label'=>'Product brief detail *'])
                         @include('ui.form.ckeditor',['name'=>'full_html_detail','label'=>'Product full detail *'])
-                        @include('ui.form.input',['name'=>'price','label'=>'Product price *','type'=>'number'])
-                        @include('ui.form.input',['name'=>'sale_off','label'=>'Product sale-off price *','type'=>'number'])
+                        @include('ui.form.input',['name'=>'price','label'=>'Product price ($) *','type'=>'number','min'=>0])
+                        @include('ui.form.input',['name'=>'sale_off','label'=>'Product sale-off price ($) *','type'=>'number'])
                         <button class="ui primary button" type="submit">Save</button>
                     </form>
                 </div>

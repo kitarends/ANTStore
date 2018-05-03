@@ -26,6 +26,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Comment extends Model
 {
+    use \App\CanFillOld;
+
     protected $fillable = [
         'content',
         'score',
@@ -41,9 +43,5 @@ class Comment extends Model
         return $this->belongsTo('App\\User');
     }
 
-    public function fill_olds()
-    {
-        FlashToOld::flash_to_olds($this, $this->fillable);
-    }
 
 }
