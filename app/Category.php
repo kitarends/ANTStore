@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model {
     use \App\CanFillOld;
 
+
     protected $fillable = [ 'name', 'sort' ];
 
 	public function products() {

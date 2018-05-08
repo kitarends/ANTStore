@@ -56,6 +56,8 @@ class Product extends Model
         'category_id'=>1
     ];
 
+
+    //get how many products are sold
     public static function get_sold()
     {
         $total_sold = 0;
@@ -70,6 +72,8 @@ class Product extends Model
         return ['total_sold' => $total_sold, 'total_revenue' => $total_revenue];
     }
 
+    //get images from packed image_urls;
+    //image_urls is a string of images' paths separated by ;
     public function all_images()
     {
         return array_filter(explode(";", $this->image_urls));
@@ -116,6 +120,7 @@ class Product extends Model
         return $this->hasMany(LogProductView::class);
     }
 
+    //increase today's view in log
     public function increaseView()
     {
         $log_view = $this->views()->firstOrNew(['day' => Carbon::today()->timestamp]);

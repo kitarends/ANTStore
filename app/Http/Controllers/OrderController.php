@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
 
+    //show all current user's orders
     public function all()
     {
         $orders = \Auth::user()->orders;
@@ -18,6 +19,8 @@ class OrderController extends Controller
         return view('order.all', ['items' => $orders]);
     }
 
+    //show all orders
+    //only admin can do this
     public function manage()
     {
         $orders = Order::all();
@@ -26,6 +29,7 @@ class OrderController extends Controller
     }
 
 
+    //show specified order
     public function show(Request $request, $id)
     {
         $order = Order::findOrFail($id);
@@ -37,6 +41,7 @@ class OrderController extends Controller
         ]);
     }
 
+    //cancel this order
     public function dispose($id)
     {
         $order = Order::findOrFail($id);
@@ -50,6 +55,8 @@ class OrderController extends Controller
         return redirect('/' . $id);
     }
 
+    //confirm this order
+    //only admin can do this
     public function confirm($id)
     {
         $order = Order::findOrFail($id);
@@ -59,6 +66,8 @@ class OrderController extends Controller
         return redirect('/orders/' . $id);
     }
 
+    //confirm shipping this order
+    //only admin can do this
     public function ship($id)
     {
         $order = Order::findOrFail($id);
@@ -68,6 +77,7 @@ class OrderController extends Controller
         return redirect('/orders/' . $id);
     }
 
+    //confirm done this order
     public function done($id)
     {
         $order = Order::findOrFail($id);
@@ -77,6 +87,7 @@ class OrderController extends Controller
         return redirect('/orders/' . $id);
     }
 
+    //log this to sold
     private function log_sold($order)
     {
         $revenue = LogRevenue::firstOrNew(['day' => Carbon::today()->timestamp]);

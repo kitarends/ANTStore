@@ -7,12 +7,14 @@ use Illuminate\Http\Request;
 class SettingController extends Controller
 {
 
+    //show all settings
     public function index()
     {
         return view('setting.index', ['title' => 'Settings']);
 
     }
 
+    //save settings
     public function save(Request $request)
     {
         $request->validate([

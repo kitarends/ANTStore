@@ -15,7 +15,7 @@ class BlogController extends Controller
     ];
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of the blog post.
      *
      * @return \Illuminate\Http\Response
      */
@@ -30,7 +30,7 @@ class BlogController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new blog post.
      *
      * @return \Illuminate\Http\Response
      */
@@ -43,7 +43,7 @@ class BlogController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created blog post in storage.
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
@@ -61,7 +61,7 @@ class BlogController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified blog post.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
@@ -73,7 +73,7 @@ class BlogController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified blog post.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
@@ -86,7 +86,7 @@ class BlogController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified blog post in storage.
      *
      * @param  \Illuminate\Http\Request $request
      * @param  int $id
@@ -105,7 +105,7 @@ class BlogController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified blog post from storage.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
@@ -118,16 +118,18 @@ class BlogController extends Controller
     public function delete($id)
     {
         Blog::destroy($id);
-        return redirect('/manage/blogs');
+        return redirect('/manage/blogs'); //redirect to admin manage blog posts page
     }
 
+    //show blog post
     public function show_page(Request $request)
     {
+        //$request->path() is current path, we'll find if there's any post has that path
         $query = Blog::where('url', '=', '/' . $request->path());
-        if ($query->count() > 0)
-            return $this->show($query->get()[0]->id);
+        if ($query->count() > 0) //got some
+            return $this->show($query->get()[0]->id); //take only the first post
         else
-            return abort(404);
+            return abort(404);  //show not found page
     }
 
 }

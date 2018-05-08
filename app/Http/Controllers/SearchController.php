@@ -7,9 +7,11 @@ use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
+
+//searching products controller
 class SearchController extends Controller
 {
-
+    //search products by name
     public function search(Request $request)
     {
         $query = $request->get('query');
@@ -18,6 +20,7 @@ class SearchController extends Controller
         return $this->process($request, $products, $title);
     }
 
+    //show all products availble
     public function all(Request $request)
     {
         $products = Product::query();
@@ -25,6 +28,7 @@ class SearchController extends Controller
         return $this->process($request, $products, $title);
     }
 
+    //show products in this category
     public function category(Request $request, $category_id)
     {
         $products = Product::whereCategoryId($category_id);
@@ -32,6 +36,7 @@ class SearchController extends Controller
         return $this->process($request, $products, $title);
     }
 
+    //show sale-off products
     public function sale_off(Request $request)
     {
         $products = Product::whereRaw('price > sale_off');
@@ -39,18 +44,22 @@ class SearchController extends Controller
         return $this->process($request, $products, $title);
     }
 
+    //same step for all search
     protected function process(Request $request, $products, $title)
     {
+        //if they are searching for product's name
         if ($request->has('query')) {
             $query = $request->get('query');
             $products = $products->where('name', 'LIKE', '%' . $query . '%');
         }
 
+        //filter by price
         if ($request->has('lower_price'))
             $products = $products->where('sale_off', '>=', $request->get('lower_price'));
         if ($request->has('higher_price'))
             $products = $products->where('sale_off', '<=', $request->get('higher_price'));
 
+        //sort products
         $orderby = 'asc';
         if ($request->has('orderby')) {
             $orderby = $request->get('orderby');
@@ -63,8 +72,10 @@ class SearchController extends Controller
             elseif ($sortby == 'time')
                 $products = $products->orderBy('updated_at', $orderby);
         }
-        Input::flash();
+        Input::flash(); //save all current inputs
 
-        return view('search.index', ['products' => $products->paginate(12)->appends(Input::except('page')), 'title' => $title]);
+        return view('search.index',
+            ['products' => $products->paginate(12)->appends(Input::except('page')), //show 12 products each page
+                'title' => $title]);
     }
 }

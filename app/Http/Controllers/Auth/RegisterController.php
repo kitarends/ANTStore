@@ -70,13 +70,14 @@ class RegisterController extends Controller
         ]);
     }
 
+    //process confirm link from email
     public function confirm($id, $confirmation_code){
         $model = $this->guard()->getProvider()->createModel();
-        $user = $model->whereId($id)->whereConfirmationCode($confirmation_code)->firstOrFail();
-        $user->confirmation_code = null;
-        $user->confirmed = true;
-        $user->save();
-        \Auth::login($user);
-        return redirect('/')->with('message', trans('confirmation::confirmation.success'));
+        $user = $model->whereId($id)->whereConfirmationCode($confirmation_code)->firstOrFail(); //find the user with matched confirmation code
+        $user->confirmation_code = null;    //remove the confirmation code
+        $user->confirmed = true;            //confirm thìs user
+        $user->save();                      //save to database
+        \Auth::login($user);                //login this user
+        return redirect('/')->with('message', trans('confirmation::confirmation.success')); //redirect user to home with success message
     }
 }

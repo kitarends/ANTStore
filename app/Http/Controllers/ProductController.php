@@ -13,7 +13,7 @@ class ProductController extends Controller
     use ProcessImage;
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of the product.
      *
      * @return \Illuminate\Http\Response
      */
@@ -22,26 +22,18 @@ class ProductController extends Controller
         return view('product.list', ['items' => Product::all(), 'title' => 'Manage products']);
     }
 
-    public function show_home()
-    {
-        return view('product.list_products', ['products' => Product::query()->paginate(10)]);
-    }
-
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new product.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        if (null == \Session::get('errors'))
-            (new Product())->fill_olds();
-
         return view('product.edit');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created product in storage.
      *
      * @param  \Illuminate\Http\Request $request
      *
@@ -55,7 +47,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified product.
      *
      * @param  int $id
      *
@@ -84,7 +76,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified product.
      *
      * @param  int $id
      *
@@ -99,7 +91,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified product in storage.
      *
      * @param  \Illuminate\Http\Request $request
      * @param  int $id
@@ -114,7 +106,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified product from storage.
      *
      * @param  int $id
      *
@@ -127,19 +119,22 @@ class ProductController extends Controller
         return redirect('/manage/products');
     }
 
+
+    //this process step is same for store new product and save old edited product
     protected function process(Request $request, Product $product)
     {
+        //first we need to validate all inputs
         $request->validate([
             'name' => 'required|string',
             'category_id' => 'required',
             'short_detail' => 'required',
             'full_html_detail' => 'required',
             'price' => 'required|numeric|min:0',
-            'sale_off' => 'required|numeric|min:0|max:' . $request->get('price'),
+            'sale_off' => 'required|numeric|min:0|max:' . $request->get('price'), //tha sale-off must be <= price
         ]);
-        $product->fill($request->all());
+        $product->fill($request->all()); //fill all inputs to model
 
-        if ($request->files->has('image')) {
+        if ($request->files->has('image')) { //save uploaded images
             $urls = '';
             foreach ($request->files->get('image') as $file) {
                 $path = $this->process_image($file);
@@ -147,13 +142,14 @@ class ProductController extends Controller
             }
             $product->image_urls = $urls;
         } else if (is_null($product->image_urls)) {
-            $product->image_url = 'no-thumbnail.png';
+            $product->image_url = 'no-thumbnail.png' ; //there's no image, we will use default image
         }
-        $product->save();
+        $product->save(); //save model to database
 
         return redirect('/manage/products');
     }
 
+    //save user's review comment
     public function save_comment(Request $request, $product_id)
     {
         $request->validate([
@@ -169,14 +165,16 @@ class ProductController extends Controller
         return redirect('/products/' . $product_id);
     }
 
+    //get user's review comment in this product
     protected function get_my_comment($product_id)
     {
         $query = Comment::whereUserId(\Auth::id())->whereProductId($product_id);
-        if ($query->count() > 0)
-            return $query->get()[0];
-        return new Comment();
+        if ($query->count() > 0) //there's existed comment
+            return $query->get()[0]; //take the first
+        return new Comment(); //return new comment
     }
 
+    //like this product
     public function like_product(Request $request, $product_id)
     {
         \Auth::user()->liked_products()->attach($product_id);
@@ -184,6 +182,7 @@ class ProductController extends Controller
         return redirect('/products/' . $product_id);
     }
 
+    //dislike this product
     public function dislike_product(Request $request, $product_id)
     {
         \Auth::user()->liked_products()->detach($product_id);
@@ -191,6 +190,7 @@ class ProductController extends Controller
         return redirect('/products/' . $product_id);
     }
 
+    //check if the user has boudgt this product before?
     private function is_bought_this_product($product_id)
     {
         foreach (\Auth::user()->orders()->whereStatus('done')->get() as $order) {

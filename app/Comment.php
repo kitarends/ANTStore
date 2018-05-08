@@ -33,11 +33,13 @@ class Comment extends Model
         'score',
     ];
 
+    //get the product which this comment belongs to
     public function product()
     {
         return $this->belongsTo('App\\Product');
     }
 
+    //get the user who made this comment
     public function user()
     {
         return $this->belongsTo('App\\User');

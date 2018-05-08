@@ -12,6 +12,7 @@ class Blog extends Model
 
     protected $fillable = ['title', 'url', 'html_content', 'thumb'];
 
+    //default values for a new created model
     protected $attributes = ['url' => '/', 'thumb' => 'No preview'];
 
 }

@@ -16,7 +16,7 @@ class DiscountController extends Controller
     ];
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of the code.
      *
      * @return \Illuminate\Http\Response
      */
@@ -26,7 +26,7 @@ class DiscountController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new code.
      *
      * @return \Illuminate\Http\Response
      */
@@ -38,7 +38,7 @@ class DiscountController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created code in storage.
      *
      * @param  \Illuminate\Http\Request $request
      *
@@ -59,7 +59,7 @@ class DiscountController extends Controller
 
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified code.
      *
      * @param  int $id
      *
@@ -73,7 +73,7 @@ class DiscountController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified code in storage.
      *
      * @param  \Illuminate\Http\Request $request
      * @param  int $id
@@ -92,7 +92,7 @@ class DiscountController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified code from storage.
      *
      * @param  int $id
      *

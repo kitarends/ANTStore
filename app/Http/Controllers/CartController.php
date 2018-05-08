@@ -13,11 +13,15 @@ use phpDocumentor\Reflection\DocBlock\Tags\See;
 class CartController extends Controller
 {
 
+    //show current incart products
     public function index(Request $request)
     {
-        list($items, $item_number, $total) = $this->get_cart_items($request);
+        list($items,        //all cart's items
+            $item_number,  //number of items
+            $total         //total price
+            ) = $this->get_cart_items($request); //get taken products
 
-        return view('cart.list', [
+        return view('cart.list', [ //show the view with data
             'items' => $items,
             'total' => $total,
             'item_number' => $item_number,
@@ -27,13 +31,14 @@ class CartController extends Controller
     }
 
 
+    //add new product with number of product to cart
     public function add_to_cart(Request $request, $product_id, $number)
     {
         $cart = $this->get_cart($request);
-        if ($cart->has($product_id)) {
+        if ($cart->has($product_id)) {  //if this product existed in cart, just add the number
             $cart[$product_id] += $number;
         } else {
-            $cart[$product_id] = $number;
+            $cart[$product_id] = $number; //else create new product in cart
         }
 
         \Session::flash('message', 'Added to cart!');
@@ -42,17 +47,17 @@ class CartController extends Controller
     }
 
 
+    //remove product form cart
     public function remove_from_cart(Request $request, $product_id)
     {
         $cart = $this->get_cart($request);
-        unset($cart[$product_id]);
-        \Session::put('cart', serialize($cart));
+        unset($cart[$product_id]); //delete product from cart
         \Session::flash('message', 'Removed from cart!');
 
         return redirect('/cart')->cookie(cookie('cart', serialize($cart)));
     }
 
-
+    //checkout page
     public function checkout(Request $request)
     {
         list($items, $item_number, $total) = $this->get_cart_items($request);
@@ -144,11 +149,13 @@ class CartController extends Controller
         return redirect('/')->cookie(cookie('cart', null));
     }
 
+    //decode cart's data from cokkies
     protected function get_cart(Request $request): \Illuminate\Support\Collection
     {
         return collect(unserialize($request->cookies->get('cart', '')));
     }
 
+    //decode and process data in cart
     protected function get_cart_items(Request $request): array
     {
         $items = [];

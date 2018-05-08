@@ -9,5 +9,6 @@ class Ads extends Model
 {
     use \App\CanFillOld;
 
+    //the values that can be filled directly from requests
     protected $fillable = [ 'url' ];
 }
