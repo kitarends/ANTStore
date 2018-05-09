@@ -8,6 +8,7 @@ use App\OrderItem;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
+use Mail;
 use phpDocumentor\Reflection\DocBlock\Tags\See;
 
 class CartController extends Controller
@@ -66,11 +67,10 @@ class CartController extends Controller
 
             return redirect('/cart');
         }
-        $errors=\Session::get('errors');
-        if ($errors==null)
-            if (\Auth::check()) {
-                FlashToOld::flash_to_olds(\Auth::user(), ['name', 'phone', 'email', 'address']);
-            }
+//        if (!\Session::has('errors'))
+        if (\Auth::check()) {
+            FlashToOld::flash_to_olds(\Auth::user(), ['name', 'phone', 'email', 'address']);
+        }
         list($items, $item_number, $total) = $this->get_cart_items($request);
 
 
@@ -115,9 +115,10 @@ class CartController extends Controller
         list($items, $item_number, $total) = $this->get_cart_items($request);
 
         $order = new Order();
-        if ($request->has('user_id')) {
+
+        if ($request->get('user_id') != null) {
             $order->user_id = $request->get('user_id');
-        } elseif (\Auth::check()) {
+        } else if (\Auth::check()) {
             $order->user_id = \Auth::id();
         } else {
             $order->user_id = null;
@@ -145,7 +146,7 @@ class CartController extends Controller
         \Session::flash('message', 'Checked out, thank you!');
         \Session::remove('code');
         \Session::remove('discount');
-
+        Mail::to($order->email)->queue(new \App\Mail\OrderShipped($order));
         return redirect('/')->cookie(cookie('cart', null));
     }
 

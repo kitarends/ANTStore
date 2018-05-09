@@ -12,6 +12,7 @@
 */
 
 
+use App\Order;
 use Carbon\Carbon;
 
 foreach (\App\Blog::all() as $blog) {
@@ -116,10 +117,8 @@ Route::get('/reset_admin', function () {
     $admin->save();
     return 'Set';
 });
-Route::get('/test', function () {
-    $log_view = \App\LogProductView::firstOrNew(['day' => Carbon::today()->timestamp]);
-    $log_view->product_id = 0;
-    $log_view->views += 1;
-    $log_view->save();
-    return $log_view->views;
+
+Route::get('/test_email', function () {
+    Mail::to('hataketsu@gmail.com')->queue(new \App\Mail\OrderShipped(Order::find(1)));
 });
+

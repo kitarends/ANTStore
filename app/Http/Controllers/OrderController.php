@@ -7,6 +7,7 @@ use App\LogRevenue;
 use App\Order;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Mail;
 
 class OrderController extends Controller
 {
@@ -52,6 +53,8 @@ class OrderController extends Controller
             return redirect('/orders/' . $id);
         }
 
+        Mail::to($order->email)->queue(new \App\Mail\OrderShipped($order));
+
         return redirect('/' . $id);
     }
 
@@ -63,6 +66,8 @@ class OrderController extends Controller
         $order->status = 'confirmed';
         $order->save();
 
+        Mail::to($order->email)->queue(new \App\Mail\OrderShipped($order));
+
         return redirect('/orders/' . $id);
     }
 
@@ -73,6 +78,7 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
         $order->status = 'shipped';
         $order->save();
+        Mail::to($order->email)->queue(new \App\Mail\OrderShipped($order));
 
         return redirect('/orders/' . $id);
     }
@@ -84,6 +90,8 @@ class OrderController extends Controller
         $order->status = 'done';
         $order->save();
         $this->log_sold($order);
+        Mail::to($order->email)->queue(new \App\Mail\OrderShipped($order));
+
         return redirect('/orders/' . $id);
     }
 
