@@ -63,7 +63,20 @@
 
             $('.add_to_cart_button').click(function (e) {
                 e.preventDefault();
-                location.href = '/cart/add/' + $(this).attr('product_id') + '/1';
+                location.href = '/cart/add/' + $(this).attr('data-product_id') + '/1';
+            });
+
+            $('.add_to_wishlist_button').click(function (e) {
+                e.preventDefault();
+                $.get('/products/'+$(this).attr('data-product_id')+'/add_to_wishlist',function (result) {
+                    location.reload();
+                });
+            });
+            $('.remove_from_wishlist_button').click(function (e) {
+                e.preventDefault();
+                $.get('/products/'+$(this).attr('data-product_id')+'/remove_from_wishlist',function (result) {
+                    location.reload();
+                });
             });
 
 

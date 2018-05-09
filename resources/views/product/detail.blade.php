@@ -16,7 +16,8 @@
                     <div class="ui red top right attached label">Sale-off</div>
                 @endif
                 <div class="image square">
-                    <img src="/images/{{explode(';',$item->image_urls)[0]}}" style="width: 100%" class="product_image" id="main_image">
+                    <img src="/images/{{explode(';',$item->image_urls)[0]}}" style="width: 100%" class="product_image"
+                         id="main_image">
                 </div>
                 <div class="ui divider"></div>
                 <div class="ui five column grid">
@@ -43,36 +44,36 @@
                 @endif
                 <p>{{$item->short_detail}}</p>
                 <div class="ui divider"></div>
-                <div class="ui two column grid">
-                    <div class="column">
 
-                        <div class="field">
-                            <div class="ui two column grid">
-                                <div class="column">
-                                    <strong style="float: right;vertical-align: baseline">Quantity</strong>
-                                </div>
-                                <div class="column">
-                                    <form class="ui form">
-
-                                        <input type="number" style="width:80px;" value="1" id="product_quantity" min="1">
-                                    </form>
-
-                                </div>
+                <div class="ui labeled action input">
+                    <div class="ui label">
+                        Quantity
+                    </div>
+                    <input type="number" style="max-width: 80px" value="1" id="product_quantity" min="1">
+                    <button class="ui primary button" onclick="add_to_cart({{$item->id}})">Add to
+                        cart
+                    </button>
+                    @if(Auth::check())
+                        @if(Auth::user()->liked_products->contains($item))
+                            <div class="ui red button remove_from_wishlist_button"
+                                 data-product_id="{{$item->id}}">
+                                <i class="heart icon"></i> Remove from wish list
                             </div>
+                        @else
+                            <div class="ui red button add_to_wishlist_button"
+                                 data-product_id="{{$item->id}}">
+                                <i class="heart icon"></i> Add to wish list
+                            </div>
+                        @endif
+                    @endif
 
-                        </div>
-                    </div>
-                    <div class="column">
-                        <button class="ui primary button" onclick="add_to_cart({{$item->id}})">Add to
-                            cart
-                        </button>
-                    </div>
                 </div>
                 <div class="ui divider"></div>
                 <strong>Category: <a
                             href="/search?category={{$item->category->id}}">{{$item->category->name}}</a></strong>
             </div>
         </div>
+
         <script>
             function add_to_cart(product_id) {
                 location.href = '/cart/add/' + product_id + '/' + $('#product_quantity').val();

@@ -203,5 +203,14 @@ class ProductController extends Controller
         return false;
     }
 
+    public function add_to_wishlist(Product $product){
+        \Auth::user()->liked_products()->attach($product);
+        \Session::flash('message',$product->name.' is added to your wishlist.');
+    }
+
+    public function remove_from_wishlist(Product $product){
+        \Auth::user()->liked_products()->detach($product);
+        \Session::flash('message',$product->name.' is removed from your wishlist.');
+    }
 
 }

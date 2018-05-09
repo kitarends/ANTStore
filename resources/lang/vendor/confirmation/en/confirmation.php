@@ -4,7 +4,7 @@ return [
     'email-title' => 'Please verify your email address',
     'email-intro'=> 'To finalize the creation of your new ANTStore account, please follow the link below to confirm your email address:',
     'email-button' => 'Confirm Email Address',
-    'message' => 'Thanks for signing up! Please check your email.',
+    'message' => ' Thank you for registering, please verify your email.',
     'success' => 'You have successfully verified your account! You can now login.',
     'again' => 'You must verify your email before you can access the site. ' .
                 '<br>If you have not received the confirmation email check your spam folder.'.

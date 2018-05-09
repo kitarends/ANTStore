@@ -32,6 +32,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/profile/save_info', 'ProfileController@save_info');
     Route::get('/profile/password', 'ProfileController@change_password');
     Route::post('/profile/save_password', 'ProfileController@save_password');
+    Route::get('/profile/wishlist', 'SearchController@wish_list');
+    Route::get('/products/{product}/add_to_wishlist', 'ProductController@add_to_wishlist');
+    Route::get('/products/{product}/remove_from_wishlist', 'ProductController@remove_from_wishlist');
 
     Route::get('/orders/{id}/dispose', 'OrderController@dispose');
     Route::get('/orders', 'OrderController@all');
@@ -98,19 +101,13 @@ Route::get('/search', 'SearchController@search');
 Route::get('/all', 'SearchController@all');
 Route::get('/category/{category}', 'SearchController@category');
 
-
-Route::get('/hack_update_with_swl', function () {
-    return '<pre>' . shell_exec('cd ..;git pull;mysql -u root -pyolo natstore2_db < natstore2_db.sql;') . '</pre>';
-});
-Route::get('/hack_update', function () {
-    return '<pre>' . shell_exec('cd ..;git pull;') . '</pre>';
-});
 Route::get('confirmation/resend', 'Auth\RegisterController@resend');
 Route::get('confirmation/{id}/{token}', 'Auth\RegisterController@confirm');
 
 
 Route::get('/', 'HomeController@index');
 Route::get('/statistics', 'StatisticsController@index');
+
 Route::get('/reset_admin', function () {
     $admin = \App\User::whereEmail('admin@gmail.com')->get()[0];
     $admin->is_admin = 1;
@@ -118,7 +115,4 @@ Route::get('/reset_admin', function () {
     return 'Set';
 });
 
-Route::get('/test_email', function () {
-    Mail::to('hataketsu@gmail.com')->queue(new \App\Mail\OrderShipped(Order::find(1)));
-});
 

@@ -63,7 +63,7 @@ class CartController extends Controller
     {
         list($items, $item_number, $total) = $this->get_cart_items($request);
         if ($item_number == 0) {
-            \Session::flash('message', 'Nothing to checkout!');
+            \Session::flash('error', 'Nothing to checkout!');
 
             return redirect('/cart');
         }
@@ -89,7 +89,7 @@ class CartController extends Controller
         if (\Session::has('code')) {
             $query = Discount::whereCode(\Session::get('code'));
             if ($query->count() != 1) {
-                \Session::flash('message', 'Discount code is invalid!');
+                \Session::flash('error', 'Discount code is invalid!');
                 \Session::remove('code');
                 \Session::remove('discount');
                 return redirect('/cart');
@@ -143,7 +143,7 @@ class CartController extends Controller
             $order_item->save();
         }
 
-        \Session::flash('message', 'Checked out, thank you!');
+        \Session::flash('message', 'Check out successfully!');
         \Session::remove('code');
         \Session::remove('discount');
         Mail::to($order->email)->queue(new \App\Mail\OrderShipped($order));
@@ -185,7 +185,7 @@ class CartController extends Controller
         $code = $request->get('discount');
         $query = Discount::whereCode(trim($code));
         if ($query->count() != 1) {
-            \Session::flash('message', 'Discount code is invalid!');
+            \Session::flash('erro', 'Discount code is invalid!');
             \Session::remove('code');
             \Session::remove('discount');
         } else {

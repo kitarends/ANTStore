@@ -52,7 +52,7 @@ class ProfileController extends Controller
             $user->save(); //save info
             \Session::flash('message', 'Password changed successfully!');
         } else {
-            \Session::flash('message', 'Your password was incorrect!');
+            \Session::flash('error', 'Your password was incorrect!');
         }
         return redirect('/profile/password');
     }

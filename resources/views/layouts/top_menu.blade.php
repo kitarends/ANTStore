@@ -26,6 +26,7 @@
                 <div class="menu">
                     @if(Auth::check())
                         <a class="item" href="/orders">View my orders</a>
+                        <a class="item" href="/profile/wishlist">My wishlist</a>
                         <a class="item" href="/profile/info">Edit my information</a>
                         <a class="item" href="/profile/password">Change password</a>
                         <a class="item" href="/logout">Logout</a>

@@ -4,12 +4,22 @@
             <div class="content">
                 <div class="center">
                     <div class="ui inverted green button add_to_cart_button" style="margin-bottom: 6px"
-                         product_id="{{$item->id}}"
+                         data-product_id="{{$item->id}}"
                     ><i class="cart plus icon"></i> Add to cart
                     </div>
-                    {{--<div class="ui inverted red button">--}}
-                    {{--<i class="heart icon"></i> Add to wish list--}}
-                    {{--</div>--}}
+                    @if(Auth::check())
+                        @if(Auth::user()->liked_products->contains($item))
+                            <div class="ui inverted red button remove_from_wishlist_button"
+                                 data-product_id="{{$item->id}}">
+                                <i class="heart icon"></i> Remove from wish list
+                            </div>
+                        @else
+                            <div class="ui inverted red button add_to_wishlist_button"
+                                 data-product_id="{{$item->id}}">
+                                <i class="heart icon"></i> Add to wish list
+                            </div>
+                        @endif
+                    @endif
                 </div>
             </div>
         </div>
@@ -18,6 +28,7 @@
     @if($item->price > $item->sale_off)
         <div class="ui red top right attached label">Sale-off</div>
     @endif
+
     <div class="content" style="text-align: center">
         <h2 class="header" style="white-space: nowrap;overflow-x: hidden;text-overflow: ellipsis">{{$item->name}}</h2>
         <div class="meta">

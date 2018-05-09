@@ -13,7 +13,8 @@
                     <div class="menu">
                         <a class="{{Request::is('all')?'active':''}} item" href="/all">All</a>
                         @foreach(\App\Category::all() as $category)
-                            <a href="/category/{{$category->id}}" class="{{Request::is('category/'.$category->id)?'active':''}} item">{{$category->name}}</a>
+                            <a href="/category/{{$category->id}}"
+                               class="{{Request::is('category/'.$category->id)?'active':''}} item">{{$category->name}}</a>
                         @endforeach
                     </div>
                 </div>
@@ -25,12 +26,22 @@
         </div>
     </div>
     <div class="ui divider"></div>
+
+    @if(Session::has('error'))
+        <div class="ui error message">
+            <div class="header">
+                test
+            </div>
+        </div>
+        <div class="ui divider"></div>
+    @endif
     @if(Session::has('message'))
         <div class="ui message">
             <div class="header">
                 {{Session::get('message')}}
             </div>
         </div>
+
         <div class="ui divider"></div>
     @endif
 </div>

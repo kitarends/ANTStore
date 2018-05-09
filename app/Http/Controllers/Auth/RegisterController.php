@@ -78,6 +78,6 @@ class RegisterController extends Controller
         $user->confirmed = true;            //confirm thìs user
         $user->save();                      //save to database
         \Auth::login($user);                //login this user
-        return redirect('/')->with('message', trans('confirmation::confirmation.success')); //redirect user to home with success message
+        return redirect('/')->with('message', 'Your email has been verified. You are now logged in'); //redirect user to home with success message
     }
 }

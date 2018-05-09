@@ -44,6 +44,14 @@ class SearchController extends Controller
         return $this->process($request, $products, $title);
     }
 
+    //show sale-off products
+    public function wish_list(Request $request)
+    {
+        $products = \Auth::user()->liked_products();
+        $title = 'My wishlist';
+        return $this->process($request, $products, $title);
+    }
+
     //same step for all search
     protected function process(Request $request, $products, $title)
     {
