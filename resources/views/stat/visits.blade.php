@@ -62,14 +62,16 @@
             </thead>
             <tbody>
             @foreach($top_views as $item)
-                <tr>
-                    <td>
-                        <a href="/products/{{$item->product_id}}">{{$item->product->name}}</a>
-                    </td>
-                    <td>
-                        {{$item->views}}
-                    </td>
-                </tr>
+                @if($item->product!=null)
+                    <tr>
+                        <td>
+                            <a href="/products/{{$item->product_id}}">{{$item->product->name}}</a>
+                        </td>
+                        <td>
+                            {{$item->views}}
+                        </td>
+                    </tr>
+                @endif
             @endforeach
             </tbody>
         </table>
@@ -84,14 +86,17 @@
             </thead>
             <tbody>
             @foreach($top_solds as $item)
-                <tr>
-                    <td>
-                        <a href="/products/{{$item->product_id}}">{{$item->product->name}}</a>
-                    </td>
-                    <td>
-                        {{$item->solds}}
-                    </td>
-                </tr>
+                @if($item->product!=null)
+
+                    <tr>
+                        <td>
+                            <a href="/products/{{$item->product_id}}">{{$item->product->name}}</a>
+                        </td>
+                        <td>
+                            {{$item->solds}}
+                        </td>
+                    </tr>
+                @endif
             @endforeach
             </tbody>
         </table>
