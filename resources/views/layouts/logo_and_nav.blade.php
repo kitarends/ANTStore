@@ -30,7 +30,7 @@
     @if(Session::has('error'))
         <div class="ui error message">
             <div class="header">
-                test
+                {{Session::get('error')}}
             </div>
         </div>
         <div class="ui divider"></div>
