@@ -41,7 +41,7 @@ class AdsController extends Controller
         $request->validate(
             [
                 'url' => 'required',
-                'image'=>'required'
+                'image'=>'required|image|mimes:jpeg,png,jpg,gif|max:4000'
             ]
         );
         $ads = new Ads();
@@ -97,11 +97,17 @@ class AdsController extends Controller
         $request->validate(
             [
                 'url' => 'required',
-                'image' => 'required'
             ]
         );
         $ads->fill($request->all());
-        $ads->image=$this->process_image($request->file('image'));
+        if($request->hasFile('image')){
+            $request->validate(
+                [
+                    'image'=>'required|image|mimes:jpeg,png,jpg,gif|max:4000'
+                ]
+            );
+            $ads->image=$this->process_image($request->file('image'));
+        }
         $ads->save();
 
         return redirect('/manage/ads');

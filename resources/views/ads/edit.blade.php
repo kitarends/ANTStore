@@ -25,7 +25,7 @@
                         {{csrf_field()}}
                         {{isset($item)?method_field('put'):method_field('post')}}
                         @include('ui.form.input',['name'=>'url','label'=>'URL','type'=>'text'])
-                        @include('ui.form.file',['name'=>'image','label'=>'Image','type'=>'number'])
+                        @include('ui.form.image',['name'=>'image','label'=>'Image'])
                         <button class="ui primary button" type="submit">Save</button>
                     </form>
                 </div>
