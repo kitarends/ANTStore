@@ -19,39 +19,6 @@
             </div>
         </div>
 
-        <form method="get" id="time_form">
-            <input type="hidden" id="start_time" name="start" value="{{old('start')}}">
-            <input type="hidden" id="end_time" name="end" value="{{old('end')}}">
-        </form>
-
-        <div class="ui stackable grid">
-
-            <div class="ui twelve wide column">
-                <h4 class="ui header">Page visits</h4>
-                <canvas id="visits_chart"></canvas>
-            </div>
-            <div class="ui four wide column">
-                <div class="ui two statistics">
-                    <a class="ui statistic" href="/manage/products">
-                        <div class="value">
-                            {{Tracker::onlineUsers()->count()}}
-                        </div>
-                        <div class="label">
-                            Current online users
-                        </div>
-                    </a>
-                    <a class="ui statistic" href="/manage/products">
-                        <div class="value">
-                            {{Tracker::onlineUsers()->count()}}
-                        </div>
-                        <div class="label">
-                            Current online users
-                        </div>
-                    </a>
-                </div>
-
-            </div>
-        </div>
         <h4 class="ui header">Top viewed products</h4>
         <table class="ui celled table">
             <thead>
