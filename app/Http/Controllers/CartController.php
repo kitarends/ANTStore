@@ -43,8 +43,8 @@ class CartController extends Controller
         }
 
         \Session::flash('message', 'Added to cart!');
-
-        return redirect('/cart')->cookie(cookie('cart', serialize($cart)));
+        Cookie::queue(cookie('cart', serialize($cart)));
+//        return redirect('/cart')->cookie(cookie('cart', serialize($cart)));
     }
 
 
@@ -151,7 +151,7 @@ class CartController extends Controller
     }
 
     //decode cart's data from cokkies
-    protected function get_cart(Request $request): \Illuminate\Support\Collection
+    protected function get_cart(Request $request)
     {
         return collect(unserialize($request->cookies->get('cart', '')));
     }

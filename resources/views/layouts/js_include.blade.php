@@ -63,7 +63,9 @@
 
             $('.add_to_cart_button').click(function (e) {
                 e.preventDefault();
-                location.href = '/cart/add/' + $(this).attr('data-product_id') + '/1';
+                $.get('/cart/add/' + $(this).attr('data-product_id') + '/1',function (result) {
+                    location.reload();
+                });
             });
 
             $('.add_to_wishlist_button').click(function (e) {
