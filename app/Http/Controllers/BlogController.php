@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
     private $validator_rules = [
-        'title' => 'required|unique:blogs',
+        'title' => 'required',
         'html_content' => 'required',
         'thumb' => 'required',
         'url' => 'required'
