@@ -36,7 +36,7 @@
         <div class="ui divider"></div>
     @endif
     @if(Session::has('message'))
-        <div class="ui message">
+        <div class="ui green message">
             <div class="header">
                 {{Session::get('message')}}
             </div>
