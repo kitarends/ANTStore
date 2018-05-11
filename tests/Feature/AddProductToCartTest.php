@@ -14,7 +14,7 @@ class AddProductToCartTest extends TestCase
      *
      * @return void
      */
-    public function testAddToCart()
+    public function testAddAndRremoveProduct()
     {
         $product=Product::first();
         $number='129';

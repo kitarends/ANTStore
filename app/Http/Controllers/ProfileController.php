@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
 
 //user's editing profile controller
 class ProfileController extends Controller
@@ -10,7 +11,7 @@ class ProfileController extends Controller
     //show all user's info
     public function info(Request $request)
     {
-        FlashToOld::flash_to_olds(\Auth::user(), ['name', 'phone', 'address']);
+        \Auth::user()->fill_olds();
         return view('profile.info');
     }
 

@@ -20,6 +20,20 @@ class SiteAvailableTest extends TestCase
 
     public function testSeeLogo()
     {
-        $this->visit("/")->see('ANT')->see('Store')->see('Find Your Favorite Or Discover Something New');
+        $this->visit("/")
+            ->see('ANT')
+            ->see('Store')
+            ->see('Find Your Favorite Or Discover Something New'); //we should see the logo and slogan
+    }
+
+    public function testAllProductsPage()
+    {
+        $this->visit('all' )
+            ->see('All products availble');
+    }
+    public function testSaleoffPage()
+    {
+        $this->visit('sale_off' )
+            ->see('Sale off');
     }
 }

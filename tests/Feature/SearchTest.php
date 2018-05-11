@@ -6,15 +6,21 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ProcessUploadImageTest extends TestCase
+class SearchTest extends TestCase
 {
+    public $search_name = 'Eye';
+
+
     /**
      * A basic test example.
      *
      * @return void
      */
-    public function testExample()
+    public function testQuery()
     {
-        $this->assertTrue(true);
+        $this->visit('search?query=' . $this->search_name)
+            ->see('Results of searching for "Eye"');
     }
+
+
 }

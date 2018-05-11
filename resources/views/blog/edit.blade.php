@@ -7,7 +7,7 @@
             <i class="right angle icon divider"></i>
             <a class="section" href="/manage">Admin</a>
             <i class="right angle icon divider"></i>
-            <a class="section" href="/manage/categories">Blogs</a>
+            <a class="section" href="/manage/blogs">Blogs</a>
             <i class="right angle icon divider"></i>
             <div class="active section">{{$title}}</div>
         </div>

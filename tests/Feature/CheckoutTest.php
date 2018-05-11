@@ -13,7 +13,7 @@ class CheckoutTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
+    public function testCheckout()
     {
         $this->assertTrue(true);
     }

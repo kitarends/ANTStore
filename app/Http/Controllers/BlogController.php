@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Validator;
 
 class BlogController extends Controller
 {
@@ -36,8 +38,6 @@ class BlogController extends Controller
      */
     public function create()
     {
-
-        (new Blog())->fill_olds();
 
         return view('blog.edit', ['title' => 'Create new post']);
     }
