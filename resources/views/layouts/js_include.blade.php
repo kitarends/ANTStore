@@ -68,6 +68,7 @@
                 });
             });
 
+
             $('.add_to_wishlist_button').click(function (e) {
                 e.preventDefault();
                 $.get('/products/'+$(this).attr('data-product_id')+'/add_to_wishlist',function (result) {

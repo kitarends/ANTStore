@@ -19,9 +19,6 @@
     </td>
     <td>
         {{$item['quantity']}}
-        {{--<div class="ui input">--}}
-        {{--<input type="number" value="{{$item['quantity']}}" style="width: 80px">--}}
-        {{--</div>--}}
     </td>
     <td class="footable-last-visible" style="display: table-cell;">
         <a onclick="ask_to_delete_item_from_cart({{$item['product']->id}})" href="javascript:void(0);"

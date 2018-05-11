@@ -11,8 +11,6 @@
         <br>
         @include('dashboard.last_month')
 
-
-
     </div>
 
 @endsection

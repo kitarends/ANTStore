@@ -11,7 +11,7 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        $contents = file_get_contents('/home/hataketsu/sandal.json');
+        $contents = file_get_contents('~/sandal.json');
         $all_images="";
         foreach (collect(json_decode($contents,true))->sortBy("_id")->take(100) as $row) {
             $model = \App\Product::firstOrNew(['id'=>$row['_id']]);
@@ -25,6 +25,6 @@ class ProductSeeder extends Seeder
             $model->save();
             $all_images=$all_images.$model->image_urls.";";
         }
-        file_put_contents("/home/hataketsu/sandal.txt",str_replace(';',"\n",$all_images));
+        file_put_contents("~/sandal.txt",str_replace(';',"\n",$all_images));
     }
 }

@@ -29,7 +29,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('product.edit');
+        return view('product.edit',['title' => "Add new product"]);
     }
 
     /**
@@ -87,7 +87,7 @@ class ProductController extends Controller
         if (null == \Session::get('errors'))
             $product->fill_olds();
 
-        return view('product.edit', ['item' => $product]);
+        return view('product.edit', ['item' => $product,'title' => "Edit old product"]);
     }
 
     /**

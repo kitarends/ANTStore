@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Mail;
 use phpDocumentor\Reflection\DocBlock\Tags\See;
+use Session;
 
 class CartController extends Controller
 {
@@ -43,9 +44,9 @@ class CartController extends Controller
         }
 
         \Session::flash('message', 'Added to cart!');
-        Cookie::queue(cookie('cart', serialize($cart)));
-//        return redirect('/cart')->cookie(cookie('cart', serialize($cart)));
+        Session::put('cart', serialize($cart));
     }
+
 
 
     //remove product form cart
@@ -54,8 +55,7 @@ class CartController extends Controller
         $cart = $this->get_cart($request);
         unset($cart[$product_id]); //delete product from cart
         \Session::flash('message', 'Removed from cart!');
-
-        return redirect('/cart')->cookie(cookie('cart', serialize($cart)));
+        Session::put('cart', serialize($cart));
     }
 
     //checkout page
@@ -147,13 +147,14 @@ class CartController extends Controller
         \Session::remove('code');
         \Session::remove('discount');
         Mail::to($order->email)->queue(new \App\Mail\OrderShipped($order));
-        return redirect('/')->cookie(cookie('cart', null));
+        Session::put('cart',null);
+        return redirect('/');
     }
 
     //decode cart's data from cokkies
     protected function get_cart(Request $request)
     {
-        return collect(unserialize($request->cookies->get('cart', '')));
+        return collect(unserialize(Session::get('cart', '')));
     }
 
     //decode and process data in cart
@@ -162,8 +163,8 @@ class CartController extends Controller
         $items = [];
         $item_number = 0;
         $total = 0;
-        if ($request->cookies->has('cart') && $request->cookies->get('cart') != null) {
-            $cart = unserialize($request->cookie('cart'));
+        if (Session::has('cart') && Session::get('cart') != null) {
+            $cart = unserialize(Session::get('cart'));
             foreach ($cart as $product_id => $quantity) {
                 if (Product::whereId($product_id)->count() > 0) {
                     $product = Product::findOrFail($product_id);
@@ -185,7 +186,7 @@ class CartController extends Controller
         $code = $request->get('discount');
         $query = Discount::whereCode(trim($code));
         if ($query->count() != 1) {
-            \Session::flash('erro', 'Discount code is invalid!');
+            \Session::flash('error', 'Discount code is invalid!');
             \Session::remove('code');
             \Session::remove('discount');
         } else {

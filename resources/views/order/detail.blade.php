@@ -42,7 +42,7 @@
         <p><strong>Name:</strong> {{$order->name}}</p>
         <p><strong>Email:</strong> {{$order->email}}</p>
         <p><strong>Phone:</strong> {{$order->phone}}</p>
-        <p><strong>Note:</strong> {{$order->phone}}</p>
+        <p><strong>Note:</strong> {{$order->note}}</p>
     </div>
 
 @endsection

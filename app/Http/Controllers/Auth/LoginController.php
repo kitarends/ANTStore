@@ -41,7 +41,6 @@ class LoginController extends Controller
 
     function authenticated(Request $request, $user)
     {
-
-        \Cookie::queue(\Cookie::forget('cart'));
+        \Session::put('cart', '');
     }
 }

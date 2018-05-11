@@ -16,7 +16,7 @@
             </div>
             <div class="twelve wide column">
                 <div class="ui  segment">
-                    <h3 class="ui dividing header">Add new product</h3>
+                    <h3 class="ui dividing header">{{$title}}</h3>
                     @include('layouts.errors_block')
                     <form class="ui form" method="post" action="/products{{isset($item)?'/'.$item->id:''}}"
                           enctype="multipart/form-data">
@@ -24,6 +24,17 @@
                         {{isset($item)?method_field('put'):method_field('post')}}
                         @include('ui.form.input',['name'=>'name','label'=>'Name *','type'=>'text'])
                         @include('ui.form.files',['name'=>'image[]','label'=>'Images *'])
+                        @if(isset($item))
+                            <div class="field">
+                                <div class="ui five column grid">
+                                    @foreach(array_filter(explode(';',$item->image_urls)) as $image)
+                                        <div class="column">
+                                            <img src="/images/{{$image}}" style="margin: 4px;width: 100%">
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
                         @include('ui.form.select',['name'=>'category_id','label'=>'Category *','options'=>\App\Category::all()])
                         @include('ui.form.input',['name'=>'short_detail','label'=>'Product brief detail *'])
                         @include('ui.form.ckeditor',['name'=>'full_html_detail','label'=>'Product full detail *'])
